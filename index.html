@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EcoMarket - Fresh from Farm to Table</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <style>
+            /* Navbar Link Styling - Applies to all links in the nav ul, including About */
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 2rem;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav ul li a {
+                text-decoration: none;
+                color: #333;
+                font-size: 1rem;
+                font-weight: 500;
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                transition: all 0.3s ease;
+            }
+
+            nav ul li a:hover,
+            nav ul li a.active {
+                background-color: #f0f0f0;
+                color: #007bff;
+            }
+
+            @media (max-width: 768px) {
+                nav ul {
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+                nav ul li a {
+                    padding: 0.75rem;
+                    text-align: center;
+                }
+            }
+
+            /* Remove underline from logo link */
+            .logo a {
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Header -->
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-container">
+                    <div class="logo">
+                        <a href="index.html"><h1>🌱 EcoMarket</h1></a>
+                    </div>
+                    <ul class="nav-menu">
+                        <li>
+                            <a href="index.html" class="nav-link active"
+                                >Home</a
+                            >
+                        </li>
+                        <li>
+                            <a href="marketplace.html" class="nav-link"
+                                >Marketplace</a
+                            >
+                        </li>
+
+                        <li></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-btn"
+                                >Dashboard ▼</a
+                            >
+                            <div class="dropdown-content">
+                                <a href="farmer-dashboard.html"
+                                    >Farmer Dashboard</a
+                                >
+                                <a href="buyer-dashboard.html"
+                                    >Buyer Dashboard</a
+                                >
+                                <a href="quality-control.html"
+                                    >Quality Control</a
+                                >
+                                <a href="delivery.html">Delivery Tracking</a>
+                            </div>
+                        </li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                    <div class="cart-icon">
+                        <a href="shopping-cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartBadge">0</span>
+                        </a>
+                    </div>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-modern">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Fresh from
+                        <span class="text-gradient">Farm to Table</span> with
+                        Quality Guaranteed
+                    </h1>
+                    <p class="hero-description">
+                        EcoMarket revolutionizes agriculture by connecting
+                        farmers directly with buyers, ensuring fair prices,
+                        premium quality, and sustainable practices.
+                    </p>
+                    <div class="hero-actions">
+                        <button
+                            class="btn btn-primary-lg"
+                            onclick="window.location.href='marketplace.html'"
+                        >
+                            Shop Fresh Produce
+                            <svg
+                                class="btn-icon"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 5l7 7-7 7"
+                                />
+                            </svg>
+                        </button>
+                        <button
+                            class="btn btn-outline-lg"
+                            onclick="window.location.href='farmer-dashboard.html'"
+                        >
+                            <a
+                                href="farmer-registration.html"
+                                style="text-decoration: none"
+                                >Join as Farmer</a
+                            >
+                        </button>
+                        ```
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">1,250+</div>
+                            <div class="stat-label">Active Farmers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">5,680+</div>
+                            <div class="stat-label">Happy Customers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Quality Score</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="product-cards">
+                        <div class="product-card-hero">
+                            <div class="product-image">
+                                <div class="product-emoji">🍅</div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Organic Roma Tomatoes</h3>
+                                <div class="price">2000 CFA/kg</div>
+                                <div class="rating">
+                                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                                    <span class="rating-score">4.8</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card-hero">
+                            <div class="product-image">
+                                <div class="product-emoji">🥬</div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Baby Spinach</h3>
+                                <div class="price">1500 CFA/kg</div>
+                                <div class="rating">
+                                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                                    <span class="rating-score">4.9</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-card-hero package-card">
+                            <div class="package-badge">PACKAGE</div>
+                            <div class="product-image">
+                                <div class="product-emoji">🌶️</div>
+                            </div>
+                            <div class="product-info">
+                                <h3>Mixed Bell Peppers</h3>
+                                <div class="price">2500 CFA/kg</div>
+                                <div class="discount">Save 15%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floating-elements">
+                        <div class="float-element float-1">🥕</div>
+                        <div class="float-element float-2">🥦</div>
+                        <div class="float-element float-3">🍓</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platform Benefits Section -->
+        <section class="benefits-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Revolutionizing Agriculture</span>
+                    <h2 class="section-title">
+                        Our platform addresses the core challenges farmers face
+                        while ensuring buyers get the freshest, highest-quality
+                        produce.
+                    </h2>
+                </div>
+
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Direct Farmer Connection</h3>
+                        <p>
+                            Connect directly with verified farmers and build
+                            lasting relationships for consistent quality.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Quality Assurance</h3>
+                        <p>
+                            Every product is inspected by certified controllers
+                            before delivery to ensure premium quality.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Reliable Delivery Network</h3>
+                        <p>
+                            Our delivery system ensures fresh produce reaches
+                            you quickly and safely.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Efficient Distribution</h3>
+                        <p>
+                            We coordinate orders across multiple farmers for
+                            better availability and freshness.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="process-section">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-tag">Simple Process</span>
+                    <h2 class="section-title">How EcoMarket Works</h2>
+                    <p class="section-description">
+                        From farm to your table in four simple steps, with
+                        quality assurance at every stage.
+                    </p>
+                </div>
+
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">
+                            <span>01</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>Browse & Select</h3>
+                            <p>
+                                Explore fresh produce from verified local
+                                farmers
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process-connector"></div>
+
+                    <div class="process-step">
+                        <div class="step-number">
+                            <span>02</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>Order Distribution</h3>
+                            <p>We distribute your order efficiently</p>
+                        </div>
+                    </div>
+
+                    <div class="process-connector"></div>
+
+                    <div class="process-step">
+                        <div class="step-number">
+                            <span>03</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>Quality Check</h3>
+                            <p>
+                                Controllers verify quality and quantity before
+                                packaging
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process-connector"></div>
+
+                    <div class="process-step">
+                        <div class="step-number">
+                            <span>04</span>
+                        </div>
+                        <div class="step-content">
+                            <h3>Fresh Delivery</h3>
+                            <p>
+                                Receive fresh produce delivered to your doorstep
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose EcoMarket Section -->
+        <section class="why-choose-section">
+            <div class="container">
+                <div class="section-header centered">
+                    <span class="section-tag">Platform Benefits</span>
+                    <h2 class="section-title">Why Everyone Loves EcoMarket</h2>
+                </div>
+
+                <div class="why-choose-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Fair Pricing</h3>
+                        <p>
+                            Farmers get better prices, buyers get competitive
+                            rates
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Premium Quality</h3>
+                        <p>
+                            Rigorous quality control ensures only the best
+                            produce
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Community Impact</h3>
+                        <p>Support local farmers and sustainable agriculture</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Sustainable Future</h3>
+                        <p>
+                            Environmentally conscious farming and delivery
+                            practices
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Experience Farm-Fresh Quality?</h2>
+                    <p>
+                        Join thousands of satisfied customers and farmers who
+                        trust EcoMarket for premium produce and fair trade.
+                    </p>
+                    <div class="cta-actions">
+                        <button
+                            class="btn btn-primary-lg"
+                            onclick="window.location.href='marketplace.html'"
+                        >
+                            Start Shopping Now
+                            <svg
+                                class="btn-icon"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 5l7 7-7 7"
+                                />
+                            </svg>
+                        </button>
+                        <button
+                            class="btn btn-outline-lg"
+                            onclick="window.location.href='farmer-dashboard.html'"
+                        >
+                            Become a Partner Farmer
+                        </button>
+                    </div>
+                    <div class="trust-indicators">
+                        <div class="trust-item">
+                            <span class="trust-icon">🔒</span>
+                            <span>Secure Payments</span>
+                        </div>
+                        <div class="trust-item">
+                            <span class="trust-icon">✅</span>
+                            <span>Quality Guaranteed</span>
+                        </div>
+                        <div class="trust-item">
+                            <span class="trust-icon">🚚</span>
+                            <span>Free Delivery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="modern-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="footer-brand">
+                            <div class="brand">
+                                <div class="brand-icon">🌱</div>
+                                <span class="brand-name">EcoMarket</span>
+                            </div>
+                            <p class="footer-desc">
+                                Revolutionizing agriculture by connecting
+                                farmers directly with buyers for a sustainable
+                                future.
+                            </p>
+                            <div class="social-links">
+                                <a href="#" class="social-link">📘</a>
+                                <a href="#" class="social-link">🐦</a>
+                                <a href="#" class="social-link">📷</a>
+                                <a href="#" class="social-link">💼</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>Platform</h4>
+                        <ul class="footer-links">
+                            <li><a href="marketplace.html">Marketplace</a></li>
+                            <li>
+                                <a href="farmer-dashboard.html">For Farmers</a>
+                            </li>
+                            <li>
+                                <a href="buyer-dashboard.html">For Buyers</a>
+                            </li>
+                            <li>
+                                <a href="quality-control.html"
+                                    >Quality Control</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <ul class="footer-links">
+                            <li><a href="delivery.html">Delivery Info</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="footer-bottom-content">
+                        <p>&copy; 2024 EcoMarket. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+        <script>
+            // Enhanced homepage animations and interactions
+            document.addEventListener("DOMContentLoaded", function () {
+                // Animate hero stats on scroll
+                const stats = document.querySelectorAll(".stat-number");
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                const target = entry.target;
+                                const finalValue = target.textContent;
+                                const numericValue = parseInt(
+                                    finalValue.replace(/[^0-9]/g, ""),
+                                );
+                                animateCounter(
+                                    target,
+                                    0,
+                                    numericValue,
+                                    finalValue.includes("%") ? "%" : "+",
+                                    2000,
+                                );
+                            }
+                        });
+                    },
+                    { threshold: 0.5 },
+                );
+
+                stats.forEach((stat) => observer.observe(stat));
+
+                // Floating elements animation
+                const floatingElements =
+                    document.querySelectorAll(".float-element");
+                floatingElements.forEach((element, index) => {
+                    element.style.animationDelay = `${index * 0.5}s`;
+                });
+
+                // Mobile menu toggle
+                const mobileToggle = document.querySelector(
+                    ".mobile-menu-toggle",
+                );
+                const navMenu = document.querySelector(".nav-menu");
+
+                if (mobileToggle) {
+                    mobileToggle.addEventListener("click", () => {
+                        mobileToggle.classList.toggle("active");
+                        navMenu.classList.toggle("active");
+                    });
+                }
+
+                // Smooth scroll for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                    anchor.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(
+                            this.getAttribute("href"),
+                        );
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start",
+                            });
+                        }
+                    });
+                });
+
+                // Add scroll effects to header
+                let lastScroll = 0;
+                const header = document.querySelector(".modern-header");
+
+                window.addEventListener("scroll", () => {
+                    const currentScroll = window.pageYOffset;
+
+                    if (currentScroll <= 0) {
+                        header.classList.remove("scrolled");
+                    } else {
+                        header.classList.add("scrolled");
+                    }
+
+                    if (currentScroll > lastScroll && currentScroll > 100) {
+                        header.classList.add("hidden");
+                    } else {
+                        header.classList.remove("hidden");
+                    }
+
+                    lastScroll = currentScroll;
+                });
+            });
+
+            function animateCounter(element, start, end, suffix, duration) {
+                const startTime = performance.now();
+
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const current = Math.round(
+                        start + (end - start) * progress,
+                    );
+
+                    element.textContent = current.toLocaleString() + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    }
+                }
+
+                requestAnimationFrame(updateCounter);
+            }
+        </script>
+    </body>
+</html>

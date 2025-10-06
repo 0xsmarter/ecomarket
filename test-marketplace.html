@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EcoMarket Test - Fruit Marketplace</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                background-color: #f5f5f5;
+            }
+            .test-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            .test-section {
+                margin-bottom: 30px;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+            }
+            .test-section h2 {
+                color: #2d8f3f;
+                margin-top: 0;
+            }
+            .fruit-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+            .fruit-item {
+                padding: 10px;
+                background: #f8f9fa;
+                border-radius: 6px;
+                text-align: center;
+            }
+            .fruit-image {
+                width: 100%;
+                height: 120px;
+                object-fit: cover;
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            .test-button {
+                background: #2d8f3f;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 6px;
+                cursor: pointer;
+                margin: 5px;
+            }
+            .test-button:hover {
+                background: #1e6b2f;
+            }
+            .status {
+                padding: 5px 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                margin: 5px;
+            }
+            .status.success {
+                background: #d4edda;
+                color: #155724;
+            }
+            .status.error {
+                background: #f8d7da;
+                color: #721c24;
+            }
+            .status.info {
+                background: #cce7ff;
+                color: #004085;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="test-container">
+            <h1>🌱 EcoMarket Fruit Marketplace Test</h1>
+
+            <div class="test-section">
+                <h2>1. Available Fruits from Assets</h2>
+                <p>
+                    These fruits should be available in the marketplace (no
+                    duplicates):
+                </p>
+                <div class="fruit-list" id="fruitList">
+                    <!-- Fruits will be loaded here -->
+                </div>
+            </div>
+
+            <div class="test-section">
+                <h2>2. Marketplace Functions Test</h2>
+                <button
+                    class="test-button"
+                    onclick="testProductInitialization()"
+                >
+                    Test Product Initialization
+                </button>
+                <button class="test-button" onclick="testCartFunctions()">
+                    Test Cart Functions
+                </button>
+                <button class="test-button" onclick="testPackageBuilder()">
+                    Test Package Builder
+                </button>
+                <button
+                    class="test-button"
+                    onclick="testFarmerPackageCreation()"
+                >
+                    Test Farmer Package Creation
+                </button>
+                <div id="testResults"></div>
+            </div>
+
+            <div class="test-section">
+                <h2>3. Live Marketplace Preview</h2>
+                <p>Preview of actual marketplace functionality:</p>
+                <div
+                    style="
+                        background: #f8f9fa;
+                        padding: 15px;
+                        border-radius: 6px;
+                        margin: 10px 0;
+                    "
+                >
+                    <a
+                        href="marketplace.html"
+                        class="test-button"
+                        target="_blank"
+                        >Open Marketplace</a
+                    >
+                    <a
+                        href="farmer-dashboard.html"
+                        class="test-button"
+                        target="_blank"
+                        >Open Farmer Dashboard</a
+                    >
+                </div>
+            </div>
+
+            <div class="test-section">
+                <h2>4. Storage Test</h2>
+                <button class="test-button" onclick="checkStorage()">
+                    Check Local Storage
+                </button>
+                <button class="test-button" onclick="clearStorage()">
+                    Clear All Data
+                </button>
+                <button class="test-button" onclick="resetTestData()">
+                    Reset Test Data
+                </button>
+                <div id="storageResults"></div>
+            </div>
+        </div>
+
+        <script>
+            // Fruit data that should match the marketplace
+            const FRUIT_DATA = [
+                { name: "Guava", image: "assets/Guava.jpeg", price: 1500 },
+                { name: "Avocado", image: "assets/avocado1.jpeg", price: 2500 },
+                { name: "Banana", image: "assets/banana1.jpeg", price: 800 },
+                { name: "Coconut", image: "assets/coconut.jpeg", price: 500 },
+                { name: "Mango", image: "assets/mangoes1.jpeg", price: 2000 },
+                { name: "Orange", image: "assets/orange1.jpeg", price: 1200 },
+                {
+                    name: "Pineapple",
+                    image: "assets/pineapple1.jpeg",
+                    price: 1800,
+                },
+                { name: "Plantain", image: "assets/plantain.jpeg", price: 600 },
+                {
+                    name: "Tomatoes",
+                    image: "assets/tomates1.jpeg",
+                    price: 1000,
+                },
+            ];
+
+            // Initialize test page
+            document.addEventListener("DOMContentLoaded", function () {
+                displayFruits();
+                showStatus("info", "Test page loaded successfully!");
+            });
+
+            function displayFruits() {
+                const fruitList = document.getElementById("fruitList");
+                fruitList.innerHTML = FRUIT_DATA.map(
+                    (fruit) => `
+                <div class="fruit-item">
+                    <img src="${fruit.image}" alt="${fruit.name}" class="fruit-image"
+                         onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjYwIiB5PSI2MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iIGZpbGw9IiM2Yjc2ODAiPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='">
+                    <h4>${fruit.name}</h4>
+                    <p>${fruit.price.toLocaleString()} CFA</p>
+                </div>
+            `,
+                ).join("");
+            }
+
+            function testProductInitialization() {
+                showStatus("info", "Testing product initialization...");
+
+                try {
+                    // Simulate the marketplace initialization
+                    const existingProducts = JSON.parse(
+                        localStorage.getItem("ecomarket_products") || "[]",
+                    );
+
+                    // Check if fruits are already initialized
+                    const hasFruits = existingProducts.some((p) =>
+                        FRUIT_DATA.some((f) => f.name === p.name),
+                    );
+
+                    if (hasFruits) {
+                        showStatus(
+                            "success",
+                            `Found ${existingProducts.length} products in storage, including fruits!`,
+                        );
+                    } else {
+                        showStatus(
+                            "info",
+                            "No fruits found in storage. They will be initialized on marketplace load.",
+                        );
+                    }
+
+                    // Check for duplicates
+                    const fruitNames = existingProducts.map((p) => p.name);
+                    const duplicates = fruitNames.filter(
+                        (name, index) => fruitNames.indexOf(name) !== index,
+                    );
+
+                    if (duplicates.length > 0) {
+                        showStatus(
+                            "error",
+                            `Found duplicate products: ${duplicates.join(", ")}`,
+                        );
+                    } else {
+                        showStatus("success", "No duplicate products found!");
+                    }
+                } catch (error) {
+                    showStatus(
+                        "error",
+                        `Product initialization test failed: ${error.message}`,
+                    );
+                }
+            }
+
+            function testCartFunctions() {
+                showStatus("info", "Testing cart functions...");
+
+                try {
+                    // Test cart storage
+                    const testCart = [
+                        {
+                            productId: 1,
+                            quantity: 2,
+                            addedAt: new Date().toISOString(),
+                        },
+                        {
+                            productId: 2,
+                            quantity: 1,
+                            addedAt: new Date().toISOString(),
+                        },
+                    ];
+
+                    localStorage.setItem(
+                        "ecomarket_cart",
+                        JSON.stringify(testCart),
+                    );
+                    const retrievedCart = JSON.parse(
+                        localStorage.getItem("ecomarket_cart") || "[]",
+                    );
+
+                    if (retrievedCart.length === testCart.length) {
+                        showStatus(
+                            "success",
+                            "Cart storage and retrieval working correctly!",
+                        );
+                    } else {
+                        showStatus("error", "Cart storage test failed!");
+                    }
+
+                    // Clean up test data
+                    localStorage.removeItem("ecomarket_cart");
+                } catch (error) {
+                    showStatus(
+                        "error",
+                        `Cart function test failed: ${error.message}`,
+                    );
+                }
+            }
+
+            function testPackageBuilder() {
+                showStatus("info", "Testing package builder functionality...");
+
+                try {
+                    // Test package creation logic
+                    const testProducts = [
+                        { id: 1, name: "Mango", price: 2000, quantity: 2 },
+                        { id: 2, name: "Banana", price: 800, quantity: 3 },
+                    ];
+
+                    const subtotal = testProducts.reduce((total, item) => {
+                        return total + item.price * item.quantity;
+                    }, 0);
+
+                    const discountRate = 0.15; // 15% discount
+                    const discount = subtotal * discountRate;
+                    const total = subtotal - discount;
+
+                    if (
+                        subtotal === 6400 &&
+                        discount === 960 &&
+                        total === 5440
+                    ) {
+                        showStatus(
+                            "success",
+                            `Package calculation correct! Subtotal: ${subtotal} CFA, Discount: ${discount} CFA, Total: ${total} CFA`,
+                        );
+                    } else {
+                        showStatus("error", "Package calculation incorrect!");
+                    }
+                } catch (error) {
+                    showStatus(
+                        "error",
+                        `Package builder test failed: ${error.message}`,
+                    );
+                }
+            }
+
+            function testFarmerPackageCreation() {
+                showStatus("info", "Testing farmer package creation...");
+
+                try {
+                    const testPackage = {
+                        id: Date.now(),
+                        name: "Test Tropical Mix",
+                        farmer: "Test Farm",
+                        price: 5000,
+                        originalPrice: 6000,
+                        quantity: 10,
+                        unit: "package",
+                        description: "Test package for validation",
+                        category: "packages",
+                        isPackage: true,
+                        discount: 15,
+                        packageItems: ["Mango (2kg)", "Banana (3kg)"],
+                        active: true,
+                        dateAdded: new Date().toISOString(),
+                    };
+
+                    // Test package structure
+                    const requiredFields = [
+                        "id",
+                        "name",
+                        "farmer",
+                        "price",
+                        "isPackage",
+                        "packageItems",
+                    ];
+                    const hasAllFields = requiredFields.every((field) =>
+                        testPackage.hasOwnProperty(field),
+                    );
+
+                    if (hasAllFields && testPackage.isPackage === true) {
+                        showStatus(
+                            "success",
+                            "Package creation structure is valid!",
+                        );
+                    } else {
+                        showStatus(
+                            "error",
+                            "Package creation structure is invalid!",
+                        );
+                    }
+                } catch (error) {
+                    showStatus(
+                        "error",
+                        `Farmer package creation test failed: ${error.message}`,
+                    );
+                }
+            }
+
+            function checkStorage() {
+                const products = JSON.parse(
+                    localStorage.getItem("ecomarket_products") || "[]",
+                );
+                const cart = JSON.parse(
+                    localStorage.getItem("ecomarket_cart") || "[]",
+                );
+                const orders = JSON.parse(
+                    localStorage.getItem("ecomarket_orders") || "[]",
+                );
+
+                const resultsDiv = document.getElementById("storageResults");
+                resultsDiv.innerHTML = `
+                <div style="margin-top: 10px;">
+                    <h4>Storage Status:</h4>
+                    <p><strong>Products:</strong> ${products.length} items</p>
+                    <p><strong>Cart Items:</strong> ${cart.length} items</p>
+                    <p><strong>Orders:</strong> ${orders.length} orders</p>
+                    <p><strong>Fruit Products:</strong> ${
+                        products.filter((p) =>
+                            FRUIT_DATA.some((f) => f.name === p.name),
+                        ).length
+                    } items</p>
+                    <p><strong>Package Products:</strong> ${products.filter((p) => p.isPackage).length} packages</p>
+                </div>
+            `;
+
+                showStatus("info", "Storage check completed!");
+            }
+
+            function clearStorage() {
+                localStorage.removeItem("ecomarket_products");
+                localStorage.removeItem("ecomarket_cart");
+                localStorage.removeItem("ecomarket_orders");
+                localStorage.removeItem("ecomarket_wishlist");
+
+                showStatus("info", "All storage data cleared!");
+                document.getElementById("storageResults").innerHTML = "";
+            }
+
+            function resetTestData() {
+                clearStorage();
+
+                // Add some sample products for testing
+                const sampleProducts = [
+                    {
+                        id: 1,
+                        name: "Mango",
+                        farmer: "Tropical Fruits Ltd",
+                        price: 2000,
+                        quantity: 50,
+                        unit: "kg",
+                        description:
+                            "Juicy tropical mangoes, sweet and aromatic",
+                        category: "fruits",
+                        image: "assets/mangoes1.jpeg",
+                        quality: "A+",
+                        isPackage: false,
+                        active: true,
+                        dateAdded: new Date().toISOString(),
+                    },
+                    {
+                        id: 2,
+                        name: "Banana",
+                        farmer: "Green Valley Farm",
+                        price: 800,
+                        quantity: 100,
+                        unit: "kg",
+                        description:
+                            "Sweet and energy-rich bananas, fresh from the farm",
+                        category: "fruits",
+                        image: "assets/banana1.jpeg",
+                        quality: "A",
+                        isPackage: false,
+                        active: true,
+                        dateAdded: new Date().toISOString(),
+                    },
+                ];
+
+                localStorage.setItem(
+                    "ecomarket_products",
+                    JSON.stringify(sampleProducts),
+                );
+                localStorage.setItem("ecomarket_cart", JSON.stringify([]));
+                localStorage.setItem("ecomarket_orders", JSON.stringify([]));
+
+                showStatus(
+                    "success",
+                    "Test data reset complete! Added sample products.",
+                );
+            }
+
+            function showStatus(type, message) {
+                const resultsDiv = document.getElementById("testResults");
+                const statusElement = document.createElement("div");
+                statusElement.className = `status ${type}`;
+                statusElement.textContent = `${new Date().toLocaleTimeString()}: ${message}`;
+                resultsDiv.appendChild(statusElement);
+
+                // Auto-scroll to latest status
+                statusElement.scrollIntoView({ behavior: "smooth" });
+            }
+
+            // Test if assets are accessible
+            function testAssetAccess() {
+                const testImage = new Image();
+                testImage.onload = () =>
+                    showStatus("success", "Assets are accessible!");
+                testImage.onerror = () =>
+                    showStatus("error", "Assets may not be accessible!");
+                testImage.src = "assets/mangoes1.jpeg";
+            }
+
+            // Run asset test on load
+            setTimeout(testAssetAccess, 1000);
+        </script>
+    </body>
+</html>

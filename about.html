@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>About Us - EcoMarket</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <style>
+            .logo a {
+                text-decoration: none;
+            }
+
+            /* Footer Improvements */
+            .footer {
+                background: #2c5530;
+                color: #fff;
+                padding: 40px 0 20px;
+                margin-top: 60px;
+            }
+
+            .footer-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .footer-section h3,
+            .footer-section h4,
+            .footer-section h5 {
+                color: #4caf50;
+                margin-bottom: 15px;
+                font-size: 1.2rem;
+            }
+
+            .footer-section p,
+            .footer-section address p {
+                margin-bottom: 10px;
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .footer-section ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .footer-section ul li {
+                margin-bottom: 8px;
+            }
+
+            .footer-section a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            .footer-section a:hover {
+                color: #4caf50;
+            }
+
+            .social-links {
+                display: flex;
+                gap: 15px;
+                margin-top: 15px;
+            }
+
+            .social-links a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                font-size: 1.1rem;
+                transition: background 0.3s ease;
+            }
+
+            .social-links a:hover {
+                background: #4caf50;
+            }
+
+            .newsletter-form {
+                display: flex;
+                margin-top: 15px;
+            }
+
+            .newsletter-form input {
+                flex: 1;
+                padding: 10px;
+                border: none;
+                border-radius: 4px 0 0 4px;
+                font-size: 0.9rem;
+            }
+
+            .newsletter-form button {
+                padding: 10px 15px;
+                background: #4caf50;
+                color: #fff;
+                border: none;
+                border-radius: 0 4px 4px 0;
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
+
+            .newsletter-form button:hover {
+                background: #45a049;
+            }
+
+            .footer-bottom {
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding-top: 20px;
+                text-align: center;
+                margin-top: 30px;
+            }
+
+            .footer-bottom p {
+                margin: 0;
+                font-size: 0.85rem;
+            }
+
+            .footer-bottom a {
+                color: #4caf50;
+            }
+
+            @media (max-width: 768px) {
+                .footer-container {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                    padding: 0 15px;
+                }
+
+                .newsletter-form {
+                    flex-direction: column;
+                }
+
+                .newsletter-form input {
+                    border-radius: 4px;
+                    margin-bottom: 10px;
+                }
+
+                .newsletter-form button {
+                    border-radius: 4px;
+                }
+
+                .social-links {
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-container">
+                    <div class="logo">
+                        <a href="index.html"><h1>🌱 EcoMarket</h1></a>
+                    </div>
+                    <ul class="nav-menu">
+                        <li>
+                            <a href="marketplace.html" class="nav-link"
+                                >Marketplace</a
+                            >
+                        </li>
+                        <li>
+                            <a href="about.html" class="nav-link active"
+                                >About</a
+                            >
+                        </li>
+                        <li></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-btn"
+                                >Dashboard ▼</a
+                            >
+                            <div class="dropdown-content">
+                                <a href="farmer-dashboard.html"
+                                    >Farmer Dashboard</a
+                                >
+                                <a href="buyer-dashboard.html"
+                                    >Buyer Dashboard</a
+                                >
+                                <a href="quality-control.html"
+                                    >Quality Control</a
+                                >
+                                <a href="delivery.html">Delivery Tracking</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="cart-icon">
+                        <a href="shopping-cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartBadge">0</span>
+                        </a>
+                    </div>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main style="padding-top: 100px">
+            <!-- Hero Section -->
+            <section class="about-hero">
+                <div class="container">
+                    <h1>About EcoMarket</h1>
+                    <p class="hero-subtitle">
+                        Revolutionizing the way farmers and buyers connect
+                    </p>
+                    <div class="mission-statement">
+                        <h2>Our Mission</h2>
+                        <p>
+                            To create a sustainable, transparent, and fair
+                            marketplace that connects farmers directly with
+                            buyers, ensuring fresh produce, fair prices, and
+                            support for local agriculture.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Story Section -->
+            <section class="our-story">
+                <div class="container">
+                    <div class="story-content">
+                        <div class="story-text">
+                            <h2>Our Story</h2>
+                            <p>
+                                EcoMarket was born from a simple observation:
+                                farmers were struggling to get fair prices for
+                                their produce, while consumers wanted access to
+                                fresh, quality food directly from the source.
+                            </p>
+
+                            <p>
+                                We saw hardworking farmers forced to sell their
+                                crops at below-market prices to intermediaries,
+                                while buyers paid premium prices for produce
+                                that had traveled long distances and lost its
+                                freshness. This disconnect inspired us to create
+                                a solution.
+                            </p>
+
+                            <p>
+                                Founded in 2024, EcoMarket bridges this gap by
+                                providing a direct connection between farmers
+                                and buyers, supported by our quality control
+                                system and reliable delivery network. We believe
+                                in transparency, sustainability, and fair trade
+                                for everyone involved.
+                            </p>
+
+                            <div class="founder-quote">
+                                <blockquote>
+                                    "Every farmer deserves a fair price for
+                                    their hard work, and every customer deserves
+                                    fresh, quality produce. EcoMarket makes both
+                                    possible."
+                                </blockquote>
+                                <cite>- EcoMarket Founding Team</cite>
+                            </div>
+                        </div>
+                        <div class="story-image">
+                            <div class="image-placeholder">
+                                <div class="farmer-buyer-connection">
+                                    <div class="farmer-side">
+                                        <span class="icon">👨‍🌾</span>
+                                        <p>Farmers</p>
+                                    </div>
+                                    <div class="connection-line">
+                                        <span class="heart">💚</span>
+                                    </div>
+                                    <div class="buyer-side">
+                                        <span class="icon">🛒</span>
+                                        <p>Buyers</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Values Section -->
+            <section class="our-values">
+                <div class="container">
+                    <h2 class="section-title">Our Core Values</h2>
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-icon">🤝</div>
+                            <h3>Fair Trade</h3>
+                            <p>
+                                We ensure farmers receive fair compensation for
+                                their produce while offering competitive prices
+                                to buyers.
+                            </p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">🌱</div>
+                            <h3>Sustainability</h3>
+                            <p>
+                                Supporting sustainable farming practices and
+                                reducing food miles by connecting local farmers
+                                with nearby buyers.
+                            </p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">🔍</div>
+                            <h3>Transparency</h3>
+                            <p>
+                                Complete visibility into the supply chain - from
+                                farm to table, buyers know exactly where their
+                                food comes from.
+                            </p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">✅</div>
+                            <h3>Quality Assurance</h3>
+                            <p>
+                                Every product is inspected by our quality
+                                control team before delivery to ensure freshness
+                                and standards.
+                            </p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">🚚</div>
+                            <h3>Reliability</h3>
+                            <p>
+                                Dependable delivery service that ensures fresh
+                                produce reaches customers on time, every time.
+                            </p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">🌟</div>
+                            <h3>Innovation</h3>
+                            <p>
+                                Continuously improving our platform with new
+                                features to better serve farmers and buyers
+                                alike.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works -->
+            <section class="how-it-works">
+                <div class="container">
+                    <h2 class="section-title">How EcoMarket Works</h2>
+                    <div class="process-flow">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-icon">👨‍🌾</div>
+                            <h3>Farmers Register & List</h3>
+                            <p>
+                                Local farmers join our platform and list their
+                                fresh produce with descriptions, prices, and
+                                availability.
+                            </p>
+                        </div>
+
+                        <div class="process-arrow">→</div>
+
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-icon">🛒</div>
+                            <h3>Buyers Browse & Order</h3>
+                            <p>
+                                Customers explore products, compare options, and
+                                place orders directly from farmers.
+                            </p>
+                        </div>
+
+                        <div class="process-arrow">→</div>
+
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-icon">🔍</div>
+                            <h3>Quality Inspection</h3>
+                            <p>
+                                Our quality controllers verify freshness,
+                                quantity, and quality before approving for
+                                delivery.
+                            </p>
+                        </div>
+
+                        <div class="process-arrow">→</div>
+
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-icon">🚚</div>
+                            <h3>Safe Delivery</h3>
+                            <p>
+                                Our delivery team ensures products reach
+                                customers fresh and within the promised
+                                timeframe.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impact Section -->
+            <section class="our-impact">
+                <div class="container">
+                    <h2 class="section-title">Our Impact</h2>
+                    <div class="impact-stats">
+                        <div class="impact-card">
+                            <div class="impact-number">1,250+</div>
+                            <div class="impact-label">Farmers Supported</div>
+                            <p>
+                                Helping local farmers reach more customers and
+                                earn fair prices
+                            </p>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-number">5,680+</div>
+                            <div class="impact-label">Happy Customers</div>
+                            <p>
+                                Providing fresh, quality produce directly from
+                                the source
+                            </p>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-number">15,000+</div>
+                            <div class="impact-label">Orders Delivered</div>
+                            <p>
+                                Successfully connecting farmers with buyers
+                                across the region
+                            </p>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-number">1.5B CFA+</div>
+                            <div class="impact-label">Revenue to Farmers</div>
+                            <p>
+                                Direct payments ensuring farmers get the value
+                                they deserve
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="sustainability-impact">
+                        <h3>Environmental Impact</h3>
+                        <div class="sustainability-stats">
+                            <div class="sustainability-item">
+                                <span class="icon">🌍</span>
+                                <div class="stat-info">
+                                    <strong>47% Reduction</strong>
+                                    <p>
+                                        in average food miles compared to
+                                        traditional supply chains
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sustainability-item">
+                                <span class="icon">♻️</span>
+                                <div class="stat-info">
+                                    <strong>85% Less Waste</strong>
+                                    <p>
+                                        through direct sales and better demand
+                                        forecasting
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="sustainability-item">
+                                <span class="icon">📦</span>
+                                <div class="stat-info">
+                                    <strong>100% Recyclable</strong>
+                                    <p>packaging used in all our deliveries</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Join Us Section -->
+            <section class="join-us">
+                <div class="container">
+                    <div class="join-content">
+                        <h2>Join the EcoMarket Community</h2>
+                        <p>
+                            Whether you're a farmer looking to reach more
+                            customers or a buyer seeking fresh, local produce,
+                            EcoMarket is here to serve you.
+                        </p>
+                        <div class="join-buttons">
+                            <a
+                                href="farmer-dashboard.html"
+                                class="btn btn-primary"
+                                >Join as a Farmer</a
+                            >
+                            <a
+                                href="buyer-dashboard.html"
+                                class="btn btn-outline"
+                                >Join as a Buyer</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>🌱 EcoMarket</h3>
+                        <p>
+                            Connecting farmers and buyers for a sustainable
+                            future.
+                        </p>
+                        <div class="social-links">
+                            <a href="#">📘</a>
+                            <a href="#">🐦</a>
+                            <a href="#">📷</a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="marketplace.html">Marketplace</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>For Users</h4>
+                        <ul>
+                            <li>
+                                <a href="farmer-dashboard.html"
+                                    >Farmer Dashboard</a
+                                >
+                            </li>
+                            <li>
+                                <a href="buyer-dashboard.html"
+                                    >Buyer Dashboard</a
+                                >
+                            </li>
+                            <li><a href="delivery.html">Track Orders</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 EcoMarket. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+        <style>
+            .about-hero {
+                background: linear-gradient(135deg, #2d8f3f 0%, #4db56a 100%);
+                color: white;
+                padding: 120px 0 80px;
+                margin-top: 70px;
+                text-align: center;
+            }
+
+            .about-hero h1 {
+                font-size: 3rem;
+                margin-bottom: 20px;
+                font-weight: 700;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+                margin-bottom: 40px;
+                opacity: 0.9;
+            }
+
+            .mission-statement {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border-radius: 15px;
+                padding: 30px;
+                margin-top: 50px;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .mission-statement h2 {
+                margin-bottom: 15px;
+                font-size: 1.5rem;
+            }
+
+            .our-story {
+                padding: 80px 0;
+                background: white;
+            }
+
+            .story-content {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 60px;
+                align-items: center;
+            }
+
+            .story-text h2 {
+                color: #2d8f3f;
+                margin-bottom: 30px;
+                font-size: 2.5rem;
+            }
+
+            .story-text p {
+                margin-bottom: 20px;
+                line-height: 1.7;
+                color: #555;
+                font-size: 1.1rem;
+            }
+
+            .founder-quote {
+                background: #f8f9fa;
+                padding: 30px;
+                border-radius: 10px;
+                margin-top: 40px;
+                border-left: 4px solid #2d8f3f;
+            }
+
+            .founder-quote blockquote {
+                font-style: italic;
+                font-size: 1.2rem;
+                color: #333;
+                margin-bottom: 15px;
+            }
+
+            .founder-quote cite {
+                color: #2d8f3f;
+                font-weight: 600;
+            }
+
+            .farmer-buyer-connection {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                padding: 40px;
+                background: linear-gradient(45deg, #f0f8f0, #e8f5e8);
+                border-radius: 15px;
+            }
+
+            .farmer-side,
+            .buyer-side {
+                text-align: center;
+            }
+
+            .farmer-side .icon,
+            .buyer-side .icon {
+                font-size: 4rem;
+                margin-bottom: 10px;
+                display: block;
+            }
+
+            .connection-line {
+                font-size: 2rem;
+                animation: pulse 2s infinite;
+            }
+
+            .our-values {
+                padding: 80px 0;
+                background: #f9f9f9;
+            }
+
+            .values-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 30px;
+                margin-top: 50px;
+            }
+
+            .value-card {
+                background: white;
+                padding: 40px 30px;
+                border-radius: 15px;
+                text-align: center;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+            }
+
+            .value-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .value-icon {
+                font-size: 3rem;
+                margin-bottom: 20px;
+            }
+
+            .value-card h3 {
+                color: #2d8f3f;
+                margin-bottom: 15px;
+                font-size: 1.3rem;
+            }
+
+            .how-it-works {
+                padding: 80px 0;
+                background: white;
+            }
+
+            .process-flow {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 50px;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .process-step {
+                text-align: center;
+                flex: 1;
+                min-width: 200px;
+                position: relative;
+            }
+
+            .step-number {
+                background: #2d8f3f;
+                color: white;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 1.2rem;
+                margin: 0 auto 15px auto;
+            }
+
+            .step-icon {
+                font-size: 3rem;
+                margin-bottom: 15px;
+            }
+
+            .process-arrow {
+                font-size: 2rem;
+                color: #2d8f3f;
+                margin: 0 10px;
+            }
+
+            .our-impact {
+                padding: 80px 0;
+                background: linear-gradient(135deg, #2d8f3f 0%, #4db56a 100%);
+                color: white;
+            }
+
+            .impact-stats {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 40px;
+                margin-top: 50px;
+            }
+
+            .impact-card {
+                text-align: center;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border-radius: 15px;
+                padding: 30px;
+            }
+
+            .impact-number {
+                font-size: 3rem;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .impact-label {
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+
+            .sustainability-impact {
+                margin-top: 80px;
+            }
+
+            .sustainability-impact h3 {
+                text-align: center;
+                margin-bottom: 40px;
+                font-size: 2rem;
+            }
+
+            .sustainability-stats {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+
+            .sustainability-item {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border-radius: 12px;
+                padding: 25px;
+            }
+
+            .sustainability-item .icon {
+                font-size: 3rem;
+            }
+
+            .our-team {
+                padding: 80px 0;
+                background: white;
+            }
+
+            .team-description {
+                text-align: center;
+                max-width: 600px;
+                margin: 0 auto 50px auto;
+                font-size: 1.1rem;
+                color: #666;
+            }
+
+            .team-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 40px;
+            }
+
+            .team-member {
+                background: #f9f9f9;
+                border-radius: 15px;
+                padding: 30px;
+                text-align: center;
+                transition: transform 0.3s ease;
+            }
+
+            .team-member:hover {
+                transform: translateY(-5px);
+            }
+
+            .member-avatar {
+                font-size: 4rem;
+                margin-bottom: 20px;
+            }
+
+            .team-member h3 {
+                color: #333;
+                margin-bottom: 10px;
+            }
+
+            .member-role {
+                color: #2d8f3f;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+
+            .member-bio {
+                color: #666;
+                line-height: 1.6;
+            }
+
+            .join-us {
+                padding: 80px 0;
+                background: linear-gradient(135deg, #1f6b2e 0%, #2d8f3f 100%);
+                color: white;
+                text-align: center;
+            }
+
+            .join-content h2 {
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+            }
+
+            .join-content p {
+                font-size: 1.2rem;
+                margin-bottom: 40px;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .join-buttons {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            @media (max-width: 768px) {
+                .story-content {
+                    grid-template-columns: 1fr;
+                    gap: 40px;
+                }
+
+                .process-flow {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .process-arrow {
+                    transform: rotate(90deg);
+                    margin: 20px 0;
+                }
+
+                .about-hero h1 {
+                    font-size: 2.5rem;
+                }
+
+                .farmer-buyer-connection {
+                    flex-direction: column;
+                    gap: 20px;
+                }
+
+                .connection-line {
+                    transform: rotate(90deg);
+                }
+            }
+        </style>
+    </body>
+</html>

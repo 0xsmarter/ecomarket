@@ -1,0 +1,1193 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Buyer Dashboard - EcoMarket</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <style>
+            .logo a {
+                text-decoration: none;
+            }
+
+            /* Footer Improvements */
+            .footer {
+                background: #2c5530;
+                color: #fff;
+                padding: 40px 0 20px;
+                margin-top: 60px;
+            }
+
+            .footer-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .footer-section h3, .footer-section h4, .footer-section h5 {
+                color: #4CAF50;
+                margin-bottom: 15px;
+                font-size: 1.2rem;
+            }
+
+            .footer-section p, .footer-section address p {
+                margin-bottom: 10px;
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .footer-section ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .footer-section ul li {
+                margin-bottom: 8px;
+            }
+
+            .footer-section a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            .footer-section a:hover {
+                color: #4CAF50;
+            }
+
+            .social-links {
+                display: flex;
+                gap: 15px;
+                margin-top: 15px;
+            }
+
+            .social-links a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background: rgba(255,255,255,0.1);
+                border-radius: 50%;
+                font-size: 1.1rem;
+                transition: background 0.3s ease;
+            }
+
+            .social-links a:hover {
+                background: #4CAF50;
+            }
+
+            .newsletter-form {
+                display: flex;
+                margin-top: 15px;
+            }
+
+            .newsletter-form input {
+                flex: 1;
+                padding: 10px;
+                border: none;
+                border-radius: 4px 0 0 4px;
+                font-size: 0.9rem;
+            }
+
+            .newsletter-form button {
+                padding: 10px 15px;
+                background: #4CAF50;
+                color: #fff;
+                border: none;
+                border-radius: 0 4px 4px 0;
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
+
+            .newsletter-form button:hover {
+                background: #45a049;
+            }
+
+            .footer-bottom {
+                border-top: 1px solid rgba(255,255,255,0.1);
+                padding-top: 20px;
+                text-align: center;
+                margin-top: 30px;
+            }
+
+            .footer-bottom p {
+                margin: 0;
+                font-size: 0.85rem;
+            }
+
+            .footer-bottom a {
+                color: #4CAF50;
+            }
+
+            @media (max-width: 768px) {
+                .footer-container {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                    padding: 0 15px;
+                }
+
+                .newsletter-form {
+                    flex-direction: column;
+                }
+
+                .newsletter-form input {
+                    border-radius: 4px;
+                    margin-bottom: 10px;
+                }
+
+                .newsletter-form button {
+                    border-radius: 4px;
+                }
+
+                .social-links {
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+        <style>
+            .logo a {
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-container">
+                    <div class="logo">
+                        <a href="index.html"><h1>🌱 EcoMarket</h1></a>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li>
+                            <a href="marketplace.html" class="nav-link"
+                                >Marketplace</a
+                            >
+                        </li>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li>
+                            <a href="contact.html" class="nav-link">Contact</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-btn active"
+                                >Dashboard ▼</a
+                            >
+                            <div class="dropdown-content">
+                                <a href="farmer-dashboard.html"
+                                    >Farmer Dashboard</a
+                                >
+                                <a href="buyer-dashboard.html"
+                                    >Buyer Dashboard</a
+                                >
+                                <a href="quality-control.html"
+                                    >Quality Control</a
+                                >
+                                <a href="delivery.html">Delivery Tracking</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="cart-icon">
+                        <a href="shopping-cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartBadge">0</span>
+                        </a>
+                    </div>
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="dashboard">
+            <div class="container">
+                <!-- Dashboard Header -->
+                <div class="dashboard-header">
+                    <div class="welcome-section">
+                        <h1>🛒 Buyer Dashboard</h1>
+                        <p class="dynamic-greeting">Welcome to</p>
+                        <p>
+                            Track your orders, discover fresh produce, and
+                            support local farmers
+                        </p>
+                    </div>
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">📦</div>
+                            <div class="stat-info">
+                                <h3 id="totalOrders">0</h3>
+                                <p>Total Orders</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-info">
+                                <h3 id="totalSpent">0 CFA</h3>
+                                <p>Total Spent</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🚚</div>
+                            <div class="stat-info">
+                                <h3 id="pendingDeliveries">0</h3>
+                                <p>Pending Deliveries</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">❤️</div>
+                            <div class="stat-info">
+                                <h3 id="favoriteFarmers">3</h3>
+                                <p>Favorite Farmers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Navigation -->
+                <div class="dashboard-nav">
+                    <button
+                        class="dashboard-tab active"
+                        onclick="showBuyerTab('orders')"
+                    >
+                        My Orders
+                    </button>
+                    <button
+                        class="dashboard-tab"
+                        onclick="showBuyerTab('wishlist')"
+                    >
+                        Wishlist
+                    </button>
+                    <button
+                        class="dashboard-tab"
+                        onclick="showBuyerTab('favorites')"
+                    >
+                        Favorite Farmers
+                    </button>
+
+                    <button
+                        class="dashboard-tab"
+                        onclick="showBuyerTab('profile')"
+                    >
+                        Profile
+                    </button>
+                </div>
+
+                <!-- Orders Tab -->
+                <div id="orders-tab" class="dashboard-content">
+                    <div class="content-header">
+                        <h2>My Orders</h2>
+                        <div class="order-filters">
+                            <select
+                                id="orderStatusFilter"
+                                onchange="filterBuyerOrders()"
+                            >
+                                <option value="all">All Orders</option>
+                                <option value="pending">Pending</option>
+                                <option value="confirmed">Confirmed</option>
+                                <option value="quality-check">
+                                    Quality Check
+                                </option>
+                                <option value="shipped">Shipped</option>
+                                <option value="delivered">Delivered</option>
+                            </select>
+                            <input
+                                type="date"
+                                id="orderDateFilter"
+                                onchange="filterBuyerOrders()"
+                            />
+                        </div>
+                    </div>
+                    <div id="buyerOrdersList" class="orders-list">
+                        <!-- Orders will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Wishlist Tab -->
+                <div id="wishlist-tab" class="dashboard-content hidden">
+                    <div class="content-header">
+                        <h2>My Wishlist</h2>
+                        <div class="wishlist-actions">
+                            <button
+                                class="btn btn-primary"
+                                onclick="addAllToCart()"
+                            >
+                                Add All to Cart
+                            </button>
+                            <button
+                                class="btn btn-secondary"
+                                onclick="clearWishlist()"
+                            >
+                                Clear Wishlist
+                            </button>
+                        </div>
+                    </div>
+                    <div id="wishlistItems" class="wishlist-grid">
+                        <!-- Wishlist items will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Favorite Farmers Tab -->
+                <div id="favorites-tab" class="dashboard-content hidden">
+                    <div class="content-header">
+                        <h2>Favorite Farmers</h2>
+                        <p>Support your trusted local farmers</p>
+                    </div>
+                    <div class="favorite-farmers">
+                        <div class="farmer-card">
+                            <div class="farmer-avatar">👨‍🌾</div>
+                            <div class="farmer-info">
+                                <h3>Green Valley Farm</h3>
+                                <p>John Smith</p>
+                                <p class="farmer-specialty">
+                                    Organic Vegetables & Fruits
+                                </p>
+                                <div class="farmer-rating">
+                                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                                    <span class="rating-text"
+                                        >4.9 (127 reviews)</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="farmer-actions">
+                                <button
+                                    class="btn btn-primary"
+                                    onclick="viewFarmerProducts('Green Valley Farm')"
+                                >
+                                    View Products
+                                </button>
+                                <button
+                                    class="btn btn-outline"
+                                    onclick="removeFavoriteFarmer('Green Valley Farm')"
+                                >
+                                    ❤️ Remove
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="farmer-card">
+                            <div class="farmer-avatar">👩‍🌾</div>
+                            <div class="farmer-info">
+                                <h3>Sunrise Organic Farm</h3>
+                                <p>Maria Garcia</p>
+                                <p class="farmer-specialty">
+                                    Premium Organic Produce
+                                </p>
+                                <div class="farmer-rating">
+                                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                                    <span class="rating-text"
+                                        >4.8 (89 reviews)</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="farmer-actions">
+                                <button
+                                    class="btn btn-primary"
+                                    onclick="viewFarmerProducts('Sunrise Organic Farm')"
+                                >
+                                    View Products
+                                </button>
+                                <button
+                                    class="btn btn-outline"
+                                    onclick="removeFavoriteFarmer('Sunrise Organic Farm')"
+                                >
+                                    ❤️ Remove
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="farmer-card">
+                            <div class="farmer-avatar">👨‍🌾</div>
+                            <div class="farmer-info">
+                                <h3>Mountain Fresh Farms</h3>
+                                <p>Robert Johnson</p>
+                                <p class="farmer-specialty">
+                                    Seasonal Fruits & Berries
+                                </p>
+                                <div class="farmer-rating">
+                                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                                    <span class="rating-text"
+                                        >4.7 (156 reviews)</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="farmer-actions">
+                                <button
+                                    class="btn btn-primary"
+                                    onclick="viewFarmerProducts('Mountain Fresh Farms')"
+                                >
+                                    View Products
+                                </button>
+                                <button
+                                    class="btn btn-outline"
+                                    onclick="removeFavoriteFarmer('Mountain Fresh Farms')"
+                                >
+                                    ❤️ Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Tab -->
+                <div id="profile-tab" class="dashboard-content hidden">
+                    <div class="content-header">
+                        <h2>My Profile</h2>
+                    </div>
+                    <form id="buyerProfileForm" class="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="buyerFirstName">First Name</label>
+                                <input
+                                    type="text"
+                                    id="buyerFirstName"
+                                    value="Sarah"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="buyerLastName">Last Name</label>
+                                <input
+                                    type="text"
+                                    id="buyerLastName"
+                                    value="Johnson"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="buyerEmail">Email Address</label>
+                                <input
+                                    type="email"
+                                    id="buyerEmail"
+                                    value="sarah.johnson@email.com"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="buyerPhone">Phone Number</label>
+                                <input
+                                    type="tel"
+                                    id="buyerPhone"
+                                    value="+1 (555) 987-6543"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deliveryAddress"
+                                >Delivery Address</label
+                            >
+                            <textarea
+                                id="deliveryAddress"
+                                placeholder="Enter your delivery address..."
+                            >
+456 Oak Street, Springfield, State 67890</textarea
+                            >
+                        </div>
+
+                        <div class="preferences-section">
+                            <h3>Preferences</h3>
+                            <div class="preference-group">
+                                <label>Dietary Preferences:</label>
+                                <div class="checkbox-group">
+                                    <label
+                                        ><input type="checkbox" checked />
+                                        Organic Only</label
+                                    >
+                                    <label
+                                        ><input type="checkbox" />
+                                        Vegetarian</label
+                                    >
+                                    <label
+                                        ><input type="checkbox" /> Vegan</label
+                                    >
+                                    <label
+                                        ><input type="checkbox" />
+                                        Gluten-Free</label
+                                    >
+                                    <label
+                                        ><input type="checkbox" /> Local Only
+                                        (within 50 miles)</label
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="preference-group">
+                                <label for="deliveryTime"
+                                    >Preferred Delivery Time:</label
+                                >
+                                <select id="deliveryTime">
+                                    <option value="morning">
+                                        Morning (8AM - 12PM)
+                                    </option>
+                                    <option value="afternoon" selected>
+                                        Afternoon (12PM - 6PM)
+                                    </option>
+                                    <option value="evening">
+                                        Evening (6PM - 8PM)
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="preference-group">
+                                <label>
+                                    <input type="checkbox" checked /> Email
+                                    notifications for new products
+                                </label>
+                                <label>
+                                    <input type="checkbox" checked /> SMS
+                                    updates for order status
+                                </label>
+                                <label>
+                                    <input type="checkbox" /> Weekly deals and
+                                    promotions
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                Update Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>🌱 EcoMarket</h3>
+                        <p>
+                            Connecting farmers and buyers for a sustainable
+                            future.
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="marketplace.html">Marketplace</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 EcoMarket. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Shopping Cart Modal -->
+        <div id="cartModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">🛒 Shopping Cart</h2>
+                    <span class="close" onclick="closeModal('cartModal')"
+                        >&times;</span
+                    >
+                </div>
+                <div id="cartItems" class="cart-items">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-total">
+                        <strong
+                            >Total: <span id="cartTotal">0 CFA</span></strong
+                        >
+                    </div>
+                    <div class="cart-actions">
+                        <button class="btn btn-secondary" onclick="clearCart()">
+                            Clear Cart
+                        </button>
+                        <button class="btn btn-primary" onclick="checkout()">
+                            Proceed to Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Details Modal -->
+        <div id="orderDetailsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Order Details</h2>
+                    <span
+                        class="close"
+                        onclick="closeModal('orderDetailsModal')"
+                        >&times;</span
+                    >
+                </div>
+                <div id="orderDetailsContent" class="order-details-content">
+                    <!-- Order details will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Modal -->
+        <div id="reviewModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Leave a Review</h2>
+                    <span class="close" onclick="closeModal('reviewModal')"
+                        >&times;</span
+                    >
+                </div>
+                <form id="reviewForm" onsubmit="submitReview(event)">
+                    <input type="hidden" id="reviewOrderId" />
+
+                    <div class="form-group">
+                        <label>Rating:</label>
+                        <div class="star-rating">
+                            <span class="star" data-rating="1">⭐</span>
+                            <span class="star" data-rating="2">⭐</span>
+                            <span class="star" data-rating="3">⭐</span>
+                            <span class="star" data-rating="4">⭐</span>
+                            <span class="star" data-rating="5">⭐</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reviewComment">Your Review:</label>
+                        <textarea
+                            id="reviewComment"
+                            required
+                            placeholder="Share your experience with this order..."
+                        ></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            onclick="closeModal('reviewModal')"
+                        >
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Submit Review
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="js/main.js"></script>
+        <script src="js/buyer.js"></script>
+
+        <style>
+            /* Enhanced Buyer Dashboard Styles */
+            .dashboard {
+                padding: 120px 0 80px;
+                background: linear-gradient(135deg, #f8fffe 0%, #f0fdf4 100%);
+                min-height: 100vh;
+            }
+
+            .dashboard-header {
+                text-align: center;
+                margin-bottom: 60px;
+                animation: fadeInUp 0.8s ease-out;
+            }
+
+            .dashboard-header h1 {
+                font-size: 3rem;
+                font-weight: 800;
+                color: #2d8f3f;
+                margin-bottom: 15px;
+            }
+
+            .dashboard-header p {
+                font-size: 1.2rem;
+                color: #666;
+                margin-bottom: 40px;
+            }
+
+            .dashboard-stats {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+                margin-bottom: 60px;
+            }
+
+            .stat-card {
+                background: white;
+                padding: 30px;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                transition: all 0.3s ease;
+                border: 2px solid transparent;
+                animation: fadeInScale 0.6s ease-out;
+            }
+
+            .stat-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+                border-color: #2d8f3f;
+            }
+
+            .stat-icon {
+                font-size: 3rem;
+                margin-bottom: 20px;
+                background: linear-gradient(135deg, #2d8f3f, #8bc34a);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                animation: bounce 2s infinite;
+            }
+
+            .stat-info h3 {
+                font-size: 2.5rem;
+                font-weight: 800;
+                color: #2d8f3f;
+                margin: 0 0 10px 0;
+                line-height: 1;
+            }
+
+            .stat-info p {
+                color: #666;
+                font-size: 1rem;
+                font-weight: 500;
+                margin: 0;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .dashboard-navigation {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 50px;
+                background: white;
+                border-radius: 50px;
+                padding: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .dashboard-tab {
+                background: transparent;
+                border: none;
+                padding: 15px 30px;
+                border-radius: 50px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                color: #666;
+                font-size: 1rem;
+                white-space: nowrap;
+            }
+
+            .dashboard-tab.active {
+                background: linear-gradient(135deg, #2d8f3f, #8bc34a);
+                color: white;
+                box-shadow: 0 5px 15px rgba(45, 143, 63, 0.3);
+                transform: scale(1.05);
+            }
+
+            .dashboard-tab:hover:not(.active) {
+                background: #f0fdf4;
+                color: #2d8f3f;
+                transform: translateY(-2px);
+            }
+
+            .dashboard-content {
+                background: white;
+                border-radius: 25px;
+                padding: 40px;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+                margin-bottom: 40px;
+                animation: slideInUp 0.6s ease-out;
+            }
+
+            .content-header {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .content-header h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #2d8f3f;
+                margin-bottom: 15px;
+            }
+
+            .content-header p {
+                font-size: 1.1rem;
+                color: #666;
+                max-width: 600px;
+                margin: 0 auto;
+                line-height: 1.6;
+            }
+
+            .order-filters {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                margin-bottom: 30px;
+                flex-wrap: wrap;
+            }
+
+            .order-filters select,
+            .order-filters input {
+                padding: 12px 20px;
+                border: 2px solid #e0e0e0;
+                border-radius: 50px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                background: white;
+                min-width: 200px;
+            }
+
+            .order-filters select:focus,
+            .order-filters input:focus {
+                border-color: #2d8f3f;
+                box-shadow: 0 0 0 3px rgba(45, 143, 63, 0.1);
+                outline: none;
+            }
+
+            .farmers-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 30px;
+            }
+
+            .farmer-card {
+                background: white;
+                border-radius: 20px;
+                padding: 30px;
+                text-align: center;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                border: 2px solid transparent;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .farmer-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(45, 143, 63, 0.1),
+                    transparent
+                );
+                transition: left 0.6s;
+            }
+
+            .farmer-card:hover::before {
+                left: 100%;
+            }
+
+            .farmer-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+                border-color: #2d8f3f;
+            }
+
+            .farmer-avatar {
+                width: 80px;
+                height: 80px;
+                background: linear-gradient(135deg, #2d8f3f, #8bc34a);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+                margin: 0 auto 20px;
+                animation: pulse 2s infinite;
+            }
+
+            .farmer-info h3 {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #333;
+                margin-bottom: 10px;
+            }
+
+            .farmer-info p {
+                color: #666;
+                margin-bottom: 8px;
+            }
+
+            .farmer-specialty {
+                color: #2d8f3f !important;
+                font-weight: 600 !important;
+            }
+
+            .farmer-rating {
+                margin: 20px 0;
+                padding: 15px;
+                background: #f8f9fa;
+                border-radius: 15px;
+            }
+
+            .stars {
+                font-size: 1.5rem;
+                margin-bottom: 5px;
+                display: block;
+            }
+
+            .rating-text {
+                color: #666;
+                font-size: 0.9rem;
+                font-weight: 500;
+            }
+
+            .farmer-actions {
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+                margin-top: 25px;
+            }
+
+            .btn-small {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                border-radius: 50px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                border: none;
+                cursor: pointer;
+            }
+
+            .btn-primary {
+                background: linear-gradient(135deg, #2d8f3f, #8bc34a);
+                color: white;
+                box-shadow: 0 5px 15px rgba(45, 143, 63, 0.3);
+            }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(45, 143, 63, 0.4);
+            }
+
+            .btn-secondary {
+                background: white;
+                color: #2d8f3f;
+                border: 2px solid #2d8f3f;
+            }
+
+            .btn-secondary:hover {
+                background: #2d8f3f;
+                color: white;
+                transform: translateY(-2px);
+            }
+
+            .hidden {
+                display: none !important;
+            }
+
+            /* Profile Form Styling */
+            .profile-form {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .form-group {
+                margin-bottom: 25px;
+            }
+
+            .form-group label {
+                display: block;
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 10px;
+                font-size: 1rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                width: 100%;
+                padding: 15px 20px;
+                border: 2px solid #e0e0e0;
+                border-radius: 15px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                background: white;
+                font-family: inherit;
+            }
+
+            .form-group input:focus,
+            .form-group textarea:focus,
+            .form-group select:focus {
+                border-color: #2d8f3f;
+                box-shadow: 0 0 0 3px rgba(45, 143, 63, 0.1);
+                outline: none;
+            }
+
+            .form-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            /* Animations */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes fadeInScale {
+                from {
+                    opacity: 0;
+                    transform: scale(0.9);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            @keyframes slideInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes bounce {
+                0%,
+                20%,
+                50%,
+                80%,
+                100% {
+                    transform: translateY(0);
+                }
+                40% {
+                    transform: translateY(-10px);
+                }
+                60% {
+                    transform: translateY(-5px);
+                }
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1.05);
+                    opacity: 0.9;
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .dashboard-header h1 {
+                    font-size: 2.2rem;
+                }
+
+                .dashboard-stats {
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 20px;
+                }
+
+                .dashboard-navigation {
+                    flex-direction: column;
+                    border-radius: 15px;
+                    padding: 15px;
+                }
+
+                .dashboard-tab {
+                    padding: 12px 20px;
+                    border-radius: 10px;
+                    width: 100%;
+                }
+
+                .dashboard-content {
+                    padding: 25px;
+                    border-radius: 15px;
+                }
+
+                .content-header h2 {
+                    font-size: 2rem;
+                }
+
+                .farmers-grid {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                }
+
+                .farmer-actions {
+                    flex-direction: column;
+                }
+
+                .form-row {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .dashboard {
+                    padding: 100px 0 60px;
+                }
+
+                .dashboard-header h1 {
+                    font-size: 1.8rem;
+                }
+
+                .stat-card {
+                    padding: 20px;
+                }
+
+                .stat-info h3 {
+                    font-size: 2rem;
+                }
+
+                .order-filters {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .order-filters select,
+                .order-filters input {
+                    width: 100%;
+                    max-width: 300px;
+                }
+            }
+        </style>
+    </body>
+</html>

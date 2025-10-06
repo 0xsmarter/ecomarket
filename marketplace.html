@@ -1,0 +1,1065 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Marketplace - EcoMarket</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+    </head>
+    <body>
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-container">
+                    <div class="logo">
+                        <a href="index.html"><h1>🌱 EcoMarket</h1></a>
+                    </div>
+                    <ul class="nav-menu">
+                        <li>
+                            <a href="marketplace.html" class="nav-link active"
+                                >Marketplace</a
+                            >
+                        </li>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-btn"
+                                >Dashboard ▼</a
+                            >
+                            <div class="dropdown-content">
+                                <a href="farmer-dashboard.html"
+                                    >Farmer Dashboard</a
+                                >
+                                <a href="buyer-dashboard.html"
+                                    >Buyer Dashboard</a
+                                >
+                                <a href="quality-control.html"
+                                    >Quality Control</a
+                                >
+                                <a href="delivery.html">Delivery Tracking</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="cart-icon">
+                        <a href="shopping-cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartBadge">0</span>
+                        </a>
+                    </div>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section class="marketplace-hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Fresh Produce Marketplace</h1>
+                        <p>
+                            Discover the freshest fruits, vegetables, and more
+                            directly from local farmers.
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Products Available</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">150+</div>
+                                <div class="stat-label">Local Farmers</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">98%</div>
+                                <div class="stat-label">Quality Score</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search and Filters -->
+            <section class="search-filters">
+                <div class="container">
+                    <div class="filter-row">
+                        <div class="search-box">
+                            <input
+                                type="text"
+                                id="productSearch"
+                                placeholder="Search for products, farmers..."
+                                oninput="filterProducts()"
+                            />
+                        </div>
+                        <div class="filter-group">
+                            <select
+                                id="categoryFilter"
+                                onchange="filterProducts()"
+                            >
+                                <option value="all">All Categories</option>
+                                <option value="vegetables">Vegetables</option>
+                                <option value="fruits">Fruits</option>
+                                <option value="grains">Grains</option>
+                                <option value="dairy">Dairy</option>
+                                <option value="herbs">Herbs</option>
+                            </select>
+                            <select
+                                id="priceFilter"
+                                onchange="filterProducts()"
+                            >
+                                <option value="all">All Prices</option>
+                                <option value="low">Under 1,000 CFA</option>
+                                <option value="medium">
+                                    1,000 - 2,000 CFA
+                                </option>
+                                <option value="high">Over 2,000 CFA</option>
+                            </select>
+                            <button
+                                class="btn btn-secondary"
+                                onclick="clearCart()"
+                            >
+                                Clear Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Grid -->
+            <section class="products-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Available Products</h2>
+                    </div>
+                    <div id="productsGrid" class="products-grid">
+                        <!-- Products will be loaded here by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Package Creation Section -->
+            <section class="package-section">
+                <div class="container">
+                    <div class="package-content">
+                        <div class="package-info">
+                            <h2>Create Custom Packages</h2>
+                            <p>
+                                Save money by creating custom bundles from
+                                different farmers. Mix and match products to get
+                                the best deals.
+                            </p>
+                            <ul class="package-benefits">
+                                <li>✅ Save up to 25% on bulk orders</li>
+                                <li>
+                                    ✅ Combine products from multiple farmers
+                                </li>
+                                <li>
+                                    ✅ Free delivery on packages over 25000 CFA
+                                </li>
+                                <li>✅ Customizable quantities</li>
+                            </ul>
+                        </div>
+                        <div class="package-creator">
+                            <h3>Build Your Package</h3>
+                            <div id="packageBuilder" class="package-builder">
+                                <div class="selected-items">
+                                    <h4>Selected Items</h4>
+                                    <div
+                                        id="selectedItems"
+                                        class="selected-list"
+                                    >
+                                        <p>No items selected yet</p>
+                                    </div>
+                                </div>
+                                <div class="package-summary">
+                                    <div class="summary-row">
+                                        <span>Subtotal:</span>
+                                        <span id="packageSubtotal">0 CFA</span>
+                                    </div>
+                                    <div class="summary-row discount">
+                                        <span>Package Discount:</span>
+                                        <span id="packageDiscount">-0 CFA</span>
+                                    </div>
+                                    <div class="summary-row total">
+                                        <span>Total:</span>
+                                        <span id="packageTotal">0 CFA</span>
+                                    </div>
+                                    <button
+                                        class="btn btn-primary"
+                                        onclick="addPackageToCart()"
+                                    >
+                                        Add Package to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>🌱 EcoMarket</h3>
+                    <p>
+                        Sustainable farming, fresh produce delivered to your
+                        door. Join us in supporting local farmers and
+                        eco-friendly practices.
+                    </p>
+                    <div class="social-links">
+                        <a
+                            href="https://facebook.com"
+                            aria-label="Facebook"
+                            target="_blank"
+                            ><i class="fab fa-facebook-f"></i
+                        ></a>
+                        <a
+                            href="https://instagram.com"
+                            aria-label="Instagram"
+                            target="_blank"
+                            ><i class="fab fa-instagram"></i
+                        ></a>
+                        <a
+                            href="https://twitter.com"
+                            aria-label="Twitter"
+                            target="_blank"
+                            ><i class="fab fa-twitter"></i
+                        ></a>
+                        <a
+                            href="https://linkedin.com"
+                            aria-label="LinkedIn"
+                            target="_blank"
+                            ><i class="fab fa-linkedin-in"></i
+                        ></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="delivery.html">Delivery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact & Support</h4>
+                    <address>
+                        <p>
+                            <i class="fas fa-envelope"></i> info@ecomarket.com
+                        </p>
+                        <p><i class="fas fa-phone"></i> +228 92 74 52 73</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Lomé, Togo</p>
+                    </address>
+                    <div class="newsletter">
+                        <h5>Stay Updated</h5>
+                        <form class="newsletter-form">
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
+                                required
+                            />
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EcoMarket. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <!-- Product Detail Modal -->
+        <div id="productModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('productModal')"
+                    >&times;</span
+                >
+                <h2 id="productModalTitle">Product Details</h2>
+                <div id="productModalContent" class="product-details">
+                    <!-- Product details will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Modal -->
+        <div id="cartModal" class="modal" style="display: none">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('cartModal')"
+                    >&times;</span
+                >
+                <h2>Shopping Cart</h2>
+                <div id="cartItems" class="cart-items">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                <div class="cart-summary">
+                    <div class="cart-total">
+                        Total: <span id="cartTotal">0 CFA</span>
+                    </div>
+                    <div class="cart-actions">
+                        <button
+                            class="btn btn-secondary"
+                            onclick="closeModal('cartModal')"
+                        >
+                            Continue Shopping
+                        </button>
+                        <button class="btn btn-primary" onclick="checkout()">
+                            Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/main.js"></script>
+        <script src="js/marketplace.js"></script>
+
+        <style>
+            /* Enhanced Marketplace Styles */
+            .marketplace-hero {
+                background:
+                    linear-gradient(
+                        135deg,
+                        rgba(45, 143, 63, 0.1) 0%,
+                        rgba(139, 195, 74, 0.1) 100%
+                    ),
+                    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e8f5e8' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                padding: 80px 0;
+                margin-top: 80px;
+            }
+
+            .hero-content {
+                text-align: center;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+                font-weight: 700;
+                color: #2d8f3f;
+                margin-bottom: 20px;
+                animation: fadeInUp 0.8s ease-out;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+                color: #666;
+                margin-bottom: 40px;
+                animation: fadeInUp 0.8s ease-out 0.2s both;
+            }
+
+            .hero-stats {
+                display: flex;
+                justify-content: center;
+                gap: 60px;
+                flex-wrap: wrap;
+                animation: fadeInUp 0.8s ease-out 0.4s both;
+            }
+
+            .hero-stats .stat {
+                text-align: center;
+            }
+
+            .hero-stats .stat-number {
+                font-size: 2.5rem;
+                font-weight: 800;
+                color: #2d8f3f;
+                line-height: 1;
+            }
+
+            .hero-stats .stat-label {
+                font-size: 0.9rem;
+                color: #888;
+                margin-top: 8px;
+            }
+
+            .search-filters {
+                background: white;
+                padding: 30px 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                position: sticky;
+                top: 80px;
+                z-index: 100;
+            }
+
+            .filter-row {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .search-box {
+                flex: 1;
+                min-width: 300px;
+                position: relative;
+            }
+
+            .search-box input {
+                width: 100%;
+                padding: 15px 50px 15px 20px;
+                border: 2px solid #e0e0e0;
+                border-radius: 50px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+            }
+
+            .search-box input:focus {
+                border-color: #2d8f3f;
+                box-shadow: 0 0 0 3px rgba(45, 143, 63, 0.1);
+                outline: none;
+            }
+
+            .search-box::after {
+                content: "🔍";
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 1.2rem;
+            }
+
+            .filter-group {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .filter-group select {
+                padding: 12px 15px;
+                border: 2px solid #e0e0e0;
+                border-radius: 8px;
+                background: white;
+                font-size: 0.9rem;
+                cursor: pointer;
+                transition: border-color 0.3s ease;
+            }
+
+            .filter-group select:focus {
+                border-color: #2d8f3f;
+                outline: none;
+            }
+
+            .filter-group label {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 0.9rem;
+                color: #666;
+                cursor: pointer;
+            }
+
+            .filter-group input[type="checkbox"] {
+                width: 18px;
+                height: 18px;
+                accent-color: #2d8f3f;
+            }
+
+            .products-section {
+                padding: 60px 0;
+            }
+
+            .section-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 40px;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #2d8f3f;
+                margin: 0;
+            }
+
+            .view-toggles {
+                display: flex;
+                gap: 5px;
+                background: #f0f0f0;
+                padding: 5px;
+                border-radius: 8px;
+            }
+
+            .view-btn {
+                padding: 10px 20px;
+                border: none;
+                background: transparent;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: 500;
+                transition: all 0.3s ease;
+            }
+
+            .view-btn.active {
+                background: #2d8f3f;
+                color: white;
+                box-shadow: 0 2px 5px rgba(45, 143, 63, 0.3);
+            }
+
+            .products-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 30px;
+                margin-bottom: 60px;
+            }
+
+            .products-grid.list-view {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .product-card {
+                background: white;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                cursor: pointer;
+                position: relative;
+                animation: fadeInScale 0.6s ease-out;
+            }
+
+            .product-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            }
+
+            .product-card.list-view {
+                display: flex;
+                padding: 20px;
+            }
+
+            .product-image {
+                height: 200px;
+                background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 4rem;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .product-card.list-view .product-image {
+                width: 150px;
+                height: 150px;
+                flex-shrink: 0;
+                border-radius: 10px;
+                margin-right: 20px;
+            }
+
+            .product-badge {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                background: #2d8f3f;
+                color: white;
+                padding: 5px 12px;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                font-weight: 600;
+            }
+
+            .product-info {
+                padding: 25px;
+                flex: 1;
+            }
+
+            .product-card.list-view .product-info {
+                padding: 0;
+            }
+
+            .product-name {
+                font-size: 1.3rem;
+                font-weight: 600;
+                color: #333;
+                margin-bottom: 8px;
+            }
+
+            .farmer-name {
+                color: #2d8f3f;
+                font-weight: 500;
+                margin-bottom: 12px;
+            }
+
+            .product-description {
+                color: #666;
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 15px;
+            }
+
+            .product-meta {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+            .product-price {
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #2d8f3f;
+            }
+
+            .quality-badge {
+                background: #f8f9fa;
+                padding: 8px 12px;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                border: 1px solid #e9ecef;
+            }
+
+            .quality-score {
+                color: #2d8f3f;
+                font-weight: 600;
+            }
+
+            .product-actions {
+                display: flex;
+                gap: 10px;
+            }
+
+            .product-actions .btn {
+                flex: 1;
+                padding: 12px;
+                font-weight: 500;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+            }
+
+            .package-section {
+                background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+                padding: 80px 0;
+            }
+
+            .package-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                align-items: start;
+            }
+
+            .package-info h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #2d8f3f;
+                margin-bottom: 20px;
+            }
+
+            .package-info p {
+                font-size: 1.1rem;
+                color: #666;
+                line-height: 1.7;
+                margin-bottom: 30px;
+            }
+
+            .package-benefits {
+                list-style: none;
+                padding: 0;
+            }
+
+            .package-benefits li {
+                padding: 10px 0;
+                font-size: 1rem;
+                color: #333;
+                position: relative;
+                padding-left: 30px;
+            }
+
+            .package-creator {
+                background: white;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .package-creator h3 {
+                font-size: 1.8rem;
+                font-weight: 600;
+                color: #2d8f3f;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .package-builder {
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .selected-items {
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 12px;
+                min-height: 150px;
+            }
+
+            .selected-items h4 {
+                margin-bottom: 15px;
+                color: #333;
+                font-weight: 600;
+            }
+
+            .selected-list {
+                color: #666;
+            }
+
+            .package-summary {
+                border-top: 2px solid #e9ecef;
+                padding-top: 20px;
+            }
+
+            .summary-row {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                font-size: 1rem;
+            }
+
+            .summary-row.discount {
+                color: #2d8f3f;
+                font-weight: 500;
+            }
+
+            .summary-row.total {
+                font-size: 1.3rem;
+                font-weight: 700;
+                color: #2d8f3f;
+                border-top: 1px solid #e9ecef;
+                padding-top: 15px;
+                margin-top: 15px;
+            }
+
+            .load-more {
+                text-align: center;
+                margin-top: 40px;
+            }
+
+            /* Modal Enhancements */
+            .modal {
+                backdrop-filter: blur(5px);
+                animation: fadeIn 0.3s ease;
+            }
+
+            .modal-content {
+                animation: slideInUp 0.3s ease;
+                max-width: 600px;
+                border-radius: 15px;
+                overflow: hidden;
+            }
+
+            .product-details {
+                padding: 30px;
+            }
+
+            .cart-items {
+                max-height: 400px;
+                overflow-y: auto;
+                margin: 20px 0;
+            }
+
+            .cart-summary {
+                border-top: 2px solid #e9ecef;
+                padding-top: 20px;
+                margin-top: 20px;
+            }
+
+            .cart-total {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #2d8f3f;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .cart-actions {
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+            }
+
+            /* Animations */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes fadeInScale {
+                from {
+                    opacity: 0;
+                    transform: scale(0.9);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes slideInUp {
+                from {
+                    transform: translateY(50px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .hero-content h1 {
+                    font-size: 2.2rem;
+                }
+
+                .hero-stats {
+                    gap: 30px;
+                }
+
+                .filter-row {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+                .search-box {
+                    min-width: 100%;
+                }
+
+                .section-header {
+                    flex-direction: column;
+                    gap: 20px;
+                    text-align: center;
+                }
+
+                .section-header h2 {
+                    font-size: 2rem;
+                }
+
+                .products-grid {
+                    grid-template-columns: repeat(
+                        auto-fill,
+                        minmax(280px, 1fr)
+                    );
+                    gap: 20px;
+                }
+
+                .package-content {
+                    grid-template-columns: 1fr;
+                    gap: 40px;
+                }
+
+                .package-creator {
+                    padding: 25px;
+                }
+
+                .modal-content {
+                    margin: 20px;
+                    max-width: calc(100% - 40px);
+                }
+            }
+
+            @media (max-width: 480px) {
+                .marketplace-hero {
+                    padding: 60px 0;
+                }
+
+                .hero-content h1 {
+                    font-size: 1.8rem;
+                }
+
+                .products-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .filter-group {
+                    width: 100%;
+                    justify-content: space-between;
+                }
+
+                .filter-group select {
+                    flex: 1;
+                    min-width: 0;
+                }
+            }
+
+            .logo a {
+                text-decoration: none;
+            }
+
+            /* Footer Improvements */
+            .footer {
+                background: #2c5530;
+                color: #fff;
+                padding: 40px 0 20px;
+                margin-top: 60px;
+            }
+
+            .footer-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .footer-section h3,
+            .footer-section h4,
+            .footer-section h5 {
+                color: #4caf50;
+                margin-bottom: 15px;
+                font-size: 1.2rem;
+            }
+
+            .footer-section p,
+            .footer-section address p {
+                margin-bottom: 10px;
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .footer-section ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .footer-section ul li {
+                margin-bottom: 8px;
+            }
+
+            .footer-section a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            .footer-section a:hover {
+                color: #4caf50;
+            }
+
+            .social-links {
+                display: flex;
+                gap: 15px;
+                margin-top: 15px;
+            }
+
+            .social-links a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                font-size: 1.1rem;
+                transition: background 0.3s ease;
+            }
+
+            .social-links a:hover {
+                background: #4caf50;
+            }
+
+            .newsletter-form {
+                display: flex;
+                margin-top: 15px;
+            }
+
+            .newsletter-form input {
+                flex: 1;
+                padding: 10px;
+                border: none;
+                border-radius: 4px 0 0 4px;
+                font-size: 0.9rem;
+            }
+
+            .newsletter-form button {
+                padding: 10px 15px;
+                background: #4caf50;
+                color: #fff;
+                border: none;
+                border-radius: 0 4px 4px 0;
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
+
+            .newsletter-form button:hover {
+                background: #45a049;
+            }
+
+            .footer-bottom {
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding-top: 20px;
+                text-align: center;
+                margin-top: 30px;
+            }
+
+            .footer-bottom p {
+                margin: 0;
+                font-size: 0.85rem;
+            }
+
+            .footer-bottom a {
+                color: #4caf50;
+            }
+
+            @media (max-width: 768px) {
+                .footer-container {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                    padding: 0 15px;
+                }
+
+                .newsletter-form {
+                    flex-direction: column;
+                }
+
+                .newsletter-form input {
+                    border-radius: 4px;
+                    margin-bottom: 10px;
+                }
+
+                .newsletter-form button {
+                    border-radius: 4px;
+                }
+
+                .social-links {
+                    justify-content: center;
+                }
+            }
+        </style>
+    </body>
+</html>

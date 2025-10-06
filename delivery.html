@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Delivery Tracking - EcoMarket</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            .logo a {
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Header -->
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-container">
+                    <div class="logo">
+                        <a href="index.html"><h1>🌱 EcoMarket</h1></a>
+                    </div>
+                    <ul class="nav-menu">
+                        <li>
+                            <a href="marketplace.html" class="nav-link"
+                                >Marketplace</a
+                            >
+                        </li>
+
+                        <li>
+                            <a href="about.html" class="nav-link">About</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-btn active"
+                                >Dashboard ▼</a
+                            >
+                            <div class="dropdown-content">
+                                <a href="farmer-dashboard.html"
+                                    >Farmer Dashboard</a
+                                >
+                                <a href="buyer-dashboard.html"
+                                    >Buyer Dashboard</a
+                                >
+                                <a href="quality-control.html"
+                                    >Quality Control</a
+                                >
+                                <a href="delivery.html">Delivery Tracking</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="nav-actions">
+                        <button class="btn btn-outline-sm">
+                            Join as Farmer
+                        </button>
+                        <button class="btn btn-primary-sm">
+                            Shop Fresh Produce
+                        </button>
+                    </div>
+                    <div class="mobile-menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Delivery Hero Section -->
+        <section class="delivery-hero">
+            <div class="container">
+                <div class="delivery-hero-content">
+                    <span class="section-tag">🚚 Real-time Tracking</span>
+                    <h1>Track Your Fresh Produce Delivery</h1>
+                    <p>
+                        Monitor your orders from farm to your doorstep with our
+                        advanced tracking system
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Order Lookup -->
+        <section class="order-lookup-section">
+            <div class="container">
+                <div class="lookup-container">
+                    <h2>🔍 Track Your Order</h2>
+                    <div class="lookup-form">
+                        <input
+                            type="text"
+                            id="orderIdInput"
+                            placeholder="Enter Order ID (e.g., ABC123)"
+                            maxlength="10"
+                        />
+                        <button class="btn btn-primary" onclick="trackOrder()">
+                            Track Order
+                        </button>
+                    </div>
+                    <div id="trackingResult" class="tracking-result hidden">
+                        <!-- Tracking result will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Delivery Stats -->
+        <section class="delivery-stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-info">
+                            <h3 id="activeDeliveries">24</h3>
+                            <p>Active Deliveries</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <h3 id="deliveredToday">156</h3>
+                            <p>Delivered Today</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏰</div>
+                        <div class="stat-info">
+                            <h3 id="avgDeliveryTime">2.3h</h3>
+                            <p>Avg Delivery Time</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-info">
+                            <h3 id="deliveryRating">4.9</h3>
+                            <p>Customer Rating</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Deliveries -->
+        <section class="active-deliveries-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Active Deliveries</h2>
+                    <p>Real-time tracking of ongoing deliveries</p>
+                </div>
+
+                <div class="delivery-map-container">
+                    <div class="delivery-map">
+                        <div class="map-placeholder">
+                            <h3>📍 Live Delivery Map</h3>
+                            <div class="map-locations">
+                                <div
+                                    class="location warehouse"
+                                    style="top: 20%; left: 30%"
+                                >
+                                    <span class="location-icon">🏢</span>
+                                    <span class="location-label"
+                                        >Warehouse</span
+                                    >
+                                </div>
+                                <div
+                                    class="location delivery active"
+                                    style="top: 40%; left: 50%"
+                                >
+                                    <span class="location-icon">🚚</span>
+                                    <span class="location-label"
+                                        >Mike J. - En Route</span
+                                    >
+                                </div>
+                                <div
+                                    class="location delivery"
+                                    style="top: 60%; left: 70%"
+                                >
+                                    <span class="location-icon">🚚</span>
+                                    <span class="location-label"
+                                        >Sarah D. - Delivered</span
+                                    >
+                                </div>
+                                <div
+                                    class="location customer"
+                                    style="top: 45%; left: 75%"
+                                >
+                                    <span class="location-icon">🏠</span>
+                                    <span class="location-label"
+                                        >Customer A</span
+                                    >
+                                </div>
+                                <div
+                                    class="location customer"
+                                    style="top: 35%; left: 60%"
+                                >
+                                    <span class="location-icon">🏠</span>
+                                    <span class="location-label"
+                                        >Customer B</span
+                                    >
+                                </div>
+                            </div>
+                            <div
+                                class="route-line"
+                                style="
+                                    top: 30%;
+                                    left: 35%;
+                                    width: 25%;
+                                    transform: rotate(15deg);
+                                "
+                            ></div>
+                            <div
+                                class="route-line"
+                                style="
+                                    top: 50%;
+                                    left: 55%;
+                                    width: 15%;
+                                    transform: rotate(-10deg);
+                                "
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="active-deliveries-list">
+                    <div class="delivery-item urgent">
+                        <div class="delivery-header">
+                            <div class="delivery-info">
+                                <h3>Order #ABC123</h3>
+                                <span class="customer-name">John Smith</span>
+                                <span class="delivery-address"
+                                    >📍 123 Main Street, Yaoundé</span
+                                >
+                            </div>
+                            <div class="delivery-status">
+                                <span class="status-badge out-for-delivery"
+                                    >Out for Delivery</span
+                                >
+                                <span class="priority-badge urgent"
+                                    >Urgent</span
+                                >
+                            </div>
+                        </div>
+                        <div class="delivery-details">
+                            <div class="driver-info">
+                                <span class="driver-name">👤 Mike Johnson</span>
+                                <span class="driver-contact"
+                                    >📱 +237 123 456 789</span
+                                >
+                                <span class="vehicle">🚚 Truck #EcoM-001</span>
+                            </div>
+                            <div class="delivery-progress">
+                                <div class="progress-bar">
+                                    <div
+                                        class="progress-fill"
+                                        style="width: 75%"
+                                    ></div>
+                                </div>
+                                <span class="progress-text"
+                                    >75% Complete - ETA 2:30 PM</span
+                                >
+                            </div>
+                        </div>
+                        <div class="delivery-items">
+                            <span class="item">🍅 Organic Tomatoes (2kg)</span>
+                            <span class="item">🥕 Fresh Carrots (1kg)</span>
+                        </div>
+                    </div>
+
+                    <div class="delivery-item standard">
+                        <div class="delivery-header">
+                            <div class="delivery-info">
+                                <h3>Order #DEF456</h3>
+                                <span class="customer-name">Maria Garcia</span>
+                                <span class="delivery-address"
+                                    >📍 456 Oak Avenue, Douala</span
+                                >
+                            </div>
+                            <div class="delivery-status">
+                                <span class="status-badge preparing"
+                                    >Preparing</span
+                                >
+                                <span class="priority-badge standard"
+                                    >Standard</span
+                                >
+                            </div>
+                        </div>
+                        <div class="delivery-details">
+                            <div class="driver-info">
+                                <span class="driver-name">👤 Sarah Davis</span>
+                                <span class="driver-contact"
+                                    >📱 +237 987 654 321</span
+                                >
+                                <span class="vehicle">🚚 Van #EcoM-002</span>
+                            </div>
+                            <div class="delivery-progress">
+                                <div class="progress-bar">
+                                    <div
+                                        class="progress-fill"
+                                        style="width: 25%"
+                                    ></div>
+                                </div>
+                                <span class="progress-text"
+                                    >25% Complete - ETA 4:00 PM</span
+                                >
+                            </div>
+                        </div>
+                        <div class="delivery-items">
+                            <span class="item">🍓 Strawberry Package</span>
+                            <span class="item">🥬 Green Leafy Bundle</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Delivery Features -->
+        <section class="delivery-features">
+            <div class="container">
+                <div class="section-header centered">
+                    <h2>Why Our Delivery Service Stands Out</h2>
+                    <p>
+                        Ensuring fresh produce reaches you in perfect condition
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌡️</div>
+                        <h3>Temperature Controlled</h3>
+                        <p>
+                            All vehicles equipped with temperature control to
+                            maintain optimal freshness during transport.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">📍</div>
+                        <h3>Real-time GPS Tracking</h3>
+                        <p>
+                            Track your order's exact location and estimated
+                            delivery time with live GPS updates.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Same-day Delivery</h3>
+                        <p>
+                            Orders placed before 12 PM can be delivered the same
+                            day within city limits.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>SMS & Push Notifications</h3>
+                        <p>
+                            Receive instant updates about your delivery status
+                            via SMS and app notifications.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Delivery Guarantee</h3>
+                        <p>
+                            If we're late or your produce isn't fresh, we'll
+                            refund or replace your order.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">♻️</div>
+                        <h3>Eco-friendly Packaging</h3>
+                        <p>
+                            All packaging materials are biodegradable and
+                            environmentally sustainable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="modern-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <div class="footer-brand">
+                            <div class="brand">
+                                <div class="brand-icon">🌱</div>
+                                <span class="brand-name">EcoMarket</span>
+                            </div>
+                            <p class="footer-desc">
+                                Revolutionizing agriculture by connecting
+                                farmers directly with buyers for a sustainable
+                                future.
+                            </p>
+                            <div class="social-links">
+                                <a href="#" class="social-link">📘</a>
+                                <a href="#" class="social-link">🐦</a>
+                                <a href="#" class="social-link">📷</a>
+                                <a href="#" class="social-link">💼</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>Platform</h4>
+                        <ul class="footer-links">
+                            <li><a href="marketplace.html">Marketplace</a></li>
+                            <li>
+                                <a href="farmer-dashboard.html">For Farmers</a>
+                            </li>
+                            <li>
+                                <a href="buyer-dashboard.html">For Buyers</a>
+                            </li>
+                            <li>
+                                <a href="quality-control.html"
+                                    >Quality Control</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <ul class="footer-links">
+                            <li><a href="delivery.html">Delivery Info</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="footer-bottom-content">
+                        <p>&copy; 2024 EcoMarket. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+        <script>
+            // Delivery tracking functionality
+            function trackOrder() {
+                const orderId = document
+                    .getElementById("orderIdInput")
+                    .value.trim();
+                const trackingResult =
+                    document.getElementById("trackingResult");
+
+                if (!orderId) {
+                    showToast("Please enter an Order ID", "error");
+                    return;
+                }
+
+                // Simulate order tracking
+                trackingResult.innerHTML = `
+                <div class="tracking-timeline">
+                    <div class="tracking-step completed">
+                        <div class="step-icon">✅</div>
+                        <div class="step-info">
+                            <h4>Order Confirmed</h4>
+                            <p>Your order has been confirmed and is being prepared</p>
+                            <span class="timestamp">Today 9:15 AM</span>
+                        </div>
+                    </div>
+                    <div class="tracking-step completed">
+                        <div class="step-icon">🔍</div>
+                        <div class="step-info">
+                            <h4>Quality Check Passed</h4>
+                            <p>Products have passed quality inspection</p>
+                            <span class="timestamp">Today 10:30 AM</span>
+                        </div>
+                    </div>
+                    <div class="tracking-step active">
+                        <div class="step-icon">🚚</div>
+                        <div class="step-info">
+                            <h4>Out for Delivery</h4>
+                            <p>Your order is on the way! Driver: Mike Johnson</p>
+                            <span class="timestamp">Today 11:45 AM</span>
+                        </div>
+                    </div>
+                    <div class="tracking-step pending">
+                        <div class="step-icon">📦</div>
+                        <div class="step-info">
+                            <h4>Delivered</h4>
+                            <p>Estimated delivery time: 2:30 PM</p>
+                            <span class="timestamp">Expected</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="delivery-details">
+                    <h3>Delivery Information</h3>
+                    <p><strong>Driver:</strong> Mike Johnson</p>
+                    <p><strong>Phone:</strong> +237 123 456 789</p>
+                    <p><strong>Vehicle:</strong> Truck #EcoM-001</p>
+                    <p><strong>Delivery Address:</strong> 123 Main Street, Yaoundé</p>
+                    <button class="btn btn-outline" onclick="contactDriver()">📞 Contact Driver</button>
+                </div>
+            `;
+                trackingResult.classList.remove("hidden");
+                showToast(
+                    "Order found! Tracking information loaded.",
+                    "success",
+                );
+            }
+
+            function contactDriver() {
+                if (confirm("Would you like to call the driver?")) {
+                    // In a real app, this would initiate a call
+                    showToast("Connecting you to driver...", "info");
+                }
+            }
+
+            // Add delivery page specific styles
+            document.addEventListener("DOMContentLoaded", function () {
+                const styles = document.createElement("style");
+                styles.innerHTML = `
+                .delivery-hero {
+                    padding: var(--spacing-24) 0 var(--spacing-12);
+                    margin-top: 80px;
+                    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+                    text-align: center;
+                }
+
+                .delivery-hero h1 {
+                    font-size: var(--font-size-4xl);
+                    margin-bottom: var(--spacing-4);
+                }
+
+                .order-lookup-section {
+                    padding: var(--spacing-16) 0;
+                    background: white;
+                }
+
+                .lookup-container {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+
+                .lookup-form {
+                    display: flex;
+                    gap: var(--spacing-4);
+                    margin: var(--spacing-6) 0;
+                    max-width: 400px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .lookup-form input {
+                    flex: 1;
+                    padding: var(--spacing-3) var(--spacing-4);
+                    border: 2px solid var(--border-color);
+                    border-radius: var(--radius-lg);
+                    font-size: var(--font-size-base);
+                }
+
+                .tracking-result {
+                    margin-top: var(--spacing-8);
+                    background: white;
+                    border-radius: var(--radius-2xl);
+                    padding: var(--spacing-8);
+                    box-shadow: var(--shadow-lg);
+                    border: 1px solid var(--border-light);
+                    text-align: left;
+                }
+
+                .tracking-timeline {
+                    margin-bottom: var(--spacing-8);
+                }
+
+                .tracking-step {
+                    display: flex;
+                    gap: var(--spacing-4);
+                    padding: var(--spacing-6);
+                    border-radius: var(--radius-lg);
+                    margin-bottom: var(--spacing-4);
+                    transition: all 0.3s ease;
+                }
+
+                .tracking-step.completed {
+                    background: #f0fdf4;
+                    border-left: 4px solid var(--primary-green);
+                }
+
+                .tracking-step.active {
+                    background: #fff7ed;
+                    border-left: 4px solid var(--accent-orange);
+                    box-shadow: var(--shadow-md);
+                }
+
+                .tracking-step.pending {
+                    background: #f8fafc;
+                    border-left: 4px solid #e5e7eb;
+                }
+
+                .step-icon {
+                    font-size: var(--font-size-xl);
+                    width: 40px;
+                    text-align: center;
+                }
+
+                .step-info h4 {
+                    margin-bottom: var(--spacing-2);
+                    color: var(--text-primary);
+                }
+
+                .step-info p {
+                    color: var(--text-secondary);
+                    margin-bottom: var(--spacing-2);
+                }
+
+                .timestamp {
+                    font-size: var(--font-size-sm);
+                    color: var(--text-light);
+                    font-weight: 500;
+                }
+
+                .delivery-stats-section {
+                    padding: var(--spacing-16) 0;
+                    background: var(--background-secondary);
+                }
+
+                .stats-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: var(--spacing-6);
+                }
+
+                .stat-card {
+                    background: white;
+                    padding: var(--spacing-6);
+                    border-radius: var(--radius-xl);
+                    box-shadow: var(--shadow-md);
+                    display: flex;
+                    align-items: center;
+                    gap: var(--spacing-4);
+                }
+
+                .stat-icon {
+                    font-size: var(--font-size-3xl);
+                }
+
+                .stat-info h3 {
+                    font-size: var(--font-size-2xl);
+                    color: var(--primary-green);
+                    margin-bottom: var(--spacing-1);
+                }
+
+                .active-deliveries-section {
+                    padding: var(--spacing-20) 0;
+                }
+
+                .delivery-map-container {
+                    margin: var(--spacing-12) 0;
+                }
+
+                .delivery-map {
+                    height: 400px;
+                    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+                    border-radius: var(--radius-2xl);
+                    position: relative;
+                    overflow: hidden;
+                    border: 1px solid var(--border-light);
+                }
+
+                .map-placeholder {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                }
+
+                .map-locations {
+                    position: relative;
+                    width: 100%;
+                    height: 200px;
+                }
+
+                .location {
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    font-size: var(--font-size-sm);
+                }
+
+                .location-icon {
+                    font-size: var(--font-size-2xl);
+                    margin-bottom: var(--spacing-1);
+                }
+
+                .location.active .location-icon {
+                    animation: pulse 2s infinite;
+                }
+
+                .route-line {
+                    position: absolute;
+                    height: 2px;
+                    background: var(--primary-green);
+                    border-radius: 1px;
+                }
+
+                .active-deliveries-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--spacing-6);
+                }
+
+                .delivery-item {
+                    background: white;
+                    border-radius: var(--radius-2xl);
+                    padding: var(--spacing-8);
+                    box-shadow: var(--shadow-lg);
+                    border: 1px solid var(--border-light);
+                }
+
+                .delivery-item.urgent {
+                    border-left: 4px solid #dc2626;
+                }
+
+                .delivery-item.standard {
+                    border-left: 4px solid var(--primary-green);
+                }
+
+                .delivery-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: start;
+                    margin-bottom: var(--spacing-6);
+                    flex-wrap: wrap;
+                    gap: var(--spacing-4);
+                }
+
+                .delivery-info h3 {
+                    margin-bottom: var(--spacing-2);
+                }
+
+                .customer-name {
+                    color: var(--text-secondary);
+                    font-weight: 500;
+                    display: block;
+                    margin-bottom: var(--spacing-1);
+                }
+
+                .delivery-address {
+                    color: var(--text-light);
+                    font-size: var(--font-size-sm);
+                }
+
+                .delivery-status {
+                    display: flex;
+                    gap: var(--spacing-3);
+                    flex-wrap: wrap;
+                }
+
+                .status-badge, .priority-badge {
+                    padding: var(--spacing-1) var(--spacing-3);
+                    border-radius: var(--radius-full);
+                    font-size: var(--font-size-xs);
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+
+                .status-badge.out-for-delivery {
+                    background: #dbeafe;
+                    color: #1d4ed8;
+                }
+
+                .status-badge.preparing {
+                    background: #fef3c7;
+                    color: #d97706;
+                }
+
+                .priority-badge.urgent {
+                    background: #fee2e2;
+                    color: #dc2626;
+                }
+
+                .priority-badge.standard {
+                    background: #f0fdf4;
+                    color: var(--primary-green-dark);
+                }
+
+                .delivery-details {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: var(--spacing-4);
+                    flex-wrap: wrap;
+                    gap: var(--spacing-4);
+                }
+
+                .driver-info {
+                    display: flex;
+                    gap: var(--spacing-4);
+                    flex-wrap: wrap;
+                    font-size: var(--font-size-sm);
+                    color: var(--text-secondary);
+                }
+
+                .delivery-progress {
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--spacing-2);
+                    min-width: 200px;
+                }
+
+                .progress-bar {
+                    height: 6px;
+                    background: var(--border-light);
+                    border-radius: var(--radius-full);
+                    overflow: hidden;
+                }
+
+                .progress-fill {
+                    height: 100%;
+                    background: linear-gradient(90deg, var(--primary-green), var(--accent-orange));
+                    transition: width 0.3s ease;
+                }
+
+                .progress-text {
+                    font-size: var(--font-size-sm);
+                    color: var(--text-secondary);
+                }
+
+                .delivery-items {
+                    display: flex;
+                    gap: var(--spacing-4);
+                    flex-wrap: wrap;
+                    padding-top: var(--spacing-4);
+                    border-top: 1px solid var(--border-light);
+                }
+
+                .item {
+                    background: var(--background-secondary);
+                    padding: var(--spacing-2) var(--spacing-3);
+                    border-radius: var(--radius-lg);
+                    font-size: var(--font-size-sm);
+                    color: var(--text-secondary);
+                }
+
+                .delivery-features {
+                    padding: var(--spacing-20) 0;
+                    background: var(--background-secondary);
+                }
+
+                @media (max-width: 768px) {
+                    .lookup-form {
+                        flex-direction: column;
+                    }
+
+                    .delivery-header {
+                        flex-direction: column;
+                        align-items: start;
+                    }
+
+                    .delivery-details {
+                        flex-direction: column;
+                        align-items: start;
+                    }
+
+                    .driver-info {
+                        flex-direction: column;
+                        gap: var(--spacing-2);
+                    }
+                }
+            `;
+                document.head.appendChild(styles);
+            });
+        </script>
+    </body>
+</html>
