@@ -1,1342 +1,1310 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Quality Control Dashboard - EcoMarket</title>
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        />
-        <script src="https://cdn.tailwindcss.com"></script>
-        <style>
-            .logo a {
-                text-decoration: none;
-            }
-            @keyframes slideIn {
-                from {
-                    transform: translateX(100%);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
-            @keyframes slideOut {
-                from {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-                to {
-                    transform: translateX(100%);
-                    opacity: 0;
-                }
-            }
-            @keyframes scan {
-                0% {
-                    top: 0;
-                }
-                100% {
-                    top: 100%;
-                }
-            }
-        </style>
-    </head>
-    <body class="bg-gray-50 font-poppins">
-        <header class="header">
-            <nav class="navbar">
-                <div class="nav-container">
-                    <div class="logo">
-                        <a href="index.html"><h1>🌱 EcoMarket</h1></a>
-                    </div>
-                    <ul class="nav-menu">
-                        <li>
-                            <a href="marketplace.html" class="nav-link"
-                                >Marketplace</a
-                            >
-                        </li>
-                        <li><a href="about.html" class="nav-link">About</a></li>
-                        <li>
-                            <a href="contact.html" class="nav-link">Contact</a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-btn active"
-                                >Dashboard ▼</a
-                            >
-                            <div class="dropdown-content">
-                                <a href="farmer-dashboard.html"
-                                    >Farmer Dashboard</a
-                                >
-                                <a href="buyer-dashboard.html"
-                                    >Buyer Dashboard</a
-                                >
-                                <a href="quality-control.html"
-                                    >Quality Control</a
-                                >
-                                <a href="delivery.html">Delivery Tracking</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="cart-icon">
-                        <a href="shopping-cart.html">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span id="cartBadge">0</span>
-                        </a>
-                    </div>
-                    <div class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </nav>
-        </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quality Control Dashboard - EcoMarket</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .logo a {
+        text-decoration: none;
+      }
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      @keyframes slideOut {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+      @keyframes scan {
+        0% {
+          top: 0;
+        }
+        100% {
+          top: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-poppins">
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="index.html"><h1>🌱 EcoMarket</h1></a>
+          </div>
+          <ul class="nav-menu">
+            <li>
+              <a href="marketplace.html" class="nav-link">Marketplace</a>
+            </li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li>
+              <a href="contact.html" class="nav-link">Contact</a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link dropdown-btn active">Dashboard ▼</a>
+              <div class="dropdown-content">
+                <a href="farmer-dashboard.html">Farmer Dashboard</a>
+                <a href="buyer-dashboard.html">Buyer Dashboard</a>
+                <a href="quality-control.html">Quality Control</a>
+                <a href="delivery.html">Delivery Tracking</a>
+              </div>
+            </li>
+          </ul>
+          <div class="cart-icon">
+            <a href="shopping-cart.html">
+              <i class="fas fa-shopping-cart"></i>
+              <span id="cartBadge">0</span>
+            </a>
+          </div>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="mb-8">
-                <h1 class="text-3xl font-bold text-gray-900">
-                    Quality Control Dashboard
-                </h1>
-                <p class="text-gray-600 mt-2">
-                    Monitor and manage product inspections with real-time
-                    insights.
-                </p>
-            </div>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">
+          Quality Control Dashboard
+        </h1>
+        <p class="text-gray-600 mt-2">
+          Monitor and manage product inspections with real-time insights.
+        </p>
+      </div>
 
-            <!-- Stats Overview -->
-            <div
-                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
-            >
-                <div
-                    class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
-                >
-                    <div class="flex items-center gap-4">
-                        <div class="text-3xl">✅</div>
-                        <div>
-                            <div
-                                class="text-2xl font-semibold text-gray-900"
-                                id="approvedToday"
-                            >
-                                47
-                            </div>
-                            <div class="text-sm text-gray-500">
-                                Approved Today
-                            </div>
-                            <div
-                                class="w-full bg-gray-200 rounded-full h-2 mt-2"
-                            >
-                                <div
-                                    class="bg-green-500 h-2 rounded-full"
-                                    style="width: 80%"
-                                ></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
-                >
-                    <div class="flex items-center gap-4">
-                        <div class="text-3xl">⏳</div>
-                        <div>
-                            <div
-                                class="text-2xl font-semibold text-gray-900"
-                                id="pendingItems"
-                            >
-                                4
-                            </div>
-                            <div class="text-sm text-gray-500">
-                                Pending Review
-                            </div>
-                            <div
-                                class="w-full bg-gray-200 rounded-full h-2 mt-2"
-                            >
-                                <div
-                                    class="bg-yellow-500 h-2 rounded-full"
-                                    style="width: 50%"
-                                ></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
-                >
-                    <div class="flex items-center gap-4">
-                        <div class="text-3xl">📊</div>
-                        <div>
-                            <div
-                                class="text-2xl font-semibold text-gray-900"
-                                id="qualityScore"
-                            >
-                                98.5%
-                            </div>
-                            <div class="text-sm text-gray-500">
-                                Quality Score
-                            </div>
-                            <div
-                                class="w-full bg-gray-200 rounded-full h-2 mt-2"
-                            >
-                                <div
-                                    class="bg-emerald-500 h-2 rounded-full"
-                                    style="width: 98.5%"
-                                ></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="mb-8">
-                <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                    Quick Actions
-                </h2>
-                <div
-                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-                >
-                    <div
-                        class="bg-white rounded-lg shadow-sm p-6 text-center hover:shadow-md transition-all cursor-pointer"
-                        onclick="startBulkInspection()"
-                        role="button"
-                        tabindex="0"
-                        aria-label="Start Bulk Inspection"
-                    >
-                        <div class="text-3xl mb-2">🔍</div>
-                        <h3 class="text-lg font-medium text-gray-900">
-                            Start Bulk Inspection
-                        </h3>
-                        <p class="text-sm text-gray-500">
-                            Review multiple items at once
-                        </p>
-                    </div>
-                    <div
-                        class="bg-white rounded-lg shadow-sm p-6 text-center hover:shadow-md transition-all cursor-pointer"
-                        onclick="scanBarcode()"
-                        role="button"
-                        tabindex="0"
-                        aria-label="Scan QR Code"
-                    >
-                        <div class="text-3xl mb-2">📱</div>
-                        <h3 class="text-lg font-medium text-gray-900">
-                            Scan QR Code
-                        </h3>
-                        <p class="text-sm text-gray-500">
-                            Quick product lookup
-                        </p>
-                    </div>
-                    <div
-                        class="bg-white rounded-lg shadow-sm p-6 text-center hover:shadow-md transition-all cursor-pointer"
-                        onclick="generateReport()"
-                        role="button"
-                        tabindex="0"
-                        aria-label="Generate Report"
-                    >
-                        <div class="text-3xl mb-2">📋</div>
-                        <h3 class="text-lg font-medium text-gray-900">
-                            Generate Report
-                        </h3>
-                        <p class="text-sm text-gray-500">
-                            Quality control summary
-                        </p>
-                    </div>
-                    <div
-                        class="bg-white rounded-lg shadow-sm p-6 text-center hover:shadow-md transition-all cursor-pointer"
-                        onclick="viewTrends()"
-                        role="button"
-                        tabindex="0"
-                        aria-label="Quality Trends"
-                    >
-                        <div class="text-3xl mb-2">📈</div>
-                        <h3 class="text-lg font-medium text-gray-900">
-                            Quality Trends
-                        </h3>
-                        <p class="text-sm text-gray-500">
-                            Performance analytics
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Inspection Queue -->
-            <div class="mb-8">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-semibold text-gray-900">
-                        Inspection Queue
-                    </h2>
-                    <div class="flex gap-4 flex-wrap">
-                        <input
-                            type="text"
-                            id="searchQueue"
-                            placeholder="Search items..."
-                            onkeyup="filterQueue()"
-                            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            aria-label="Search inspection queue"
-                        />
-                        <select
-                            id="priorityFilter"
-                            onchange="filterQueue()"
-                            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        >
-                            <option value="all">All Priority</option>
-                            <option value="urgent">Urgent</option>
-                            <option value="high">High</option>
-                            <option value="normal">Normal</option>
-                        </select>
-                        <select
-                            id="categoryFilter"
-                            onchange="filterQueue()"
-                            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        >
-                            <option value="all">All Categories</option>
-                            <option value="vegetables">Vegetables</option>
-                            <option value="fruits">Fruits</option>
-                            <option value="grains">Grains</option>
-                            <option value="dairy">Dairy</option>
-                        </select>
-                        <button
-                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                            onclick="refreshQueue()"
-                            aria-label="Refresh queue"
-                        >
-                            🔄 Refresh
-                        </button>
-                    </div>
-                </div>
-                <div
-                    class="queue-container bg-white rounded-lg shadow-sm p-6"
-                    id="inspectionQueue"
-                ></div>
-            </div>
-
-            <!-- Recent Inspections -->
+      <!-- Stats Overview -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div
+          class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
+        >
+          <div class="flex items-center gap-4">
+            <div class="text-3xl">✅</div>
             <div>
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-semibold text-gray-900">
-                        Recent Inspections
-                    </h2>
-                    <button
-                        class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
-                        onclick="viewAllInspections()"
-                        aria-label="View all inspections"
-                    >
-                        View All
-                    </button>
-                </div>
+              <div
+                class="text-2xl font-semibold text-gray-900"
+                id="approvedToday"
+              >
+                47
+              </div>
+              <div class="text-sm text-gray-500">Approved Today</div>
+              <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
                 <div
-                    class="flex overflow-x-auto gap-4 pb-4"
-                    id="recentInspections"
+                  class="bg-green-500 h-2 rounded-full"
+                  style="width: 80%"
                 ></div>
+              </div>
             </div>
-        </main>
-
-        <!-- Inspection Modal -->
+          </div>
+        </div>
         <div
-            id="inspectionModal"
-            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="inspectionTitle"
+          class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
         >
-            <div
-                class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+          <div class="flex items-center gap-4">
+            <div class="text-3xl">⏳</div>
+            <div>
+              <div
+                class="text-2xl font-semibold text-gray-900"
+                id="pendingItems"
+              >
+                4
+              </div>
+              <div class="text-sm text-gray-500">Pending Review</div>
+              <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                <div
+                  class="bg-yellow-500 h-2 rounded-full"
+                  style="width: 50%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow"
+        >
+          <div class="flex items-center gap-4">
+            <div class="text-3xl">📊</div>
+            <div>
+              <div
+                class="text-2xl font-semibold text-gray-900"
+                id="qualityScore"
+              >
+                98.5%
+              </div>
+              <div class="text-sm text-gray-500">Quality Score</div>
+              <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                <div
+                  class="bg-emerald-500 h-2 rounded-full"
+                  style="width: 98.5%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Quick Actions</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            class="bg-white rounded-lg shadow-sm p-6 text-center hover:shadow-md transition-all cursor-pointer"
+            onclick="startBulkInspection()"
+            role="button"
+            tabindex="0"
+            aria-label="Start Bulk Inspection"
+          >
+            <div class="text-3xl mb-2">🔍</div>
+            <h3 class="text-lg font-medium text-gray-900">
+              Start Bulk Inspection
+            </h3>
+            <p class="text-sm text-gray-500">Review multiple items at once</p>
+          </div>
+          <div
+            class="bg-white rounded-lg shadow-sm p-6 text-center hover:shadow-md transition-all cursor-pointer"
+            onclick="scanBarcode()"
+            role="button"
+            tabindex="0"
+            aria-label="Scan QR Code"
+          >
+            <div class="text-3xl mb-2">📱</div>
+            <h3 class="text-lg font-medium text-gray-900">Scan QR Code</h3>
+            <p class="text-sm text-gray-500">Quick product lookup</p>
+          </div>
+          <div
+            class="bg-white rounded-lg shadow-sm p-6 text-center hover:shadow-md transition-all cursor-pointer"
+            onclick="generateReport()"
+            role="button"
+            tabindex="0"
+            aria-label="Generate Report"
+          >
+            <div class="text-3xl mb-2">📋</div>
+            <h3 class="text-lg font-medium text-gray-900">Generate Report</h3>
+            <p class="text-sm text-gray-500">Quality control summary</p>
+          </div>
+          <div
+            class="bg-white rounded-lg shadow-sm p-6 text-center hover:shadow-md transition-all cursor-pointer"
+            onclick="viewTrends()"
+            role="button"
+            tabindex="0"
+            aria-label="Quality Trends"
+          >
+            <div class="text-3xl mb-2">📈</div>
+            <h3 class="text-lg font-medium text-gray-900">Quality Trends</h3>
+            <p class="text-sm text-gray-500">Performance analytics</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inspection Queue -->
+      <div class="mb-8">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-gray-900">Inspection Queue</h2>
+          <div class="flex gap-4 flex-wrap">
+            <input
+              type="text"
+              id="searchQueue"
+              placeholder="Search items..."
+              onkeyup="filterQueue()"
+              class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              aria-label="Search inspection queue"
+            />
+            <select
+              id="priorityFilter"
+              onchange="filterQueue()"
+              class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
-                <div
-                    class="p-6 border-b border-gray-200 flex justify-between items-center"
-                >
-                    <h2
-                        id="inspectionTitle"
-                        class="text-xl font-semibold text-gray-900"
-                    >
-                        🔍 Product Inspection
-                    </h2>
-                    <button
-                        class="text-gray-500 hover:text-gray-700 text-2xl"
-                        onclick="closeModal('inspectionModal')"
-                        aria-label="Close modal"
-                    >
-                        &times;
-                    </button>
-                </div>
-                <div class="p-6">
-                    <div class="product-preview mb-6" id="productPreview"></div>
-                    <div class="flex border-b border-gray-200 mb-6">
-                        <button
-                            class="tab-button px-4 py-2 text-gray-600 font-medium border-b-2 border-transparent hover:text-emerald-600 hover:border-emerald-600 transition-colors active"
-                            onclick="switchTab('visual-tab')"
-                            role="tab"
-                            aria-selected="true"
-                            aria-controls="visual-tab"
-                        >
-                            Visual Quality
-                        </button>
-                        <button
-                            class="tab-button px-4 py-2 text-gray-600 font-medium border-b-2 border-transparent hover:text-emerald-600 hover:border-emerald-600 transition-colors"
-                            onclick="switchTab('packaging-tab')"
-                            role="tab"
-                            aria-selected="false"
-                            aria-controls="packaging-tab"
-                        >
-                            Packaging
-                        </button>
-                        <button
-                            class="tab-button px-4 py-2 text-gray-600 font-medium border-b-2 border-transparent hover:text-emerald-600 hover:border-emerald-600 transition-colors"
-                            onclick="switchTab('measurements-tab')"
-                            role="tab"
-                            aria-selected="false"
-                            aria-controls="measurements-tab"
-                        >
-                            Measurements
-                        </button>
-                        <button
-                            class="tab-button px-4 py-2 text-gray-600 font-medium border-b-2 border-transparent hover:text-emerald-600 hover:border-emerald-600 transition-colors"
-                            onclick="switchTab('notes-tab')"
-                            role="tab"
-                            aria-selected="false"
-                            aria-controls="notes-tab"
-                        >
-                            Notes & Photos
-                        </button>
-                        <button
-                            class="tab-button px-4 py-2 text-gray-600 font-medium border-b-2 border-transparent hover:text-emerald-600 hover:border-emerald-600 transition-colors"
-                            onclick="switchTab('summary-tab')"
-                            role="tab"
-                            aria-selected="false"
-                            aria-controls="summary-tab"
-                        >
-                            Summary
-                        </button>
-                    </div>
-                    <div class="inspection-form">
-                        <div
-                            id="visual-tab"
-                            class="tab-content active"
-                            role="tabpanel"
-                            aria-hidden="false"
-                        >
-                            <h4 class="text-lg font-medium text-gray-900 mb-4">
-                                🌿 Freshness Assessment
-                            </h4>
-                            <div class="space-y-4">
-                                <div class="rating-group">
-                                    <label
-                                        for="appearance-rating"
-                                        class="block text-sm font-medium text-gray-700"
-                                        >Visual Appearance:</label
-                                    >
-                                    <div
-                                        class="star-rating flex gap-1 mt-1"
-                                        data-criteria="appearance"
-                                        role="radiogroup"
-                                        aria-labelledby="appearance-label"
-                                    >
-                                        <span
-                                            id="appearance-label"
-                                            class="sr-only"
-                                            >Rate visual appearance</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="1"
-                                            role="radio"
-                                            aria-checked="false"
-                                            tabindex="0"
-                                            >⭐</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="2"
-                                            role="radio"
-                                            aria-checked="false"
-                                            >⭐</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="3"
-                                            role="radio"
-                                            aria-checked="false"
-                                            >⭐</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="4"
-                                            role="radio"
-                                            aria-checked="false"
-                                            >⭐</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="5"
-                                            role="radio"
-                                            aria-checked="false"
-                                            >⭐</span
-                                        >
-                                    </div>
-                                </div>
-                                <div class="rating-group">
-                                    <label
-                                        for="texture-rating"
-                                        class="block text-sm font-medium text-gray-700"
-                                        >Texture & Firmness:</label
-                                    >
-                                    <div
-                                        class="star-rating flex gap-1 mt-1"
-                                        data-criteria="texture"
-                                        role="radiogroup"
-                                        aria-labelledby="texture-label"
-                                    >
-                                        <span id="texture-label" class="sr-only"
-                                            >Rate texture and firmness</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="1"
-                                            role="radio"
-                                            aria-checked="false"
-                                            tabindex="0"
-                                            >⭐</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="2"
-                                            role="radio"
-                                            aria-checked="false"
-                                            >⭐</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="3"
-                                            role="radio"
-                                            aria-checked="false"
-                                            >⭐</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="4"
-                                            role="radio"
-                                            aria-checked="false"
-                                            >⭐</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="5"
-                                            role="radio"
-                                            aria-checked="false"
-                                            >⭐</span
-                                        >
-                                    </div>
-                                </div>
-                                <div class="rating-group">
-                                    <label
-                                        for="aroma-rating"
-                                        class="block text-sm font-medium text-gray-700"
-                                        >Aroma & Smell:</label
-                                    >
-                                    <div
-                                        class="star-rating flex gap-1 mt-1"
-                                        data-criteria="aroma"
-                                        role="radiogroup"
-                                        aria-labelledby="aroma-label"
-                                    >
-                                        <span id="aroma-label" class="sr-only"
-                                            >Rate aroma and smell</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="1"
-                                            role="radio"
-                                            aria-checked="false"
-                                            tabindex="0"
-                                            >⭐</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="2"
-                                            role="radio"
-                                            aria-checked="false"
-                                            >⭐</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="3"
-                                            role="radio"
-                                            aria-checked="false"
-                                            >⭐</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="4"
-                                            role="radio"
-                                            aria-checked="false"
-                                            >⭐</span
-                                        >
-                                        <span
-                                            class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
-                                            data-rating="5"
-                                            role="radio"
-                                            aria-checked="false"
-                                            >⭐</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            id="packaging-tab"
-                            class="tab-content hidden"
-                            role="tabpanel"
-                            aria-hidden="true"
-                        >
-                            <h4 class="text-lg font-medium text-gray-900 mb-4">
-                                📦 Packaging Quality
-                            </h4>
-                            <div
-                                class="checkbox-group space-y-3"
-                                role="group"
-                                aria-labelledby="packaging-label"
-                            >
-                                <span id="packaging-label" class="sr-only"
-                                    >Packaging quality checks</span
-                                >
-                                <label class="flex items-center gap-2">
-                                    <input
-                                        type="checkbox"
-                                        id="packaging-clean"
-                                        name="packaging"
-                                        value="clean"
-                                        class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                                        aria-describedby="clean-desc"
-                                    />
-                                    <span>Clean and hygienic packaging</span>
-                                    <span id="clean-desc" class="sr-only"
-                                        >Clean and hygienic packaging
-                                        check</span
-                                    >
-                                </label>
-                                <label class="flex items-center gap-2">
-                                    <input
-                                        type="checkbox"
-                                        id="packaging-intact"
-                                        name="packaging"
-                                        value="intact"
-                                        class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                                        aria-describedby="intact-desc"
-                                    />
-                                    <span
-                                        >Packaging is intact and undamaged</span
-                                    >
-                                    <span id="intact-desc" class="sr-only"
-                                        >Packaging is intact and undamaged
-                                        check</span
-                                    >
-                                </label>
-                                <label class="flex items-center gap-2">
-                                    <input
-                                        type="checkbox"
-                                        id="packaging-labeled"
-                                        name="packaging"
-                                        value="labeled"
-                                        class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                                        aria-describedby="labeled-desc"
-                                    />
-                                    <span>Properly labeled with farm info</span>
-                                    <span id="labeled-desc" class="sr-only"
-                                        >Properly labeled with farm info
-                                        check</span
-                                    >
-                                </label>
-                                <label class="flex items-center gap-2">
-                                    <input
-                                        type="checkbox"
-                                        id="packaging-appropriate"
-                                        name="packaging"
-                                        value="appropriate"
-                                        class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                                        aria-describedby="appropriate-desc"
-                                    />
-                                    <span>Appropriate for product type</span>
-                                    <span id="appropriate-desc" class="sr-only"
-                                        >Appropriate for product type
-                                        check</span
-                                    >
-                                </label>
-                            </div>
-                        </div>
-                        <div
-                            id="measurements-tab"
-                            class="tab-content hidden"
-                            role="tabpanel"
-                            aria-hidden="true"
-                        >
-                            <h4 class="text-lg font-medium text-gray-900 mb-4">
-                                ⚖️ Weight & Quantity
-                            </h4>
-                            <div class="space-y-4">
-                                <div class="measurement-group">
-                                    <label
-                                        for="expectedWeight"
-                                        class="block text-sm font-medium text-gray-700"
-                                        >Expected Weight (kg):</label
-                                    >
-                                    <input
-                                        type="number"
-                                        id="expectedWeight"
-                                        step="0.1"
-                                        placeholder="e.g., 2.5"
-                                        class="mt-1 px-4 py-2 border border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                        aria-describedby="expected-help"
-                                        required
-                                    />
-                                    <span id="expected-help" class="sr-only"
-                                        >Enter the expected weight in
-                                        kilograms</span
-                                    >
-                                    <div
-                                        class="error-message text-red-500 text-sm mt-1"
-                                        id="expected-error"
-                                    ></div>
-                                </div>
-                                <div class="measurement-group">
-                                    <label
-                                        for="actualWeight"
-                                        class="block text-sm font-medium text-gray-700"
-                                        >Actual Weight (kg):</label
-                                    >
-                                    <input
-                                        type="number"
-                                        id="actualWeight"
-                                        step="0.1"
-                                        placeholder="e.g., 2.4"
-                                        class="mt-1 px-4 py-2 border border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                        aria-describedby="actual-help"
-                                        required
-                                    />
-                                    <span id="actual-help" class="sr-only"
-                                        >Enter the measured actual weight in
-                                        kilograms</span
-                                    >
-                                    <div
-                                        class="error-message text-red-500 text-sm mt-1"
-                                        id="actual-error"
-                                    ></div>
-                                </div>
-                                <div
-                                    class="weight-variance"
-                                    id="weightVariance"
-                                    aria-live="polite"
-                                ></div>
-                            </div>
-                        </div>
-                        <div
-                            id="notes-tab"
-                            class="tab-content hidden"
-                            role="tabpanel"
-                            aria-hidden="true"
-                        >
-                            <div class="inspection-notes mb-6">
-                                <label
-                                    for="inspectionNotes"
-                                    class="block text-sm font-medium text-gray-700"
-                                    >Additional Notes:</label
-                                >
-                                <textarea
-                                    id="inspectionNotes"
-                                    rows="4"
-                                    placeholder="Add any specific observations, defects, or recommendations..."
-                                    class="mt-1 px-4 py-2 border border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                    aria-describedby="notes-help"
-                                ></textarea>
-                                <span id="notes-help" class="sr-only"
-                                    >Enter additional notes about the
-                                    inspection</span
-                                >
-                                <div
-                                    class="error-message text-red-500 text-sm mt-1"
-                                    id="notes-error"
-                                ></div>
-                            </div>
-                            <div class="photo-upload">
-                                <h4
-                                    class="text-lg font-medium text-gray-900 mb-4"
-                                >
-                                    📸 Inspection Photos
-                                </h4>
-                                <div
-                                    class="upload-area border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:bg-gray-50"
-                                    onclick="triggerFileUpload()"
-                                    role="button"
-                                    tabindex="0"
-                                    aria-label="Upload photos"
-                                >
-                                    <div class="text-3xl mb-2">📷</div>
-                                    <p class="text-sm text-gray-500">
-                                        Click to add photos (up to 5 images)
-                                    </p>
-                                    <input
-                                        type="file"
-                                        id="photoUpload"
-                                        multiple
-                                        accept="image/*"
-                                        class="hidden"
-                                        aria-hidden="true"
-                                    />
-                                </div>
-                                <div
-                                    id="photoPreview"
-                                    class="photo-preview grid grid-cols-2 gap-4 mt-4"
-                                    aria-label="Preview of uploaded photos"
-                                ></div>
-                                <div
-                                    class="error-message text-red-500 text-sm mt-1"
-                                    id="photo-error"
-                                ></div>
-                            </div>
-                        </div>
-                        <div
-                            id="summary-tab"
-                            class="tab-content hidden"
-                            role="tabpanel"
-                            aria-hidden="true"
-                        >
-                            <h4 class="text-lg font-medium text-gray-900 mb-4">
-                                📋 Inspection Summary
-                            </h4>
-                            <div class="overall-rating mb-4">
-                                <span class="text-sm font-medium text-gray-700"
-                                    >Overall Quality Score:</span
-                                >
-                                <span
-                                    class="score-display text-lg font-semibold text-gray-900 ml-2"
-                                    id="overallScore"
-                                    aria-live="polite"
-                                    >0/5</span
-                                >
-                            </div>
-                            <div class="criteria-summary space-y-2">
-                                <p class="text-sm">
-                                    Visual:
-                                    <span id="summary-appearance"
-                                        >Not rated</span
-                                    >
-                                </p>
-                                <p class="text-sm">
-                                    Texture:
-                                    <span id="summary-texture">Not rated</span>
-                                </p>
-                                <p class="text-sm">
-                                    Aroma:
-                                    <span id="summary-aroma">Not rated</span>
-                                </p>
-                                <p class="text-sm">
-                                    Packaging checks:
-                                    <span id="summary-packaging">0/4</span>
-                                </p>
-                                <p class="text-sm">
-                                    Weight variance:
-                                    <span id="summary-weight"
-                                        >Not measured</span
-                                    >
-                                </p>
-                            </div>
-                            <div
-                                class="validation-summary text-red-500 text-sm mt-4"
-                                id="form-validation"
-                                aria-live="polite"
-                            ></div>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="p-6 border-t border-gray-200 flex justify-end gap-4"
-                >
-                    <button
-                        class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-                        onclick="rejectProduct()"
-                        aria-label="Reject product"
-                    >
-                        ❌ Reject
-                    </button>
-                    <button
-                        class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors"
-                        onclick="requestReview()"
-                        aria-label="Request review"
-                    >
-                        ⚠️ Needs Review
-                    </button>
-                    <button
-                        class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
-                        onclick="validateAndApproveProduct()"
-                        aria-label="Approve product"
-                        disabled
-                        id="approveBtn"
-                    >
-                        ✅ Approve
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bulk Inspection Modal -->
-        <div
-            id="bulkInspectionModal"
-            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="bulkTitle"
-        >
-            <div
-                class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+              <option value="all">All Priority</option>
+              <option value="urgent">Urgent</option>
+              <option value="high">High</option>
+              <option value="normal">Normal</option>
+            </select>
+            <select
+              id="categoryFilter"
+              onchange="filterQueue()"
+              class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
-                <div
-                    class="p-6 border-b border-gray-200 flex justify-between items-center"
-                >
-                    <h2
-                        id="bulkTitle"
-                        class="text-xl font-semibold text-gray-900"
-                    >
-                        🔍 Bulk Inspection
-                    </h2>
-                    <button
-                        class="text-gray-500 hover:text-gray-700 text-2xl"
-                        onclick="closeModal('bulkInspectionModal')"
-                        aria-label="Close modal"
-                    >
-                        &times;
-                    </button>
-                </div>
-                <div class="p-6">
-                    <div class="flex gap-4 mb-4">
-                        <button
-                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                            onclick="selectAllItems()"
-                            aria-label="Select all items"
-                        >
-                            Select All
-                        </button>
-                        <button
-                            class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
-                            onclick="clearSelection()"
-                            aria-label="Clear selection"
-                        >
-                            Clear Selection
-                        </button>
-                        <span
-                            class="selection-count text-gray-600 self-center"
-                            aria-live="polite"
-                            >0 items selected</span
-                        >
-                    </div>
-                    <div
-                        class="bulk-items-list space-y-4"
-                        id="bulkItemsList"
-                        role="list"
-                    ></div>
-                    <div class="flex gap-4 mt-6">
-                        <button
-                            class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
-                            onclick="bulkApprove()"
-                            aria-label="Approve selected items"
-                            disabled
-                            id="bulkApproveBtn"
-                        >
-                            ✅ Approve Selected
-                        </button>
-                        <button
-                            class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors"
-                            onclick="bulkReview()"
-                            aria-label="Mark selected for review"
-                            disabled
-                            id="bulkReviewBtn"
-                        >
-                            ⚠️ Mark for Review
-                        </button>
-                        <button
-                            class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-                            onclick="bulkReject()"
-                            aria-label="Reject selected items"
-                            disabled
-                            id="bulkRejectBtn"
-                        >
-                            ❌ Reject Selected
-                        </button>
-                    </div>
-                </div>
-            </div>
+              <option value="all">All Categories</option>
+              <option value="vegetables">Vegetables</option>
+              <option value="fruits">Fruits</option>
+              <option value="grains">Grains</option>
+              <option value="dairy">Dairy</option>
+            </select>
+            <button
+              class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              onclick="refreshQueue()"
+              aria-label="Refresh queue"
+            >
+              🔄 Refresh
+            </button>
+          </div>
         </div>
-
-        <!-- QR Scanner Modal -->
         <div
-            id="scannerModal"
-            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="scannerTitle"
-        >
-            <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
-                <div
-                    class="p-6 border-b border-gray-200 flex justify-between items-center"
-                >
-                    <h2
-                        id="scannerTitle"
-                        class="text-xl font-semibold text-gray-900"
-                    >
-                        📱 QR Code Scanner
-                    </h2>
-                    <button
-                        class="text-gray-500 hover:text-gray-700 text-2xl"
-                        onclick="closeModal('scannerModal')"
-                        aria-label="Close modal"
-                    >
-                        &times;
-                    </button>
-                </div>
-                <div class="p-6">
-                    <div class="scanner-area text-center">
-                        <div
-                            class="scanner-frame w-64 h-64 border-2 border-emerald-500 rounded-lg mx-auto mb-4 relative bg-gray-50"
-                        >
-                            <div
-                                class="scanner-line absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent animate-scan"
-                            ></div>
-                        </div>
-                        <p class="text-sm text-gray-500 mb-4">
-                            Position the QR code within the frame above. Camera
-                            access required.
-                        </p>
-                        <div class="flex gap-4 justify-center">
-                            <button
-                                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                                onclick="startScanning()"
-                                aria-label="Start QR scanning"
-                            >
-                                Start Scanning
-                            </button>
-                            <button
-                                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
-                                onclick="manualEntry()"
-                                aria-label="Enter code manually"
-                            >
-                                Enter Manually
-                            </button>
-                        </div>
-                    </div>
-                    <div
-                        class="manual-entry hidden mt-4"
-                        id="manualEntrySection"
-                        role="region"
-                        aria-label="Manual entry"
-                    >
-                        <label
-                            for="productCode"
-                            class="block text-sm font-medium text-gray-700"
-                            >Product Code:</label
-                        >
-                        <input
-                            type="text"
-                            id="productCode"
-                            placeholder="Enter product code"
-                            class="mt-1 px-4 py-2 border border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            aria-describedby="code-help"
-                        />
-                        <span id="code-help" class="sr-only"
-                            >Enter the product code manually</span
-                        >
-                        <div
-                            class="error-message text-red-500 text-sm mt-1"
-                            id="code-error"
-                        ></div>
-                        <button
-                            class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                            onclick="lookupProduct()"
-                            aria-label="Lookup product by code"
-                        >
-                            Lookup Product
-                        </button>
-                    </div>
-                </div>
-            </div>
+          class="queue-container bg-white rounded-lg shadow-sm p-6"
+          id="inspectionQueue"
+        ></div>
+      </div>
+
+      <!-- Recent Inspections -->
+      <div>
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-gray-900">
+            Recent Inspections
+          </h2>
+          <button
+            class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+            onclick="viewAllInspections()"
+            aria-label="View all inspections"
+          >
+            View All
+          </button>
         </div>
+        <div
+          class="flex overflow-x-auto gap-4 pb-4"
+          id="recentInspections"
+        ></div>
+      </div>
+    </main>
 
-        <footer class="bg-gray-800 text-white py-8 mt-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-lg font-semibold">🌱 EcoMarket</h3>
-                        <p class="text-gray-400 mt-2">
-                            Connecting farmers and buyers for a sustainable
-                            future.
-                        </p>
-                    </div>
-                    <div>
-                        <h4 class="text-md font-semibold">Quick Links</h4>
-                        <ul class="mt-2 space-y-2">
-                            <li>
-                                <a
-                                    href="index.html"
-                                    class="text-gray-400 hover:text-white transition-colors"
-                                    >Home</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="marketplace.html"
-                                    class="text-gray-400 hover:text-white transition-colors"
-                                    >Marketplace</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="about.html"
-                                    class="text-gray-400 hover:text-white transition-colors"
-                                    >About</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
+    <!-- Inspection Modal -->
+    <div
+      id="inspectionModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="inspectionTitle"
+    >
+      <div
+        class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+      >
+        <div
+          class="p-6 border-b border-gray-200 flex justify-between items-center"
+        >
+          <h2 id="inspectionTitle" class="text-xl font-semibold text-gray-900">
+            🔍 Product Inspection
+          </h2>
+          <button
+            class="text-gray-500 hover:text-gray-700 text-2xl"
+            onclick="closeModal('inspectionModal')"
+            aria-label="Close modal"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="p-6">
+          <div class="product-preview mb-6" id="productPreview"></div>
+          <div class="flex border-b border-gray-200 mb-6">
+            <button
+              class="tab-button px-4 py-2 text-gray-600 font-medium border-b-2 border-transparent hover:text-emerald-600 hover:border-emerald-600 transition-colors active"
+              onclick="switchTab('visual-tab')"
+              role="tab"
+              aria-selected="true"
+              aria-controls="visual-tab"
+            >
+              Visual Quality
+            </button>
+            <button
+              class="tab-button px-4 py-2 text-gray-600 font-medium border-b-2 border-transparent hover:text-emerald-600 hover:border-emerald-600 transition-colors"
+              onclick="switchTab('packaging-tab')"
+              role="tab"
+              aria-selected="false"
+              aria-controls="packaging-tab"
+            >
+              Packaging
+            </button>
+            <button
+              class="tab-button px-4 py-2 text-gray-600 font-medium border-b-2 border-transparent hover:text-emerald-600 hover:border-emerald-600 transition-colors"
+              onclick="switchTab('measurements-tab')"
+              role="tab"
+              aria-selected="false"
+              aria-controls="measurements-tab"
+            >
+              Measurements
+            </button>
+            <button
+              class="tab-button px-4 py-2 text-gray-600 font-medium border-b-2 border-transparent hover:text-emerald-600 hover:border-emerald-600 transition-colors"
+              onclick="switchTab('notes-tab')"
+              role="tab"
+              aria-selected="false"
+              aria-controls="notes-tab"
+            >
+              Notes & Photos
+            </button>
+            <button
+              class="tab-button px-4 py-2 text-gray-600 font-medium border-b-2 border-transparent hover:text-emerald-600 hover:border-emerald-600 transition-colors"
+              onclick="switchTab('summary-tab')"
+              role="tab"
+              aria-selected="false"
+              aria-controls="summary-tab"
+            >
+              Summary
+            </button>
+          </div>
+          <div class="inspection-form">
+            <div
+              id="visual-tab"
+              class="tab-content active"
+              role="tabpanel"
+              aria-hidden="false"
+            >
+              <h4 class="text-lg font-medium text-gray-900 mb-4">
+                🌿 Freshness Assessment
+              </h4>
+              <div class="space-y-4">
+                <div class="rating-group">
+                  <label
+                    for="appearance-rating"
+                    class="block text-sm font-medium text-gray-700"
+                    >Visual Appearance:</label
+                  >
+                  <div
+                    class="star-rating flex gap-1 mt-1"
+                    data-criteria="appearance"
+                    role="radiogroup"
+                    aria-labelledby="appearance-label"
+                  >
+                    <span id="appearance-label" class="sr-only"
+                      >Rate visual appearance</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="1"
+                      role="radio"
+                      aria-checked="false"
+                      tabindex="0"
+                      >⭐</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="2"
+                      role="radio"
+                      aria-checked="false"
+                      >⭐</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="3"
+                      role="radio"
+                      aria-checked="false"
+                      >⭐</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="4"
+                      role="radio"
+                      aria-checked="false"
+                      >⭐</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="5"
+                      role="radio"
+                      aria-checked="false"
+                      >⭐</span
+                    >
+                  </div>
                 </div>
-                <div class="mt-8 text-center text-gray-400">
-                    <p>&copy; 2024 EcoMarket. All rights reserved.</p>
+                <div class="rating-group">
+                  <label
+                    for="texture-rating"
+                    class="block text-sm font-medium text-gray-700"
+                    >Texture & Firmness:</label
+                  >
+                  <div
+                    class="star-rating flex gap-1 mt-1"
+                    data-criteria="texture"
+                    role="radiogroup"
+                    aria-labelledby="texture-label"
+                  >
+                    <span id="texture-label" class="sr-only"
+                      >Rate texture and firmness</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="1"
+                      role="radio"
+                      aria-checked="false"
+                      tabindex="0"
+                      >⭐</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="2"
+                      role="radio"
+                      aria-checked="false"
+                      >⭐</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="3"
+                      role="radio"
+                      aria-checked="false"
+                      >⭐</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="4"
+                      role="radio"
+                      aria-checked="false"
+                      >⭐</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="5"
+                      role="radio"
+                      aria-checked="false"
+                      >⭐</span
+                    >
+                  </div>
                 </div>
+                <div class="rating-group">
+                  <label
+                    for="aroma-rating"
+                    class="block text-sm font-medium text-gray-700"
+                    >Aroma & Smell:</label
+                  >
+                  <div
+                    class="star-rating flex gap-1 mt-1"
+                    data-criteria="aroma"
+                    role="radiogroup"
+                    aria-labelledby="aroma-label"
+                  >
+                    <span id="aroma-label" class="sr-only"
+                      >Rate aroma and smell</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="1"
+                      role="radio"
+                      aria-checked="false"
+                      tabindex="0"
+                      >⭐</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="2"
+                      role="radio"
+                      aria-checked="false"
+                      >⭐</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="3"
+                      role="radio"
+                      aria-checked="false"
+                      >⭐</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="4"
+                      role="radio"
+                      aria-checked="false"
+                      >⭐</span
+                    >
+                    <span
+                      class="star text-2xl cursor-pointer text-gray-300 hover:text-yellow-400"
+                      data-rating="5"
+                      role="radio"
+                      aria-checked="false"
+                      >⭐</span
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
-        </footer>
+            <div
+              id="packaging-tab"
+              class="tab-content hidden"
+              role="tabpanel"
+              aria-hidden="true"
+            >
+              <h4 class="text-lg font-medium text-gray-900 mb-4">
+                📦 Packaging Quality
+              </h4>
+              <div
+                class="checkbox-group space-y-3"
+                role="group"
+                aria-labelledby="packaging-label"
+              >
+                <span id="packaging-label" class="sr-only"
+                  >Packaging quality checks</span
+                >
+                <label class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="packaging-clean"
+                    name="packaging"
+                    value="clean"
+                    class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    aria-describedby="clean-desc"
+                  />
+                  <span>Clean and hygienic packaging</span>
+                  <span id="clean-desc" class="sr-only"
+                    >Clean and hygienic packaging check</span
+                  >
+                </label>
+                <label class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="packaging-intact"
+                    name="packaging"
+                    value="intact"
+                    class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    aria-describedby="intact-desc"
+                  />
+                  <span>Packaging is intact and undamaged</span>
+                  <span id="intact-desc" class="sr-only"
+                    >Packaging is intact and undamaged check</span
+                  >
+                </label>
+                <label class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="packaging-labeled"
+                    name="packaging"
+                    value="labeled"
+                    class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    aria-describedby="labeled-desc"
+                  />
+                  <span>Properly labeled with farm info</span>
+                  <span id="labeled-desc" class="sr-only"
+                    >Properly labeled with farm info check</span
+                  >
+                </label>
+                <label class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="packaging-appropriate"
+                    name="packaging"
+                    value="appropriate"
+                    class="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    aria-describedby="appropriate-desc"
+                  />
+                  <span>Appropriate for product type</span>
+                  <span id="appropriate-desc" class="sr-only"
+                    >Appropriate for product type check</span
+                  >
+                </label>
+              </div>
+            </div>
+            <div
+              id="measurements-tab"
+              class="tab-content hidden"
+              role="tabpanel"
+              aria-hidden="true"
+            >
+              <h4 class="text-lg font-medium text-gray-900 mb-4">
+                ⚖️ Weight & Quantity
+              </h4>
+              <div class="space-y-4">
+                <div class="measurement-group">
+                  <label
+                    for="expectedWeight"
+                    class="block text-sm font-medium text-gray-700"
+                    >Expected Weight (kg):</label
+                  >
+                  <input
+                    type="number"
+                    id="expectedWeight"
+                    step="0.1"
+                    placeholder="e.g., 2.5"
+                    class="mt-1 px-4 py-2 border border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    aria-describedby="expected-help"
+                    required
+                  />
+                  <span id="expected-help" class="sr-only"
+                    >Enter the expected weight in kilograms</span
+                  >
+                  <div
+                    class="error-message text-red-500 text-sm mt-1"
+                    id="expected-error"
+                  ></div>
+                </div>
+                <div class="measurement-group">
+                  <label
+                    for="actualWeight"
+                    class="block text-sm font-medium text-gray-700"
+                    >Actual Weight (kg):</label
+                  >
+                  <input
+                    type="number"
+                    id="actualWeight"
+                    step="0.1"
+                    placeholder="e.g., 2.4"
+                    class="mt-1 px-4 py-2 border border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    aria-describedby="actual-help"
+                    required
+                  />
+                  <span id="actual-help" class="sr-only"
+                    >Enter the measured actual weight in kilograms</span
+                  >
+                  <div
+                    class="error-message text-red-500 text-sm mt-1"
+                    id="actual-error"
+                  ></div>
+                </div>
+                <div
+                  class="weight-variance"
+                  id="weightVariance"
+                  aria-live="polite"
+                ></div>
+              </div>
+            </div>
+            <div
+              id="notes-tab"
+              class="tab-content hidden"
+              role="tabpanel"
+              aria-hidden="true"
+            >
+              <div class="inspection-notes mb-6">
+                <label
+                  for="inspectionNotes"
+                  class="block text-sm font-medium text-gray-700"
+                  >Additional Notes:</label
+                >
+                <textarea
+                  id="inspectionNotes"
+                  rows="4"
+                  placeholder="Add any specific observations, defects, or recommendations..."
+                  class="mt-1 px-4 py-2 border border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  aria-describedby="notes-help"
+                ></textarea>
+                <span id="notes-help" class="sr-only"
+                  >Enter additional notes about the inspection</span
+                >
+                <div
+                  class="error-message text-red-500 text-sm mt-1"
+                  id="notes-error"
+                ></div>
+              </div>
+              <div class="photo-upload">
+                <h4 class="text-lg font-medium text-gray-900 mb-4">
+                  📸 Inspection Photos
+                </h4>
+                <div
+                  class="upload-area border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:bg-gray-50"
+                  onclick="triggerFileUpload()"
+                  role="button"
+                  tabindex="0"
+                  aria-label="Upload photos"
+                >
+                  <div class="text-3xl mb-2">📷</div>
+                  <p class="text-sm text-gray-500">
+                    Click to add photos (up to 5 images)
+                  </p>
+                  <input
+                    type="file"
+                    id="photoUpload"
+                    multiple
+                    accept="image/*"
+                    class="hidden"
+                    aria-hidden="true"
+                  />
+                </div>
+                <div
+                  id="photoPreview"
+                  class="photo-preview grid grid-cols-2 gap-4 mt-4"
+                  aria-label="Preview of uploaded photos"
+                ></div>
+                <div
+                  class="error-message text-red-500 text-sm mt-1"
+                  id="photo-error"
+                ></div>
+              </div>
+            </div>
+            <div
+              id="summary-tab"
+              class="tab-content hidden"
+              role="tabpanel"
+              aria-hidden="true"
+            >
+              <h4 class="text-lg font-medium text-gray-900 mb-4">
+                📋 Inspection Summary
+              </h4>
+              <div class="overall-rating mb-4">
+                <span class="text-sm font-medium text-gray-700"
+                  >Overall Quality Score:</span
+                >
+                <span
+                  class="score-display text-lg font-semibold text-gray-900 ml-2"
+                  id="overallScore"
+                  aria-live="polite"
+                  >0/5</span
+                >
+              </div>
+              <div class="criteria-summary space-y-2">
+                <p class="text-sm">
+                  Visual:
+                  <span id="summary-appearance">Not rated</span>
+                </p>
+                <p class="text-sm">
+                  Texture:
+                  <span id="summary-texture">Not rated</span>
+                </p>
+                <p class="text-sm">
+                  Aroma:
+                  <span id="summary-aroma">Not rated</span>
+                </p>
+                <p class="text-sm">
+                  Packaging checks:
+                  <span id="summary-packaging">0/4</span>
+                </p>
+                <p class="text-sm">
+                  Weight variance:
+                  <span id="summary-weight">Not measured</span>
+                </p>
+              </div>
+              <div
+                class="validation-summary text-red-500 text-sm mt-4"
+                id="form-validation"
+                aria-live="polite"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div class="p-6 border-t border-gray-200 flex justify-end gap-4">
+          <button
+            class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+            onclick="rejectProduct()"
+            aria-label="Reject product"
+          >
+            ❌ Reject
+          </button>
+          <button
+            class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors"
+            onclick="requestReview()"
+            aria-label="Request review"
+          >
+            ⚠️ Needs Review
+          </button>
+          <button
+            class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+            onclick="validateAndApproveProduct()"
+            aria-label="Approve product"
+            disabled
+            id="approveBtn"
+          >
+            ✅ Approve
+          </button>
+        </div>
+      </div>
+    </div>
 
-        <script>
-            // Sample data for demonstration
-            const sampleQueueItems = [
-                {
-                    id: "QC001",
-                    productName: "Organic Tomatoes",
-                    farmer: "Green Valley Farm",
-                    category: "vegetables",
-                    priority: "urgent",
-                    weight: "2.5 kg",
-                    orderDate: "2024-12-07",
-                    estimatedShelf: "3 days",
-                    image: "🍅",
-                },
-                {
-                    id: "QC002",
-                    productName: "Fresh Strawberries",
-                    farmer: "Berry Paradise",
-                    category: "fruits",
-                    priority: "high",
-                    weight: "1.2 kg",
-                    orderDate: "2024-12-07",
-                    estimatedShelf: "2 days",
-                    image: "🍓",
-                },
-                {
-                    id: "QC003",
-                    productName: "Baby Spinach",
-                    farmer: "Leafy Greens Co",
-                    category: "vegetables",
-                    priority: "normal",
-                    weight: "0.8 kg",
-                    orderDate: "2024-12-07",
-                    estimatedShelf: "4 days",
-                    image: "🥬",
-                },
-                {
-                    id: "QC004",
-                    productName: "Organic Carrots",
-                    farmer: "Root Vegetable Farm",
-                    category: "vegetables",
-                    priority: "normal",
-                    weight: "1.5 kg",
-                    orderDate: "2024-12-07",
-                    estimatedShelf: "7 days",
-                    image: "🥕",
-                },
-            ];
+    <!-- Bulk Inspection Modal -->
+    <div
+      id="bulkInspectionModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bulkTitle"
+    >
+      <div
+        class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+      >
+        <div
+          class="p-6 border-b border-gray-200 flex justify-between items-center"
+        >
+          <h2 id="bulkTitle" class="text-xl font-semibold text-gray-900">
+            🔍 Bulk Inspection
+          </h2>
+          <button
+            class="text-gray-500 hover:text-gray-700 text-2xl"
+            onclick="closeModal('bulkInspectionModal')"
+            aria-label="Close modal"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="p-6">
+          <div class="flex gap-4 mb-4">
+            <button
+              class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              onclick="selectAllItems()"
+              aria-label="Select all items"
+            >
+              Select All
+            </button>
+            <button
+              class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+              onclick="clearSelection()"
+              aria-label="Clear selection"
+            >
+              Clear Selection
+            </button>
+            <span
+              class="selection-count text-gray-600 self-center"
+              aria-live="polite"
+              >0 items selected</span
+            >
+          </div>
+          <div
+            class="bulk-items-list space-y-4"
+            id="bulkItemsList"
+            role="list"
+          ></div>
+          <div class="flex gap-4 mt-6">
+            <button
+              class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+              onclick="bulkApprove()"
+              aria-label="Approve selected items"
+              disabled
+              id="bulkApproveBtn"
+            >
+              ✅ Approve Selected
+            </button>
+            <button
+              class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors"
+              onclick="bulkReview()"
+              aria-label="Mark selected for review"
+              disabled
+              id="bulkReviewBtn"
+            >
+              ⚠️ Mark for Review
+            </button>
+            <button
+              class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+              onclick="bulkReject()"
+              aria-label="Reject selected items"
+              disabled
+              id="bulkRejectBtn"
+            >
+              ❌ Reject Selected
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            const sampleRecentInspections = [
-                {
-                    id: "INS001",
-                    productName: "Bell Peppers",
-                    result: "approved",
-                    score: 4.8,
-                    inspector: "QC Team A",
-                    timestamp: "10 minutes ago",
-                },
-                {
-                    id: "INS002",
-                    productName: "Fresh Basil",
-                    result: "approved",
-                    score: 4.9,
-                    inspector: "QC Team B",
-                    timestamp: "25 minutes ago",
-                },
-                {
-                    id: "INS003",
-                    productName: "Mixed Lettuce",
-                    result: "review",
-                    score: 3.2,
-                    inspector: "QC Team A",
-                    timestamp: "1 hour ago",
-                },
-                {
-                    id: "INS004",
-                    productName: "Cherry Tomatoes",
-                    result: "rejected",
-                    score: 2.1,
-                    inspector: "QC Team C",
-                    timestamp: "2 hours ago",
-                },
-            ];
+    <!-- QR Scanner Modal -->
+    <div
+      id="scannerModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="scannerTitle"
+    >
+      <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
+        <div
+          class="p-6 border-b border-gray-200 flex justify-between items-center"
+        >
+          <h2 id="scannerTitle" class="text-xl font-semibold text-gray-900">
+            📱 QR Code Scanner
+          </h2>
+          <button
+            class="text-gray-500 hover:text-gray-700 text-2xl"
+            onclick="closeModal('scannerModal')"
+            aria-label="Close modal"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="p-6">
+          <div class="scanner-area text-center">
+            <div
+              class="scanner-frame w-64 h-64 border-2 border-emerald-500 rounded-lg mx-auto mb-4 relative bg-gray-50"
+            >
+              <div
+                class="scanner-line absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent animate-scan"
+              ></div>
+            </div>
+            <p class="text-sm text-gray-500 mb-4">
+              Position the QR code within the frame above. Camera access
+              required.
+            </p>
+            <div class="flex gap-4 justify-center">
+              <button
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                onclick="startScanning()"
+                aria-label="Start QR scanning"
+              >
+                Start Scanning
+              </button>
+              <button
+                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+                onclick="manualEntry()"
+                aria-label="Enter code manually"
+              >
+                Enter Manually
+              </button>
+            </div>
+          </div>
+          <div
+            class="manual-entry hidden mt-4"
+            id="manualEntrySection"
+            role="region"
+            aria-label="Manual entry"
+          >
+            <label
+              for="productCode"
+              class="block text-sm font-medium text-gray-700"
+              >Product Code:</label
+            >
+            <input
+              type="text"
+              id="productCode"
+              placeholder="Enter product code"
+              class="mt-1 px-4 py-2 border border-gray-300 rounded-lg w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              aria-describedby="code-help"
+            />
+            <span id="code-help" class="sr-only"
+              >Enter the product code manually</span
+            >
+            <div
+              class="error-message text-red-500 text-sm mt-1"
+              id="code-error"
+            ></div>
+            <button
+              class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              onclick="lookupProduct()"
+              aria-label="Lookup product by code"
+            >
+              Lookup Product
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            // Initialize dashboard
-            document.addEventListener("DOMContentLoaded", function () {
-                loadQueueItems();
-                loadRecentInspections();
-                updateStats();
-                setupEventListeners();
-            });
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold">🌱 EcoMarket</h3>
+            <p class="text-gray-400 mt-2">
+              Connecting farmers and buyers for a sustainable future.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-md font-semibold">Quick Links</h4>
+            <ul class="mt-2 space-y-2">
+              <li>
+                <a
+                  href="index.html"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="marketplace.html"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Marketplace</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >About</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 text-center text-gray-400">
+          <p>&copy; 2024 EcoMarket. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
 
-            function setupEventListeners() {
-                document.querySelectorAll(".star").forEach((star) => {
-                    star.addEventListener("click", handleStarRating);
-                    star.addEventListener("mouseover", highlightStars);
-                    star.addEventListener("mouseout", resetStarHighlight);
-                });
+    <script>
+      // Sample data for demonstration
+      const sampleQueueItems = [
+        {
+          id: "QC001",
+          productName: "Tomatoes",
+          farmer: "Green Valley Farm",
+          category: "vegetables",
+          priority: "urgent",
+          weight: "2.5 kg",
+          orderDate: "2024-12-07",
+          estimatedShelf: "3 days",
+          image: "./assets/tomates1.jpeg",
+        },
+        {
+          id: "QC002",
+          productName: "Guava",
+          farmer: "Berry Paradise",
+          category: "fruits",
+          priority: "high",
+          weight: "1.2 kg",
+          orderDate: "2024-12-07",
+          estimatedShelf: "2 days",
+          image: "./assets/guava.jpeg",
+        },
+        {
+          id: "QC003",
+          productName: "Cassava",
+          farmer: "Leafy Greens Co",
+          category: "vegetables",
+          priority: "normal",
+          weight: "0.8 kg",
+          orderDate: "2024-12-07",
+          estimatedShelf: "4 days",
+          image: "./assets/Cassava.jpeg",
+        },
+        {
+          id: "QC004",
+          productName: "Yam",
+          farmer: "Root Vegetable Farm",
+          category: "vegetables",
+          priority: "normal",
+          weight: "1.5 kg",
+          orderDate: "2024-12-07",
+          estimatedShelf: "7 days",
+          image: "./assets/Yam.jpeg",
+        },
+      ];
 
-                document
-                    .getElementById("actualWeight")
-                    .addEventListener("input", calculateWeightVariance);
-                document
-                    .getElementById("expectedWeight")
-                    .addEventListener("input", calculateWeightVariance);
-                document
-                    .getElementById("photoUpload")
-                    .addEventListener("change", handlePhotoUpload);
+      const sampleRecentInspections = [
+        {
+          id: "INS001",
+          productName: "Bell Peppers",
+          result: "approved",
+          score: 4.8,
+          inspector: "QC Team A",
+          timestamp: "10 minutes ago",
+        },
+        {
+          id: "INS002",
+          productName: "Fresh Basil",
+          result: "approved",
+          score: 4.9,
+          inspector: "QC Team B",
+          timestamp: "25 minutes ago",
+        },
+        {
+          id: "INS003",
+          productName: "Mixed Lettuce",
+          result: "review",
+          score: 3.2,
+          inspector: "QC Team A",
+          timestamp: "1 hour ago",
+        },
+        {
+          id: "INS004",
+          productName: "Cherry Tomatoes",
+          result: "rejected",
+          score: 2.1,
+          inspector: "QC Team C",
+          timestamp: "2 hours ago",
+        },
+      ];
 
-                document.querySelectorAll(".tab-button").forEach((button) => {
-                    button.addEventListener("keydown", function (e) {
-                        if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            this.click();
-                        }
-                    });
-                });
+      // Initialize dashboard
+      document.addEventListener("DOMContentLoaded", function () {
+        loadQueueItems();
+        loadRecentInspections();
+        updateStats();
+        setupEventListeners();
+      });
 
-                ["expectedWeight", "actualWeight"].forEach((id) => {
-                    document
-                        .getElementById(id)
-                        .addEventListener("blur", function () {
-                            if (
-                                this.value &&
-                                (this.value < 0 || this.value > 100)
-                            ) {
-                                showError(
-                                    this.id,
-                                    "Weight must be between 0 and 100 kg.",
-                                );
-                            } else {
-                                const errorEl = document.getElementById(
-                                    this.id + "-error",
-                                );
-                                if (errorEl) errorEl.textContent = "";
-                            }
-                        });
-                });
+      function setupEventListeners() {
+        document.querySelectorAll(".star").forEach((star) => {
+          star.addEventListener("click", handleStarRating);
+          star.addEventListener("mouseover", highlightStars);
+          star.addEventListener("mouseout", resetStarHighlight);
+        });
 
-                const checkFormState = () => {
-                    const hasRatings = document.querySelector(
-                        ".star-rating[data-value]",
-                    );
-                    const hasWeights =
-                        document.getElementById("expectedWeight").value &&
-                        document.getElementById("actualWeight").value;
-                    document.getElementById("approveBtn").disabled =
-                        !hasRatings || !hasWeights;
-                };
+        document
+          .getElementById("actualWeight")
+          .addEventListener("input", calculateWeightVariance);
+        document
+          .getElementById("expectedWeight")
+          .addEventListener("input", calculateWeightVariance);
+        document
+          .getElementById("photoUpload")
+          .addEventListener("change", handlePhotoUpload);
 
-                document.querySelectorAll(".star-rating").forEach((rating) => {
-                    rating.addEventListener("change", checkFormState);
-                });
-
-                ["expectedWeight", "actualWeight"].forEach((id) => {
-                    document
-                        .getElementById(id)
-                        .addEventListener("input", checkFormState);
-                });
+        document.querySelectorAll(".tab-button").forEach((button) => {
+          button.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              this.click();
             }
+          });
+        });
 
-            function loadQueueItems() {
-                const container = document.getElementById("inspectionQueue");
-                container.innerHTML = sampleQueueItems
-                    .map(
-                        (item) => `
-                        <div class="queue-card ${item.priority} bg-white rounded-lg shadow-sm p-6 mb-4 hover:shadow-md transition-all cursor-pointer" onclick="openInspection('${item.id}')" role="button" tabindex="0" aria-label="Inspect ${item.productName}">
+        ["expectedWeight", "actualWeight"].forEach((id) => {
+          document.getElementById(id).addEventListener("blur", function () {
+            if (this.value && (this.value < 0 || this.value > 100)) {
+              showError(this.id, "Weight must be between 0 and 100 kg.");
+            } else {
+              const errorEl = document.getElementById(this.id + "-error");
+              if (errorEl) errorEl.textContent = "";
+            }
+          });
+        });
+
+        const checkFormState = () => {
+          const hasRatings = document.querySelector(".star-rating[data-value]");
+          const hasWeights =
+            document.getElementById("expectedWeight").value &&
+            document.getElementById("actualWeight").value;
+          document.getElementById("approveBtn").disabled =
+            !hasRatings || !hasWeights;
+        };
+
+        document.querySelectorAll(".star-rating").forEach((rating) => {
+          rating.addEventListener("change", checkFormState);
+        });
+
+        ["expectedWeight", "actualWeight"].forEach((id) => {
+          document.getElementById(id).addEventListener("input", checkFormState);
+        });
+      }
+
+      function loadQueueItems() {
+        const container = document.getElementById("inspectionQueue");
+        container.innerHTML = sampleQueueItems
+          .map(
+            (item) => `
+                        <div class="queue-card ${
+                          item.priority
+                        } bg-white rounded-lg shadow-sm p-6 mb-4 hover:shadow-md transition-all cursor-pointer" onclick="openInspection('${
+              item.id
+            }')" role="button" tabindex="0" aria-label="Inspect ${
+              item.productName
+            }">
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center gap-4">
-                                    <div class="text-3xl">${item.image}</div>
+                                                                        <div class="w-16 h-16 rounded-lg overflow-hidden shadow">
+                                                                            <img src="${
+                                                                              item.image
+                                                                            }" alt="${
+              item.productName
+            }" class="w-full h-full object-cover" />
+                                                                        </div>
                                     <div>
-                                        <h3 class="text-lg font-medium text-gray-900">${item.productName}</h3>
-                                        <p class="text-sm text-gray-500">From: ${item.farmer}</p>
+                                        <h3 class="text-lg font-medium text-gray-900">${
+                                          item.productName
+                                        }</h3>
+                                        <p class="text-sm text-gray-500">From: ${
+                                          item.farmer
+                                        }</p>
                                         <div class="flex gap-4 text-sm text-gray-500 mt-2">
                                             <span>📦 ${item.weight}</span>
-                                            <span>⏰ ${item.estimatedShelf}</span>
+                                            <span>⏰ ${
+                                              item.estimatedShelf
+                                            }</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-4">
-                                    <span class="priority-badge px-3 py-1 rounded-full text-sm font-medium ${item.priority === "urgent" ? "bg-red-100 text-red-700" : item.priority === "high" ? "bg-yellow-100 text-yellow-700" : "bg-green-100 text-green-700"}" aria-label="${item.priority} priority">${item.priority}</span>
-                                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" onclick="openInspection('${item.id}'); event.stopPropagation();" aria-label="Inspect item">🔍 Inspect</button>
+                                    <span class="priority-badge px-3 py-1 rounded-full text-sm font-medium ${
+                                      item.priority === "urgent"
+                                        ? "bg-red-100 text-red-700"
+                                        : item.priority === "high"
+                                        ? "bg-yellow-100 text-yellow-700"
+                                        : "bg-green-100 text-green-700"
+                                    }" aria-label="${item.priority} priority">${
+              item.priority
+            }</span>
+                                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" onclick="openInspection('${
+                                      item.id
+                                    }'); event.stopPropagation();" aria-label="Inspect item">🔍 Inspect</button>
                                 </div>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2 mt-4">
                                 <div class="bg-gray-500 h-2 rounded-full" style="width: 0%"></div>
                             </div>
                         </div>
-                    `,
-                    )
-                    .join("");
-            }
+                    `
+          )
+          .join("");
+      }
 
-            function loadRecentInspections() {
-                const container = document.getElementById("recentInspections");
-                container.innerHTML = sampleRecentInspections
-                    .map(
-                        (item) => `
-                        <div class="inspection-card-compact ${item.result} bg-white rounded-lg shadow-sm p-4 flex items-center gap-4" role="article" aria-label="${item.productName} inspection">
-                            <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">${item.productName.charAt(0)}</div>
+      function loadRecentInspections() {
+        const container = document.getElementById("recentInspections");
+        container.innerHTML = sampleRecentInspections
+          .map(
+            (item) => `
+                        <div class="inspection-card-compact ${
+                          item.result
+                        } bg-white rounded-lg shadow-sm p-4 flex items-center gap-4" role="article" aria-label="${
+              item.productName
+            } inspection">
+                            <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">${item.productName.charAt(
+                              0
+                            )}</div>
                             <div>
-                                <h4 class="text-sm font-medium text-gray-900">${item.productName}</h4>
+                                <h4 class="text-sm font-medium text-gray-900">${
+                                  item.productName
+                                }</h4>
                                 <div class="flex items-center gap-2 mt-1">
-                                    <span class="text-sm font-semibold">${item.score}/5</span>
-                                    <span class="px-2 py-1 rounded text-xs font-medium ${item.result === "approved" ? "bg-green-100 text-green-700" : item.result === "review" ? "bg-yellow-100 text-yellow-700" : "bg-red-100 text-red-700"}" aria-label="${item.result}">${item.result === "approved" ? "✅" : item.result === "review" ? "⚠️" : "❌"}</span>
+                                    <span class="text-sm font-semibold">${
+                                      item.score
+                                    }/5</span>
+                                    <span class="px-2 py-1 rounded text-xs font-medium ${
+                                      item.result === "approved"
+                                        ? "bg-green-100 text-green-700"
+                                        : item.result === "review"
+                                        ? "bg-yellow-100 text-yellow-700"
+                                        : "bg-red-100 text-red-700"
+                                    }" aria-label="${item.result}">${
+              item.result === "approved"
+                ? "✅"
+                : item.result === "review"
+                ? "⚠️"
+                : "❌"
+            }</span>
                                 </div>
-                                <div class="text-xs text-gray-500 mt-1">By: ${item.inspector}</div>
-                                <div class="text-xs text-gray-500">${item.timestamp}</div>
+                                <div class="text-xs text-gray-500 mt-1">By: ${
+                                  item.inspector
+                                }</div>
+                                <div class="text-xs text-gray-500">${
+                                  item.timestamp
+                                }</div>
                             </div>
                         </div>
-                    `,
-                    )
-                    .join("");
-            }
+                    `
+          )
+          .join("");
+      }
 
-            function updateStats() {
-                document.getElementById("approvedToday").textContent = "47";
-                document.getElementById("pendingItems").textContent =
-                    sampleQueueItems.length;
-                document.getElementById("qualityScore").textContent = "98.5%";
-            }
+      function updateStats() {
+        document.getElementById("approvedToday").textContent = "47";
+        document.getElementById("pendingItems").textContent =
+          sampleQueueItems.length;
+        document.getElementById("qualityScore").textContent = "98.5%";
+      }
 
-            function openInspection(itemId) {
-                const item = sampleQueueItems.find((i) => i.id === itemId);
-                if (!item) return;
+      function openInspection(itemId) {
+        const item = sampleQueueItems.find((i) => i.id === itemId);
+        if (!item) return;
 
-                document.getElementById("productPreview").innerHTML = `
+        document.getElementById("productPreview").innerHTML = `
                     <div class="flex items-center gap-6">
-                        <div class="text-5xl">${item.image}</div>
+                                                <div class="w-20 h-20 rounded-lg overflow-hidden shadow">
+                                                    <img src="${item.image}" alt="${item.productName}" class="w-full h-full object-cover" />
+                                                </div>
                         <div>
                             <h3 class="text-lg font-medium text-gray-900">${item.productName}</h3>
                             <p class="text-sm text-gray-500">From: ${item.farmer}</p>
@@ -1350,572 +1318,569 @@
                     </div>
                 `;
 
-                resetInspectionForm();
-                openModal("inspectionModal");
-            }
+        resetInspectionForm();
+        openModal("inspectionModal");
+      }
 
-            function resetInspectionForm() {
-                document.querySelectorAll(".star").forEach((star) => {
-                    star.classList.remove("text-yellow-400");
-                    star.classList.add("text-gray-300");
-                });
+      function resetInspectionForm() {
+        document.querySelectorAll(".star").forEach((star) => {
+          star.classList.remove("text-yellow-400");
+          star.classList.add("text-gray-300");
+        });
 
-                document.getElementById("expectedWeight").value = "";
-                document.getElementById("actualWeight").value = "";
-                document.getElementById("inspectionNotes").value = "";
-                document
-                    .querySelectorAll('input[type="checkbox"]')
-                    .forEach((cb) => {
-                        cb.checked = false;
-                    });
+        document.getElementById("expectedWeight").value = "";
+        document.getElementById("actualWeight").value = "";
+        document.getElementById("inspectionNotes").value = "";
+        document.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
+          cb.checked = false;
+        });
 
-                document.getElementById("photoPreview").innerHTML = "";
-                document.getElementById("overallScore").textContent = "0/5";
+        document.getElementById("photoPreview").innerHTML = "";
+        document.getElementById("overallScore").textContent = "0/5";
 
-                document.querySelectorAll(".tab-button").forEach((button) => {
-                    button.classList.remove(
-                        "border-emerald-600",
-                        "text-emerald-600",
-                    );
-                    button.classList.add("border-transparent", "text-gray-600");
-                });
-                document
-                    .querySelector(".tab-button")
-                    .classList.add("border-emerald-600", "text-emerald-600");
+        document.querySelectorAll(".tab-button").forEach((button) => {
+          button.classList.remove("border-emerald-600", "text-emerald-600");
+          button.classList.add("border-transparent", "text-gray-600");
+        });
+        document
+          .querySelector(".tab-button")
+          .classList.add("border-emerald-600", "text-emerald-600");
 
-                document.querySelectorAll(".tab-content").forEach((content) => {
-                    content.classList.add("hidden");
-                    content.setAttribute("aria-hidden", "true");
-                });
-                document
-                    .getElementById("visual-tab")
-                    .classList.remove("hidden");
-                document
-                    .getElementById("visual-tab")
-                    .setAttribute("aria-hidden", "false");
+        document.querySelectorAll(".tab-content").forEach((content) => {
+          content.classList.add("hidden");
+          content.setAttribute("aria-hidden", "true");
+        });
+        document.getElementById("visual-tab").classList.remove("hidden");
+        document
+          .getElementById("visual-tab")
+          .setAttribute("aria-hidden", "false");
 
-                document
-                    .querySelectorAll(".error-message")
-                    .forEach((el) => (el.textContent = ""));
-            }
+        document
+          .querySelectorAll(".error-message")
+          .forEach((el) => (el.textContent = ""));
+      }
 
-            function handleStarRating(event) {
-                const star = event.target;
-                const rating = parseInt(star.getAttribute("data-rating"));
-                const ratingGroup = star.parentElement;
-                const stars = ratingGroup.querySelectorAll(".star");
+      function handleStarRating(event) {
+        const star = event.target;
+        const rating = parseInt(star.getAttribute("data-rating"));
+        const ratingGroup = star.parentElement;
+        const stars = ratingGroup.querySelectorAll(".star");
 
-                stars.forEach((s, index) => {
-                    s.classList.toggle("text-yellow-400", index < rating);
-                    s.classList.toggle("text-gray-300", index >= rating);
-                });
+        stars.forEach((s, index) => {
+          s.classList.toggle("text-yellow-400", index < rating);
+          s.classList.toggle("text-gray-300", index >= rating);
+        });
 
-                ratingGroup.setAttribute("data-value", rating);
-                updateOverallScore();
-            }
+        ratingGroup.setAttribute("data-value", rating);
+        updateOverallScore();
+      }
 
-            function highlightStars(event) {
-                const star = event.target;
-                const rating = parseInt(star.getAttribute("data-rating"));
-                const stars = star.parentElement.querySelectorAll(".star");
+      function highlightStars(event) {
+        const star = event.target;
+        const rating = parseInt(star.getAttribute("data-rating"));
+        const stars = star.parentElement.querySelectorAll(".star");
 
-                stars.forEach((s, index) => {
-                    s.classList.toggle("text-yellow-400", index < rating);
-                    s.classList.toggle("text-gray-300", index >= rating);
-                });
-            }
+        stars.forEach((s, index) => {
+          s.classList.toggle("text-yellow-400", index < rating);
+          s.classList.toggle("text-gray-300", index >= rating);
+        });
+      }
 
-            function resetStarHighlight(event) {
-                const ratingGroup = event.target.parentElement;
-                const currentRating = parseInt(
-                    ratingGroup.getAttribute("data-value") || "0",
-                );
-                const stars = ratingGroup.querySelectorAll(".star");
+      function resetStarHighlight(event) {
+        const ratingGroup = event.target.parentElement;
+        const currentRating = parseInt(
+          ratingGroup.getAttribute("data-value") || "0"
+        );
+        const stars = ratingGroup.querySelectorAll(".star");
 
-                stars.forEach((s, index) => {
-                    s.classList.toggle(
-                        "text-yellow-400",
-                        index < currentRating,
-                    );
-                    s.classList.toggle("text-gray-300", index >= currentRating);
-                });
-            }
+        stars.forEach((s, index) => {
+          s.classList.toggle("text-yellow-400", index < currentRating);
+          s.classList.toggle("text-gray-300", index >= currentRating);
+        });
+      }
 
-            function updateOverallScore() {
-                const ratings = document.querySelectorAll(
-                    ".star-rating[data-value]",
-                );
-                let total = 0;
-                let count = 0;
+      function updateOverallScore() {
+        const ratings = document.querySelectorAll(".star-rating[data-value]");
+        let total = 0;
+        let count = 0;
 
-                ratings.forEach((rating) => {
-                    const value = parseInt(rating.getAttribute("data-value"));
-                    if (value > 0) {
-                        total += value;
-                        count++;
-                    }
-                });
+        ratings.forEach((rating) => {
+          const value = parseInt(rating.getAttribute("data-value"));
+          if (value > 0) {
+            total += value;
+            count++;
+          }
+        });
 
-                const averageScore = count > 0 ? (total / count).toFixed(1) : 0;
-                document.getElementById("overallScore").textContent =
-                    `${averageScore}/5`;
-            }
+        const averageScore = count > 0 ? (total / count).toFixed(1) : 0;
+        document.getElementById(
+          "overallScore"
+        ).textContent = `${averageScore}/5`;
+      }
 
-            function calculateWeightVariance() {
-                const expected = parseFloat(
-                    document.getElementById("expectedWeight").value,
-                );
-                const actual = parseFloat(
-                    document.getElementById("actualWeight").value,
-                );
+      function calculateWeightVariance() {
+        const expected = parseFloat(
+          document.getElementById("expectedWeight").value
+        );
+        const actual = parseFloat(
+          document.getElementById("actualWeight").value
+        );
 
-                if (expected && actual) {
-                    const variance = (
-                        ((actual - expected) / expected) *
-                        100
-                    ).toFixed(1);
-                    const varianceContainer =
-                        document.getElementById("weightVariance");
+        if (expected && actual) {
+          const variance = (((actual - expected) / expected) * 100).toFixed(1);
+          const varianceContainer = document.getElementById("weightVariance");
 
-                    let status = "";
-                    let color = "";
+          let status = "";
+          let color = "";
 
-                    if (Math.abs(variance) <= 5) {
-                        status = "✅ Within acceptable range";
-                        color = "#22c55e";
-                    } else if (Math.abs(variance) <= 10) {
-                        status = "⚠️ Minor variance";
-                        color = "#f59e0b";
-                    } else {
-                        status = "❌ Significant variance";
-                        color = "#ef4444";
-                    }
+          if (Math.abs(variance) <= 5) {
+            status = "✅ Within acceptable range";
+            color = "#22c55e";
+          } else if (Math.abs(variance) <= 10) {
+            status = "⚠️ Minor variance";
+            color = "#f59e0b";
+          } else {
+            status = "❌ Significant variance";
+            color = "#ef4444";
+          }
 
-                    varianceContainer.innerHTML = `
+          varianceContainer.innerHTML = `
                         <div style="color: ${color}; font-weight: 500;">
-                            Variance: ${variance > 0 ? "+" : ""}${variance}% - ${status}
+                            Variance: ${
+                              variance > 0 ? "+" : ""
+                            }${variance}% - ${status}
                         </div>
                     `;
-                }
-            }
+        }
+      }
 
-            function handlePhotoUpload(event) {
-                const files = event.target.files;
-                const preview = document.getElementById("photoPreview");
+      function handlePhotoUpload(event) {
+        const files = event.target.files;
+        const preview = document.getElementById("photoPreview");
 
-                Array.from(files).forEach((file) => {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        const photoDiv = document.createElement("div");
-                        photoDiv.className = "relative";
-                        photoDiv.innerHTML = `
+        Array.from(files).forEach((file) => {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const photoDiv = document.createElement("div");
+            photoDiv.className = "relative";
+            photoDiv.innerHTML = `
                             <img src="${e.target.result}" alt="Inspection photo" class="w-full h-32 object-cover rounded-lg">
                             <button class="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600 transition-colors" onclick="removePhoto(this)" aria-label="Remove photo">×</button>
                         `;
-                        preview.appendChild(photoDiv);
-                    };
-                    reader.readAsDataURL(file);
-                });
-            }
+            preview.appendChild(photoDiv);
+          };
+          reader.readAsDataURL(file);
+        });
+      }
 
-            function removePhoto(button) {
-                button.parentElement.remove();
-            }
+      function removePhoto(button) {
+        button.parentElement.remove();
+      }
 
-            function triggerFileUpload() {
-                document.getElementById("photoUpload").click();
-            }
+      function triggerFileUpload() {
+        document.getElementById("photoUpload").click();
+      }
 
-            function approveProduct() {
-                showSuccessMessage("Product approved successfully!");
-                closeModal("inspectionModal");
-                updateQueueAfterAction();
-            }
+      function approveProduct() {
+        showSuccessMessage("Product approved successfully!");
+        closeModal("inspectionModal");
+        updateQueueAfterAction();
+      }
 
-            function rejectProduct() {
-                showSuccessMessage(
-                    "Product rejected. Farmer has been notified.",
-                );
-                closeModal("inspectionModal");
-                updateQueueAfterAction();
-            }
+      function rejectProduct() {
+        showSuccessMessage("Product rejected. Farmer has been notified.");
+        closeModal("inspectionModal");
+        updateQueueAfterAction();
+      }
 
-            function requestReview() {
-                showSuccessMessage("Product marked for secondary review.");
-                closeModal("inspectionModal");
-                updateQueueAfterAction();
-            }
+      function requestReview() {
+        showSuccessMessage("Product marked for secondary review.");
+        closeModal("inspectionModal");
+        updateQueueAfterAction();
+      }
 
-            function updateQueueAfterAction() {
-                setTimeout(() => {
-                    loadQueueItems();
-                    updateStats();
-                }, 1000);
-            }
+      function updateQueueAfterAction() {
+        setTimeout(() => {
+          loadQueueItems();
+          updateStats();
+        }, 1000);
+      }
 
-            function startBulkInspection() {
-                loadBulkItems();
-                openModal("bulkInspectionModal");
-            }
+      function startBulkInspection() {
+        loadBulkItems();
+        openModal("bulkInspectionModal");
+      }
 
-            function scanBarcode() {
-                openModal("scannerModal");
-            }
+      function scanBarcode() {
+        openModal("scannerModal");
+      }
 
-            function generateReport() {
-                showSuccessMessage(
-                    "Quality control report is being generated...",
-                );
-            }
+      function generateReport() {
+        showSuccessMessage("Quality control report is being generated...");
+      }
 
-            function viewTrends() {
-                showSuccessMessage(
-                    "Quality trends analysis will be available soon.",
-                );
-            }
+      function viewTrends() {
+        showSuccessMessage("Quality trends analysis will be available soon.");
+      }
 
-            function loadBulkItems() {
-                const container = document.getElementById("bulkItemsList");
-                container.innerHTML = sampleQueueItems
-                    .map(
-                        (item) => `
+      function loadBulkItems() {
+        const container = document.getElementById("bulkItemsList");
+        container.innerHTML = sampleQueueItems
+          .map(
+            (item) => `
                         <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-                            <input type="checkbox" id="bulk-${item.id}" class="bulk-checkbox h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                            <label for="bulk-${item.id}" class="flex-grow flex items-center gap-4 cursor-pointer">
-                                <div class="text-2xl">${item.image}</div>
+                            <input type="checkbox" id="bulk-${
+                              item.id
+                            }" class="bulk-checkbox h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <label for="bulk-${
+                              item.id
+                            }" class="flex-grow flex items-center gap-4 cursor-pointer">
+                                                                <div class="w-8 h-8 rounded-lg overflow-hidden shadow">
+                                                                    <img src="${
+                                                                      item.image
+                                                                    }" alt="${
+              item.productName
+            }" class="w-full h-full object-cover" />
+                                                                </div>
                                 <div>
-                                    <h4 class="text-sm font-medium text-gray-900">${item.productName}</h4>
-                                    <p class="text-sm text-gray-500">${item.farmer} - ${item.weight}</p>
+                                    <h4 class="text-sm font-medium text-gray-900">${
+                                      item.productName
+                                    }</h4>
+                                    <p class="text-sm text-gray-500">${
+                                      item.farmer
+                                    } - ${item.weight}</p>
                                 </div>
-                                <span class="priority-badge px-3 py-1 rounded-full text-sm font-medium ${item.priority === "urgent" ? "bg-red-100 text-red-700" : item.priority === "high" ? "bg-yellow-100 text-yellow-700" : "bg-green-100 text-green-700"}">${item.priority}</span>
+                                <span class="priority-badge px-3 py-1 rounded-full text-sm font-medium ${
+                                  item.priority === "urgent"
+                                    ? "bg-red-100 text-red-700"
+                                    : item.priority === "high"
+                                    ? "bg-yellow-100 text-yellow-700"
+                                    : "bg-green-100 text-green-700"
+                                }">${item.priority}</span>
                             </label>
                         </div>
-                    `,
-                    )
-                    .join("");
+                    `
+          )
+          .join("");
 
-                document.querySelectorAll(".bulk-checkbox").forEach((cb) => {
-                    cb.addEventListener("change", updateSelectionCount);
-                });
-            }
+        document.querySelectorAll(".bulk-checkbox").forEach((cb) => {
+          cb.addEventListener("change", updateSelectionCount);
+        });
+      }
 
-            function updateSelectionCount() {
-                const selectedCount = document.querySelectorAll(
-                    ".bulk-checkbox:checked",
-                ).length;
-                document.querySelector(".selection-count").textContent =
-                    `${selectedCount} items selected`;
+      function updateSelectionCount() {
+        const selectedCount = document.querySelectorAll(
+          ".bulk-checkbox:checked"
+        ).length;
+        document.querySelector(
+          ".selection-count"
+        ).textContent = `${selectedCount} items selected`;
 
-                const bulkBtns = [
-                    "bulkApproveBtn",
-                    "bulkReviewBtn",
-                    "bulkRejectBtn",
-                ];
-                bulkBtns.forEach((btnId) => {
-                    document.getElementById(btnId).disabled =
-                        selectedCount === 0;
-                });
-            }
+        const bulkBtns = ["bulkApproveBtn", "bulkReviewBtn", "bulkRejectBtn"];
+        bulkBtns.forEach((btnId) => {
+          document.getElementById(btnId).disabled = selectedCount === 0;
+        });
+      }
 
-            function selectAllItems() {
-                document.querySelectorAll(".bulk-checkbox").forEach((cb) => {
-                    cb.checked = true;
-                });
-                updateSelectionCount();
-            }
+      function selectAllItems() {
+        document.querySelectorAll(".bulk-checkbox").forEach((cb) => {
+          cb.checked = true;
+        });
+        updateSelectionCount();
+      }
 
-            function clearSelection() {
-                document.querySelectorAll(".bulk-checkbox").forEach((cb) => {
-                    cb.checked = false;
-                });
-                updateSelectionCount();
-            }
+      function clearSelection() {
+        document.querySelectorAll(".bulk-checkbox").forEach((cb) => {
+          cb.checked = false;
+        });
+        updateSelectionCount();
+      }
 
-            function bulkApprove() {
-                const selected = document.querySelectorAll(
-                    ".bulk-checkbox:checked",
-                ).length;
-                showSuccessMessage(
-                    `${selected} products approved successfully!`,
-                );
-                closeModal("bulkInspectionModal");
-            }
+      function bulkApprove() {
+        const selected = document.querySelectorAll(
+          ".bulk-checkbox:checked"
+        ).length;
+        showSuccessMessage(`${selected} products approved successfully!`);
+        closeModal("bulkInspectionModal");
+      }
 
-            function bulkReview() {
-                const selected = document.querySelectorAll(
-                    ".bulk-checkbox:checked",
-                ).length;
-                showSuccessMessage(`${selected} products marked for review.`);
-                closeModal("bulkInspectionModal");
-            }
+      function bulkReview() {
+        const selected = document.querySelectorAll(
+          ".bulk-checkbox:checked"
+        ).length;
+        showSuccessMessage(`${selected} products marked for review.`);
+        closeModal("bulkInspectionModal");
+      }
 
-            function bulkReject() {
-                const selected = document.querySelectorAll(
-                    ".bulk-checkbox:checked",
-                ).length;
-                showSuccessMessage(
-                    `${selected} products rejected. Farmers notified.`,
-                );
-                closeModal("bulkInspectionModal");
-            }
+      function bulkReject() {
+        const selected = document.querySelectorAll(
+          ".bulk-checkbox:checked"
+        ).length;
+        showSuccessMessage(`${selected} products rejected. Farmers notified.`);
+        closeModal("bulkInspectionModal");
+      }
 
-            function startScanning() {
-                showSuccessMessage(
-                    "QR Scanner functionality would be implemented with camera API.",
-                );
-            }
+      function startScanning() {
+        showSuccessMessage(
+          "QR Scanner functionality would be implemented with camera API."
+        );
+      }
 
-            function manualEntry() {
-                document
-                    .getElementById("manualEntrySection")
-                    .classList.remove("hidden");
-            }
+      function manualEntry() {
+        document
+          .getElementById("manualEntrySection")
+          .classList.remove("hidden");
+      }
 
-            function lookupProduct() {
-                const code = document.getElementById("productCode").value;
-                if (code) {
-                    showSuccessMessage(`Looking up product: ${code}`);
-                    closeModal("scannerModal");
-                }
-            }
+      function lookupProduct() {
+        const code = document.getElementById("productCode").value;
+        if (code) {
+          showSuccessMessage(`Looking up product: ${code}`);
+          closeModal("scannerModal");
+        }
+      }
 
-            function filterQueue() {
-                const priority =
-                    document.getElementById("priorityFilter").value;
-                const category =
-                    document.getElementById("categoryFilter").value;
-                const search = document
-                    .getElementById("searchQueue")
-                    .value.toLowerCase();
+      function filterQueue() {
+        const priority = document.getElementById("priorityFilter").value;
+        const category = document.getElementById("categoryFilter").value;
+        const search = document
+          .getElementById("searchQueue")
+          .value.toLowerCase();
 
-                let filteredItems = sampleQueueItems;
+        let filteredItems = sampleQueueItems;
 
-                if (priority && priority !== "all") {
-                    filteredItems = filteredItems.filter(
-                        (item) => item.priority === priority,
-                    );
-                }
+        if (priority && priority !== "all") {
+          filteredItems = filteredItems.filter(
+            (item) => item.priority === priority
+          );
+        }
 
-                if (category && category !== "all") {
-                    filteredItems = filteredItems.filter(
-                        (item) => item.category === category,
-                    );
-                }
+        if (category && category !== "all") {
+          filteredItems = filteredItems.filter(
+            (item) => item.category === category
+          );
+        }
 
-                if (search) {
-                    filteredItems = filteredItems.filter(
-                        (item) =>
-                            item.productName.toLowerCase().includes(search) ||
-                            item.farmer.toLowerCase().includes(search),
-                    );
-                }
+        if (search) {
+          filteredItems = filteredItems.filter(
+            (item) =>
+              item.productName.toLowerCase().includes(search) ||
+              item.farmer.toLowerCase().includes(search)
+          );
+        }
 
-                const container = document.getElementById("inspectionQueue");
-                container.innerHTML = filteredItems
-                    .map(
-                        (item) => `
-                        <div class="queue-card ${item.priority} bg-white rounded-lg shadow-sm p-6 mb-4 hover:shadow-md transition-all cursor-pointer" onclick="openInspection('${item.id}')" role="button" tabindex="0" aria-label="Inspect ${item.productName}">
+        const container = document.getElementById("inspectionQueue");
+        container.innerHTML = filteredItems
+          .map(
+            (item) => `
+                        <div class="queue-card ${
+                          item.priority
+                        } bg-white rounded-lg shadow-sm p-6 mb-4 hover:shadow-md transition-all cursor-pointer" onclick="openInspection('${
+              item.id
+            }')" role="button" tabindex="0" aria-label="Inspect ${
+              item.productName
+            }">
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center gap-4">
                                     <div class="text-3xl">${item.image}</div>
                                     <div>
-                                        <h3 class="text-lg font-medium text-gray-900">${item.productName}</h3>
-                                        <p class="text-sm text-gray-500">From: ${item.farmer}</p>
+                                        <h3 class="text-lg font-medium text-gray-900">${
+                                          item.productName
+                                        }</h3>
+                                        <p class="text-sm text-gray-500">From: ${
+                                          item.farmer
+                                        }</p>
                                         <div class="flex gap-4 text-sm text-gray-500 mt-2">
                                             <span>📦 ${item.weight}</span>
-                                            <span>⏰ ${item.estimatedShelf}</span>
+                                            <span>⏰ ${
+                                              item.estimatedShelf
+                                            }</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-4">
-                                    <span class="priority-badge px-3 py-1 rounded-full text-sm font-medium ${item.priority === "urgent" ? "bg-red-100 text-red-700" : item.priority === "high" ? "bg-yellow-100 text-yellow-700" : "bg-green-100 text-green-700"}" aria-label="${item.priority} priority">${item.priority}</span>
-                                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" onclick="openInspection('${item.id}'); event.stopPropagation();" aria-label="Inspect item">🔍 Inspect</button>
+                                    <span class="priority-badge px-3 py-1 rounded-full text-sm font-medium ${
+                                      item.priority === "urgent"
+                                        ? "bg-red-100 text-red-700"
+                                        : item.priority === "high"
+                                        ? "bg-yellow-100 text-yellow-700"
+                                        : "bg-green-100 text-green-700"
+                                    }" aria-label="${item.priority} priority">${
+              item.priority
+            }</span>
+                                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors" onclick="openInspection('${
+                                      item.id
+                                    }'); event.stopPropagation();" aria-label="Inspect item">🔍 Inspect</button>
                                 </div>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2 mt-4">
                                 <div class="bg-gray-500 h-2 rounded-full" style="width: 0%"></div>
                             </div>
                         </div>
-                    `,
-                    )
-                    .join("");
+                    `
+          )
+          .join("");
 
-                if (filteredItems.length === 0) {
-                    container.innerHTML =
-                        '<p class="text-gray-500 text-center" role="alert">No items match the current filters.</p>';
-                }
+        if (filteredItems.length === 0) {
+          container.innerHTML =
+            '<p class="text-gray-500 text-center" role="alert">No items match the current filters.</p>';
+        }
+      }
+
+      function switchTab(tabId) {
+        document.querySelectorAll(".tab-content").forEach((content) => {
+          content.classList.add("hidden");
+          content.setAttribute("aria-hidden", "true");
+        });
+
+        document.querySelectorAll(".tab-button").forEach((button) => {
+          button.classList.remove("border-emerald-600", "text-emerald-600");
+          button.classList.add("border-transparent", "text-gray-600");
+          button.setAttribute("aria-selected", "false");
+        });
+
+        document.getElementById(tabId).classList.remove("hidden");
+        document.getElementById(tabId).setAttribute("aria-hidden", "false");
+
+        const activeButton = document.querySelector(
+          `[aria-controls="${tabId}"]`
+        );
+        activeButton.classList.add("border-emerald-600", "text-emerald-600");
+        activeButton.setAttribute("aria-selected", "true");
+
+        if (tabId === "summary-tab") {
+          updateSummary();
+        }
+      }
+
+      function validateAndApproveProduct() {
+        let isValid = true;
+
+        if (!document.getElementById("expectedWeight").value) {
+          showError("expectedWeight", "Expected weight is required.");
+          isValid = false;
+        }
+        if (!document.getElementById("actualWeight").value) {
+          showError("actualWeight", "Actual weight is required.");
+          isValid = false;
+        }
+        if (!document.querySelector(".star-rating[data-value]")) {
+          showError(
+            null,
+            "At least one quality rating is required.",
+            "form-validation"
+          );
+          isValid = false;
+        }
+
+        if (isValid) {
+          approveProduct();
+        } else {
+          showSuccessMessage(
+            "Please complete all required fields before approving."
+          );
+          document.getElementById("form-validation").focus();
+        }
+      }
+
+      function showError(fieldId, message, containerId = null) {
+        const container = containerId
+          ? document.getElementById(containerId)
+          : document.getElementById(fieldId + "-error");
+        if (container) {
+          container.textContent = message;
+        }
+      }
+
+      function updateSummary() {
+        const ratings = document.querySelectorAll(".star-rating[data-value]");
+        ratings.forEach((rating) => {
+          const criteria = rating.getAttribute("data-criteria");
+          const value = rating.getAttribute("data-value") || 0;
+          const summaryEl = document.getElementById(`summary-${criteria}`);
+          if (summaryEl) {
+            summaryEl.textContent = value > 0 ? `${value}/5` : "Not rated";
+          }
+        });
+
+        const checkedPackaging = document.querySelectorAll(
+          'input[name="packaging"]:checked'
+        ).length;
+        document.getElementById(
+          "summary-packaging"
+        ).textContent = `${checkedPackaging}/4`;
+
+        const varianceEl = document.getElementById("summary-weight");
+        const varianceContainer = document.getElementById("weightVariance");
+        if (varianceContainer.children.length > 0) {
+          varianceEl.textContent = varianceContainer.firstChild.textContent;
+        } else {
+          varianceEl.textContent = "Not measured";
+        }
+      }
+
+      function refreshQueue() {
+        loadQueueItems();
+        document.getElementById("searchQueue").value = "";
+        document.getElementById("priorityFilter").value = "all";
+        document.getElementById("categoryFilter").value = "all";
+        showSuccessMessage("Queue refreshed.");
+      }
+
+      function viewAllInspections() {
+        showSuccessMessage("Viewing all inspections (feature coming soon).");
+      }
+
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.remove("hidden");
+        modal.querySelector(".bg-white").focus();
+        document.body.style.overflow = "hidden";
+        modal.addEventListener("keydown", trapFocus);
+      }
+
+      function trapFocus(e) {
+        const modal = e.currentTarget;
+        const focusable = modal.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.key === "Tab") {
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              last.focus();
+              e.preventDefault();
             }
-
-            function switchTab(tabId) {
-                document.querySelectorAll(".tab-content").forEach((content) => {
-                    content.classList.add("hidden");
-                    content.setAttribute("aria-hidden", "true");
-                });
-
-                document.querySelectorAll(".tab-button").forEach((button) => {
-                    button.classList.remove(
-                        "border-emerald-600",
-                        "text-emerald-600",
-                    );
-                    button.classList.add("border-transparent", "text-gray-600");
-                    button.setAttribute("aria-selected", "false");
-                });
-
-                document.getElementById(tabId).classList.remove("hidden");
-                document
-                    .getElementById(tabId)
-                    .setAttribute("aria-hidden", "false");
-
-                const activeButton = document.querySelector(
-                    `[aria-controls="${tabId}"]`,
-                );
-                activeButton.classList.add(
-                    "border-emerald-600",
-                    "text-emerald-600",
-                );
-                activeButton.setAttribute("aria-selected", "true");
-
-                if (tabId === "summary-tab") {
-                    updateSummary();
-                }
+          } else {
+            if (document.activeElement === last) {
+              first.focus();
+              e.preventDefault();
             }
+          }
+        }
+      }
 
-            function validateAndApproveProduct() {
-                let isValid = true;
+      function closeModal(modalId) {
+        document.getElementById(modalId).classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
 
-                if (!document.getElementById("expectedWeight").value) {
-                    showError("expectedWeight", "Expected weight is required.");
-                    isValid = false;
-                }
-                if (!document.getElementById("actualWeight").value) {
-                    showError("actualWeight", "Actual weight is required.");
-                    isValid = false;
-                }
-                if (!document.querySelector(".star-rating[data-value]")) {
-                    showError(
-                        null,
-                        "At least one quality rating is required.",
-                        "form-validation",
-                    );
-                    isValid = false;
-                }
+      window.addEventListener("click", function (event) {
+        if (event.target.classList.contains("fixed")) {
+          event.target.classList.add("hidden");
+          document.body.style.overflow = "auto";
+        }
+      });
 
-                if (isValid) {
-                    approveProduct();
-                } else {
-                    showSuccessMessage(
-                        "Please complete all required fields before approving.",
-                    );
-                    document.getElementById("form-validation").focus();
-                }
-            }
-
-            function showError(fieldId, message, containerId = null) {
-                const container = containerId
-                    ? document.getElementById(containerId)
-                    : document.getElementById(fieldId + "-error");
-                if (container) {
-                    container.textContent = message;
-                }
-            }
-
-            function updateSummary() {
-                const ratings = document.querySelectorAll(
-                    ".star-rating[data-value]",
-                );
-                ratings.forEach((rating) => {
-                    const criteria = rating.getAttribute("data-criteria");
-                    const value = rating.getAttribute("data-value") || 0;
-                    const summaryEl = document.getElementById(
-                        `summary-${criteria}`,
-                    );
-                    if (summaryEl) {
-                        summaryEl.textContent =
-                            value > 0 ? `${value}/5` : "Not rated";
-                    }
-                });
-
-                const checkedPackaging = document.querySelectorAll(
-                    'input[name="packaging"]:checked',
-                ).length;
-                document.getElementById("summary-packaging").textContent =
-                    `${checkedPackaging}/4`;
-
-                const varianceEl = document.getElementById("summary-weight");
-                const varianceContainer =
-                    document.getElementById("weightVariance");
-                if (varianceContainer.children.length > 0) {
-                    varianceEl.textContent =
-                        varianceContainer.firstChild.textContent;
-                } else {
-                    varianceEl.textContent = "Not measured";
-                }
-            }
-
-            function refreshQueue() {
-                loadQueueItems();
-                document.getElementById("searchQueue").value = "";
-                document.getElementById("priorityFilter").value = "all";
-                document.getElementById("categoryFilter").value = "all";
-                showSuccessMessage("Queue refreshed.");
-            }
-
-            function viewAllInspections() {
-                showSuccessMessage(
-                    "Viewing all inspections (feature coming soon).",
-                );
-            }
-
-            function openModal(modalId) {
-                const modal = document.getElementById(modalId);
-                modal.classList.remove("hidden");
-                modal.querySelector(".bg-white").focus();
-                document.body.style.overflow = "hidden";
-                modal.addEventListener("keydown", trapFocus);
-            }
-
-            function trapFocus(e) {
-                const modal = e.currentTarget;
-                const focusable = modal.querySelectorAll(
-                    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-                );
-                const first = focusable[0];
-                const last = focusable[focusable.length - 1];
-
-                if (e.key === "Tab") {
-                    if (e.shiftKey) {
-                        if (document.activeElement === first) {
-                            last.focus();
-                            e.preventDefault();
-                        }
-                    } else {
-                        if (document.activeElement === last) {
-                            first.focus();
-                            e.preventDefault();
-                        }
-                    }
-                }
-            }
-
-            function closeModal(modalId) {
-                document.getElementById(modalId).classList.add("hidden");
-                document.body.style.overflow = "auto";
-            }
-
-            window.addEventListener("click", function (event) {
-                if (event.target.classList.contains("fixed")) {
-                    event.target.classList.add("hidden");
-                    document.body.style.overflow = "auto";
-                }
-            });
-
-            function showSuccessMessage(message) {
-                const toast = document.createElement("div");
-                toast.className =
-                    "fixed top-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-lg max-w-xs animate-[slideIn_0.3s_ease-out] z-[10000]";
-                toast.setAttribute("role", "alert");
-                toast.setAttribute("aria-live", "polite");
-                toast.innerHTML = `
+      function showSuccessMessage(message) {
+        const toast = document.createElement("div");
+        toast.className =
+          "fixed top-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-lg max-w-xs animate-[slideIn_0.3s_ease-out] z-[10000]";
+        toast.setAttribute("role", "alert");
+        toast.setAttribute("aria-live", "polite");
+        toast.innerHTML = `
                     <div class="flex items-center gap-2">
                         <span class="text-lg">✅</span>
                         <span class="flex-grow">${message}</span>
@@ -1923,19 +1888,19 @@
                     </div>
                 `;
 
-                document.body.appendChild(toast);
+        document.body.appendChild(toast);
 
-                setTimeout(() => {
-                    if (toast.parentNode) {
-                        toast.style.animation = "slideOut 0.3s ease-in";
-                        setTimeout(() => {
-                            if (toast.parentNode) {
-                                toast.parentNode.removeChild(toast);
-                            }
-                        }, 300);
-                    }
-                }, 5000);
-            }
-        </script>
-    </body>
+        setTimeout(() => {
+          if (toast.parentNode) {
+            toast.style.animation = "slideOut 0.3s ease-in";
+            setTimeout(() => {
+              if (toast.parentNode) {
+                toast.parentNode.removeChild(toast);
+              }
+            }, 300);
+          }
+        }, 5000);
+      }
+    </script>
+  </body>
 </html>

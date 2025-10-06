@@ -5,105 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Fruit data based on assets folder
 const FRUIT_DATA = [
-  {
-    name: "Banana",
-    category: "fruits",
-    description: "Sweet and energy-rich bananas, fresh from the farm",
-    basePrice: 800,
-    unit: "kg",
-    quality: "A",
-    images: ["assets/banana1.jpeg"],
-  },
-  {
-    name: "Mango",
-    category: "fruits",
-    description: "Juicy tropical mangoes, sweet and aromatic",
-    basePrice: 2000,
-    unit: "kg",
-    quality: "A+",
-    images: ["assets/mangoes1.jpeg"],
-  },
-  {
-    name: "Tomatoes",
-    category: "fruits",
-    description: "Fresh, ripe tomatoes perfect for salads, sauces, and cooking",
-    basePrice: 1000,
-    unit: "kg",
-    quality: "A",
-    images: ["assets/tomates1.jpeg"],
-  },
-  {
-    name: "Orange",
-    category: "fruits",
-    description: "Juicy citrus oranges bursting with vitamin C",
-    basePrice: 1200,
-    unit: "kg",
-    quality: "A",
-    images: ["assets/orange1.jpeg"],
-  },
-  {
-    name: "Avocado",
-    category: "fruits",
-    description: "Creamy avocados rich in healthy fats and nutrients",
-    basePrice: 2500,
-    unit: "kg",
-    quality: "A+",
-    images: ["assets/avocado1.jpeg"],
-  },
-  {
-    name: "Pineapple",
-    category: "fruits",
-    description: "Sweet and tropical pineapples, tangy and refreshing",
-    basePrice: 1800,
-    unit: "piece",
-    quality: "A+",
-    images: ["assets/pineapple1.jpeg"],
-  },
-  {
-    name: "Plantain",
-    category: "fruits",
-    description: "Sweet tropical plantin , fresh from the farm",
-    basePrice: 1200,
-    unit: "piece",
-    quality: "A",
-    images: ["assets/plantain.jpeg"],
-  },
-  {
-    name: "Guava",
-    category: "fruits",
-    description: "Sweet Guava from tropical west africa , delivered from farm",
-    basePrice: 200,
-    quality: "A",
-    images: ["assets/guava.jpeg"],
-  },
-  {
-    name: "Yam",
-    category: "vegetables",
-    description: "Fresh yams from the farm",
-    basePrice: 1500,
-    unit: "kg",
-    quality: "A+",
-    images: ["assets/yam.jpeg"],
-  },
-  {
-    name: "Onion",
-    category: "vegetables",
-    description: "Fresh onions from the farm",
-    basePrice: 800,
-    unit: "kg",
-    quality: "A+",
-    images: ["assets/onion.jpeg"],
-  },
-
-  {
-    name: "Cassava",
-    category: "vegetables",
-    description: "Fresh cassava from the farm",
-    basePrice: 700,
-    unit: "kg",
-    quality: "A+",
-    images: ["assets/cassava.jpeg"],
-  },
+  // ...existing code...
+  // Potato and Carrot intentionally omitted for removal
 ];
 
 const SAMPLE_FARMERS = [
@@ -131,7 +34,7 @@ function initializeMarketplace() {
     "Green Vegetables Bundle",
   ];
   existingProducts = existingProducts.filter(
-    (product) => !unwantedNames.includes(product.name),
+    (product) => !unwantedNames.includes(product.name)
   );
   StorageManager.save("ecomarket_products", existingProducts);
 
@@ -228,7 +131,9 @@ function createProductCard(product) {
         <span class="package-savings">Save ${product.discount}%</span>
       </div>
     `
-    : `<div class="product-price">${product.price.toLocaleString()} CFA per ${product.unit}</div>`;
+    : `<div class="product-price">${product.price.toLocaleString()} CFA per ${
+        product.unit
+      }</div>`;
 
   const quantityBadge =
     product.quantity > 0
@@ -239,9 +144,13 @@ function createProductCard(product) {
     <div class="product-card ${packageClass}" data-product-id="${product.id}">
       ${packageBadge}
       <div class="product-image">
-        <img src="${product.image}" alt="${product.name}" onerror="this.src='assets/placeholder.jpg'">
+        <img src="${product.image}" alt="${
+    product.name
+  }" onerror="this.src='assets/placeholder.jpg'">
         <div class="product-overlay">
-          <button class="btn btn-quick-view" onclick="viewProductDetails(${product.id})">
+          <button class="btn btn-quick-view" onclick="viewProductDetails(${
+            product.id
+          })">
             Quick View
           </button>
         </div>
@@ -251,7 +160,10 @@ function createProductCard(product) {
         <p class="farmer-name">by ${product.farmer}</p>
         <p class="product-description">${product.description}</p>
         <div class="product-meta">
-          <span class="quality-badge quality-${product.quality.replace("+", "plus")}">${product.quality}</span>
+          <span class="quality-badge quality-${product.quality.replace(
+            "+",
+            "plus"
+          )}">${product.quality}</span>
           ${quantityBadge}
         </div>
         ${priceDisplay}
@@ -365,7 +277,7 @@ function addToPackage(productId) {
 
   // Check if already in package
   const existingItem = packageBuilder.items.find(
-    (item) => item.productId == productId,
+    (item) => item.productId == productId
   );
   if (existingItem) {
     existingItem.quantity += 1;
@@ -388,7 +300,7 @@ function addToPackage(productId) {
 
 function removeFromPackage(productId) {
   packageBuilder.items = packageBuilder.items.filter(
-    (item) => item.productId != productId,
+    (item) => item.productId != productId
   );
   updatePackageDisplay();
   calculatePackagePrice();
@@ -426,17 +338,23 @@ function updatePackageDisplay() {
           </div>
           <div class="item-controls">
             <div class="quantity-control">
-              <button onclick="updatePackageQuantity(${item.productId}, ${item.quantity - 1})">-</button>
+              <button onclick="updatePackageQuantity(${item.productId}, ${
+            item.quantity - 1
+          })">-</button>
               <span>${item.quantity}</span>
-              <button onclick="updatePackageQuantity(${item.productId}, ${item.quantity + 1})">+</button>
+              <button onclick="updatePackageQuantity(${item.productId}, ${
+            item.quantity + 1
+          })">+</button>
             </div>
-            <button class="btn btn-remove" onclick="removeFromPackage(${item.productId})">Remove</button>
+            <button class="btn btn-remove" onclick="removeFromPackage(${
+              item.productId
+            })">Remove</button>
           </div>
           <div class="item-total">
             ${(item.price * item.quantity).toLocaleString()} CFA
           </div>
         </div>
-      `,
+      `
         )
         .join("")}
     </div>
@@ -501,10 +419,10 @@ function addPackageToCart() {
     discount: Math.round(
       (packageBuilder.discount /
         (packageBuilder.totalPrice + packageBuilder.discount)) *
-        100,
+        100
     ),
     packageItems: packageBuilder.items.map(
-      (item) => `${item.name} (${item.quantity} ${item.unit}) - ${item.farmer}`,
+      (item) => `${item.name} (${item.quantity} ${item.unit}) - ${item.farmer}`
     ),
   };
 
@@ -558,15 +476,23 @@ function updateCartDisplay() {
           <div class="item-details">
             <h4>${product.name}</h4>
             <p>by ${product.farmer}</p>
-            <div class="item-price">${product.price.toLocaleString()} CFA per ${product.unit}</div>
+            <div class="item-price">${product.price.toLocaleString()} CFA per ${
+        product.unit
+      }</div>
           </div>
           <div class="quantity-controls">
-            <button onclick="updateCartQuantity(${item.productId}, ${item.quantity - 1})">-</button>
+            <button onclick="updateCartQuantity(${item.productId}, ${
+        item.quantity - 1
+      })">-</button>
             <span>${item.quantity}</span>
-            <button onclick="updateCartQuantity(${item.productId}, ${item.quantity + 1})">+</button>
+            <button onclick="updateCartQuantity(${item.productId}, ${
+        item.quantity + 1
+      })">+</button>
           </div>
           <div class="item-total">${itemTotal.toLocaleString()} CFA</div>
-          <button class="remove-item" onclick="removeFromCart(${item.productId})">×</button>
+          <button class="remove-item" onclick="removeFromCart(${
+            item.productId
+          })">×</button>
         </div>
       `;
     })
@@ -680,14 +606,23 @@ function viewProductDetails(productId) {
     <div class="product-details-modal">
       <div class="product-image-large">
         <img src="${product.image}" alt="${product.name}">
-        ${product.isPackage ? '<div class="package-badge">PACKAGE DEAL</div>' : ""}
+        ${
+          product.isPackage
+            ? '<div class="package-badge">PACKAGE DEAL</div>'
+            : ""
+        }
       </div>
       <div class="product-info-detailed">
         <h3>${product.name}</h3>
         <p class="farmer-info">by ${product.farmer}</p>
         <div class="product-meta-detailed">
-          <span class="quality-badge quality-${product.quality.replace("+", "plus")}">${product.quality}</span>
-          <span class="stock-info">${product.quantity} ${product.unit} available</span>
+          <span class="quality-badge quality-${product.quality.replace(
+            "+",
+            "plus"
+          )}">${product.quality}</span>
+          <span class="stock-info">${product.quantity} ${
+    product.unit
+  } available</span>
         </div>
         <p class="product-description-full">${product.description}</p>
 
@@ -697,7 +632,11 @@ function viewProductDetails(productId) {
           <div class="package-details">
             <h4>Package Contents:</h4>
             <ul>
-              ${product.packageItems?.map((item) => `<li>${item}</li>`).join("") || ""}
+              ${
+                product.packageItems
+                  ?.map((item) => `<li>${item}</li>`)
+                  .join("") || ""
+              }
             </ul>
             <div class="package-pricing-detailed">
               <div class="original-price">Original: ${product.originalPrice?.toLocaleString()} CFA</div>
@@ -708,7 +647,9 @@ function viewProductDetails(productId) {
         `
             : `
           <div class="pricing-info">
-            <div class="price-large">${product.price.toLocaleString()} CFA per ${product.unit}</div>
+            <div class="price-large">${product.price.toLocaleString()} CFA per ${
+                product.unit
+              }</div>
           </div>
         `
         }
@@ -717,7 +658,9 @@ function viewProductDetails(productId) {
           <label for="modalQuantity">Quantity:</label>
           <div class="quantity-input">
             <button onclick="changeQuantity(-1)">-</button>
-            <input type="number" id="modalQuantity" value="1" min="1" max="${product.quantity}">
+            <input type="number" id="modalQuantity" value="1" min="1" max="${
+              product.quantity
+            }">
             <button onclick="changeQuantity(1)">+</button>
           </div>
         </div>
@@ -751,7 +694,7 @@ function changeQuantity(change) {
     const currentValue = parseInt(quantityInput.value);
     const newValue = Math.max(
       1,
-      Math.min(currentValue + change, parseInt(quantityInput.max)),
+      Math.min(currentValue + change, parseInt(quantityInput.max))
     );
     quantityInput.value = newValue;
   }

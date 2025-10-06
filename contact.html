@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - EcoMarket</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        background: linear-gradient(120deg, #e8f5e9 0%, #fff 100%);
+        font-family: "Poppins", Arial, sans-serif;
+      }
+      .footer {
+        background: #2c5530;
+        color: #fff;
+        padding: 48px 0 24px;
+        margin-top: 60px;
+        border-top-left-radius: 32px;
+        border-top-right-radius: 32px;
+        box-shadow: 0 -2px 24px rgba(44, 85, 48, 0.08);
+      }
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 32px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .footer-section h3,
+      .footer-section h4 {
+        color: #4caf50;
+        margin-bottom: 16px;
+        font-size: 1.2rem;
+      }
+      .footer-section p,
+      .footer-section address p {
+        margin-bottom: 10px;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      .footer-section address {
+        font-style: normal;
+      }
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+      .footer-section ul li {
+        margin-bottom: 8px;
+      }
+      .footer-section a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .footer-section a:hover {
+        color: #4caf50;
+      }
+      .footer-section .social-links {
+        display: flex;
+        gap: 16px;
+        margin-top: 10px;
+      }
+      .footer-section .social-links a {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1.2rem;
+        transition: background 0.3s, color 0.3s;
+      }
+      .footer-section .social-links a:hover {
+        background: #4caf50;
+        color: #fff;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        text-align: center;
+        margin-top: 30px;
+      }
+      .footer-bottom p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #e0e0e0;
+      }
+      @media (max-width: 768px) {
+        .footer-container {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 0 15px;
+        }
+        .footer {
+          border-top-left-radius: 16px;
+          border-top-right-radius: 16px;
+        }
+      }
+      .contact-hero {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .contact-hero h1 {
+        font-size: 2.5rem;
+        color: #2c5530;
+        margin-bottom: 10px;
+      }
+      .hero-subtitle {
+        color: #4caf50;
+        font-size: 1.2rem;
+        margin-bottom: 0;
+      }
+      .contact-details .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      .contact-card {
+        background: #fff;
+        box-shadow: 0 4px 24px rgba(44, 85, 48, 0.08);
+        border-radius: 16px;
+        padding: 32px 24px;
+        margin-bottom: 20px;
+        min-width: 280px;
+        flex: 1;
+        max-width: 400px;
+      }
+      .contact-card h2 {
+        color: #2c5530;
+        margin-bottom: 18px;
+      }
+      .contact-card ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 18px;
+      }
+      .contact-card ul li {
+        margin-bottom: 12px;
+        font-size: 1rem;
+        color: #333;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .contact-card .social-links {
+        display: flex;
+        gap: 16px;
+        margin-top: 10px;
+      }
+      .contact-card .social-links a {
+        background: #e8f5e9;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #2c5530;
+        font-size: 1.2rem;
+        transition: background 0.3s;
+      }
+      .contact-card .social-links a:hover {
+        background: #4caf50;
+        color: #fff;
+      }
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .contact-form label {
+        font-weight: 600;
+        color: #2c5530;
+        margin-bottom: 4px;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        padding: 10px;
+        border: 1px solid #c8e6c9;
+        border-radius: 6px;
+        font-size: 1rem;
+        background: #f9fbe7;
+        transition: border 0.2s;
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: #4caf50;
+        outline: none;
+      }
+      .contact-form button {
+        background: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .contact-form button:hover {
+        background: #388e3c;
+      }
+      @media (max-width: 900px) {
+        .contact-details .container {
+          flex-direction: column;
+          gap: 24px;
+        }
+        .contact-card {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="index.html"><h1>🌱 EcoMarket</h1></a>
+          </div>
+          <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="marketplace.html" class="nav-link">Marketplace</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li class="dropdown">
+              <a href="#" class="nav-link dropdown-btn">Dashboard ▼</a>
+              <div class="dropdown-content">
+                <a href="farmer-dashboard.html">Farmer Dashboard</a>
+                <a href="buyer-dashboard.html">Buyer Dashboard</a>
+                <a href="quality-control.html">Quality Control</a>
+                <a href="delivery.html">Delivery Tracking</a>
+              </div>
+            </li>
+          </ul>
+          <div class="cart-icon">
+            <a href="shopping-cart.html">
+              <i class="fas fa-shopping-cart"></i>
+              <span id="cartBadge">0</span>
+            </a>
+          </div>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main style="padding-top: 100px">
+      <section class="contact-hero">
+        <div class="container">
+          <h1>Contact EcoMarket</h1>
+          <p class="hero-subtitle">
+            We're here to help you connect, collaborate, and grow together.
+          </p>
+        </div>
+      </section>
+      <section class="contact-details">
+        <div class="container">
+          <div class="contact-card">
+            <h2>Reach Us</h2>
+            <ul>
+              <li>
+                <i class="fas fa-envelope"></i> <strong>Email:</strong>
+                <a href="mailto:info@ecomarket.com">info@ecomarket.com</a>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i> <strong>Phone:</strong> +1 (555)
+                123-4567
+              </li>
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <strong>Address:</strong> 123 Green Market Road, City, Country
+              </li>
+            </ul>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <h2>Send Us a Message</h2>
+            <form action="#" method="post" class="contact-form">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+              <label for="message">Message:</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>EcoMarket</h3>
+          <p>Connecting farmers and buyers for a sustainable future.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <address>
+            <p><i class="fas fa-envelope"></i> info@ecomarket.com</p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> 123 Green Market Road, City,
+              Country
+            </p>
+          </address>
+        </div>
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 EcoMarket. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
