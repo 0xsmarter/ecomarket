@@ -20,6 +20,72 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <style>
+      /* Add Product Popup Styles */
+      .add-popup-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(44, 85, 48, 0.18);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      .add-popup-card {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px rgba(44, 85, 48, 0.18);
+        padding: 32px 28px;
+        min-width: 320px;
+        max-width: 400px;
+        display: grid;
+        gap: 18px;
+      }
+      .add-popup-card h2 {
+        margin-top: 0;
+        color: #2c5530;
+        font-size: 1.3rem;
+      }
+      .add-popup-card label {
+        font-weight: 600;
+        color: #2c5530;
+      }
+      .add-popup-card input,
+      .add-popup-card textarea {
+        padding: 8px;
+        border: 1px solid #c8e6c9;
+        border-radius: 6px;
+        font-size: 1rem;
+        background: #f9fbe7;
+      }
+      .add-popup-card button {
+        background: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 0;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .add-popup-card button:hover {
+        background: #388e3c;
+      }
+      .add-popup-close {
+        background: #eee;
+        color: #333;
+        border: none;
+        border-radius: 6px;
+        padding: 6px 12px;
+        font-size: 0.95rem;
+        cursor: pointer;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        justify-self: end;
+      }
       /* Popup Edit Card Styles */
       .edit-popup-bg {
         position: fixed;
@@ -650,6 +716,43 @@
           </div>
 
           <div class="products-grid">
+            <!-- Add Product Popup -->
+            <div class="add-popup-bg" id="addPopupBg">
+              <div class="add-popup-card" id="addPopupCard">
+                <button class="add-popup-close" id="addPopupClose">
+                  &times;
+                </button>
+                <h2>Add New Product</h2>
+                <form id="addProductForm">
+                  <label for="addName">Product Name:</label>
+                  <input type="text" id="addName" name="name" required />
+                  <label for="addDesc">Description:</label>
+                  <textarea
+                    id="addDesc"
+                    name="description"
+                    rows="2"
+                    required
+                  ></textarea>
+                  <label for="addPrice">Price (CFA):</label>
+                  <input
+                    type="number"
+                    id="addPrice"
+                    name="price"
+                    min="1"
+                    required
+                  />
+                  <label for="addImage">Image URL (from assets):</label>
+                  <input
+                    type="text"
+                    id="addImage"
+                    name="image"
+                    placeholder="assets/tomates1.jpeg"
+                    required
+                  />
+                  <button type="submit">Add Product</button>
+                </form>
+              </div>
+            </div>
             <div class="product-card">
               <div class="product-badge quality-aplus">A+ Quality</div>
               <img
@@ -1012,12 +1115,51 @@ We specialize in organic vegetables grown with sustainable practices in the hear
         });
       });
 
-      // Add product button functionality
-      document
-        .querySelector(".btn-primary-lg")
-        .addEventListener("click", function () {
-          alert("Add product functionality coming soon!");
-        });
+      // Add Product Popup Logic
+      const addBtn = document.querySelector(".btn-primary-lg");
+      const addPopupBg = document.getElementById("addPopupBg");
+      const addPopupClose = document.getElementById("addPopupClose");
+      const addProductForm = document.getElementById("addProductForm");
+      addBtn.addEventListener("click", function () {
+        addPopupBg.style.display = "flex";
+      });
+      addPopupClose.onclick = function () {
+        addPopupBg.style.display = "none";
+      };
+      addProductForm.onsubmit = function (e) {
+        e.preventDefault();
+        // Get values
+        const name = document.getElementById("addName").value;
+        const desc = document.getElementById("addDesc").value;
+        const price = document.getElementById("addPrice").value;
+        const image = document.getElementById("addImage").value;
+        // Create card
+        const grid = document.querySelector(".products-grid");
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <div class="product-badge quality-a">A Quality</div>
+          <img src="${image}" alt="${name}" class="product-image" />
+          <h3>${name}</h3>
+          <p class="farmer-name">By You</p>
+          <p class="product-description">${desc}</p>
+          <div class="product-meta">
+            <span class="quality-badge quality-a">A</span>
+            <span class="stock-badge in-stock">In Stock</span>
+          </div>
+          <div class="product-price">
+            <span class="price">${price} CFA</span>
+          </div>
+          <p class="stock-info">New</p>
+          <div class="product-actions">
+            <button class="btn-edit"><i class="fas fa-edit"></i> Edit</button>
+            <button class="btn-delete"><i class="fas fa-trash"></i> Delete</button>
+          </div>
+        `;
+        grid.appendChild(card);
+        addPopupBg.style.display = "none";
+        addProductForm.reset();
+      };
     </script>
   </body>
 </html>
