@@ -1,724 +1,757 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shopping Cart - EcoMarket</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <style>
-          :root {
-              --primary-green: #2d8f3f;
-              --secondary-green: #8bc34a;
-              --light-green: #e8f5e8;
-              --shadow: 0 4px 20px rgba(45, 143, 63, 0.1);
-              --border-radius: 12px;
-              --transition: all 0.3s ease;
-          }
-          .cart-hero {
-              background: linear-gradient(
-                  135deg,
-                  var(--primary-green) 0%,
-                  var(--secondary-green) 100%
-              );
-              color: white;
-              padding: 80px 0 60px;
-              text-align: center;
-          }
-          .cart-hero h1 {
-              font-size: 3rem;
-              font-weight: 800;
-              margin-bottom: 10px;
-          }
-          .cart-hero p {
-              font-size: 1.1rem;
-              opacity: 0.9;
-          }
-          .cart-section {
-              padding: 60px 0;
-              background: white;
-          }
-          .container {
-              max-width: 1200px;
-              margin: 0 auto;
-              padding: 0 20px;
-          }
-          .section-header {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              margin-bottom: 30px;
-          }
-          .section-header h2 {
-              color: var(--primary-green);
-              font-size: 2rem;
-          }
-          .view-toggles {
-              display: flex;
-              gap: 10px;
-          }
-          .view-btn {
-              padding: 10px 15px;
-              border: 2px solid #e0e0e0;
-              background: white;
-              border-radius: 8px;
-              cursor: pointer;
-              transition: var(--transition);
-          }
-          .view-btn.active,
-          .view-btn:hover {
-              border-color: var(--primary-green);
-              background: var(--primary-green);
-              color: white;
-          }
-          .cart-items {
-              display: grid;
-              gap: 20px;
-          }
-          .cart-item {
-              background: #f8f9fa;
-              border-radius: var(--border-radius);
-              padding: 20px;
-              display: flex;
-              align-items: center;
-              gap: 20px;
-              animation: slideIn 0.3s ease;
-              box-shadow: var(--shadow);
-          }
-          @keyframes slideIn {
-              from {
-                  opacity: 0;
-                  transform: translateX(-20px);
-              }
-              to {
-                  opacity: 1;
-                  transform: translateX(0);
-              }
-          }
-          .cart-item img {
-              width: 80px;
-              height: 80px;
-              border-radius: 8px;
-              object-fit: cover;
-          }
-          .item-details h3 {
-              margin-bottom: 5px;
-              color: #333;
-          }
-          .item-details p {
-              color: #666;
-              margin-bottom: 10px;
-          }
-          .quantity-controls {
-              display: flex;
-              align-items: center;
-              gap: 10px;
-              background: white;
-              padding: 10px;
-              border-radius: 25px;
-              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-          }
-          .qty-btn {
-              width: 30px;
-              height: 30px;
-              border: none;
-              background: var(--light-green);
-              border-radius: 50%;
-              cursor: pointer;
-              font-size: 1.2rem;
-              transition: var(--transition);
-              color: var(--primary-green);
-          }
-          .qty-btn:hover {
-              background: var(--primary-green);
-              color: white;
-          }
-          .qty-display {
-              min-width: 40px;
-              text-align: center;
-              font-weight: 600;
-          }
-          .item-price {
-              font-weight: 700;
-              color: var(--primary-green);
-              font-size: 1.1rem;
-          }
-          .remove-item {
-              background: #f44336;
-              color: white;
-              border: none;
-              padding: 8px 12px;
-              border-radius: 20px;
-              cursor: pointer;
-              transition: var(--transition);
-              margin-left: auto;
-          }
-          .remove-item:hover {
-              background: #d32f2f;
-          }
-          .cart-table {
-              width: 100%;
-              border-collapse: collapse;
-              background: white;
-              border-radius: var(--border-radius);
-              overflow: hidden;
-              box-shadow: var(--shadow);
-          }
-          .cart-table th,
-          .cart-table td {
-              padding: 15px;
-              text-align: left;
-              border-bottom: 1px solid #e0e0e0;
-          }
-          .cart-table th {
-              background: var(--light-green);
-              color: var(--primary-green);
-              font-weight: 600;
-          }
-          .table-qty {
-              display: flex;
-              align-items: center;
-              gap: 10px;
-          }
-          .empty-cart {
-              text-align: center;
-              padding: 60px 20px;
-              color: #666;
-          }
-          .empty-cart i {
-              font-size: 4rem;
-              color: var(--primary-green);
-              margin-bottom: 20px;
-          }
-          .empty-cart h3 {
-              font-size: 1.5rem;
-              margin-bottom: 10px;
-              color: #333;
-          }
-          .continue-shopping {
-              background: var(--primary-green);
-              color: white;
-              padding: 12px 30px;
-              border: none;
-              border-radius: 25px;
-              font-size: 1rem;
-              cursor: pointer;
-              transition: var(--transition);
-              text-decoration: none;
-              display: inline-block;
-              margin-top: 20px;
-          }
-          .continue-shopping:hover {
-              background: var(--secondary-green);
-              transform: translateY(-2px);
-          }
-          .summary-section {
-              background: white;
-              border-radius: var(--border-radius);
-              padding: 30px;
-              box-shadow: var(--shadow);
-              margin-top: 40px;
-          }
-          .summary-title {
-              font-size: 1.5rem;
-              color: var(--primary-green);
-              margin-bottom: 20px;
-              text-align: center;
-          }
-          .summary-row {
-              display: flex;
-              justify-content: space-between;
-              padding: 10px 0;
-              border-bottom: 1px solid #e0e0e0;
-          }
-          .summary-row:last-child {
-              border-bottom: none;
-              font-weight: 700;
-              font-size: 1.2rem;
-              color: var(--primary-green);
-          }
-          .discount-row {
-              color: #f44336;
-          }
-          .checkout-btn {
-              width: 100%;
-              background: linear-gradient(
-                  135deg,
-                  var(--primary-green),
-                  var(--secondary-green)
-              );
-              color: white;
-              border: none;
-              padding: 15px;
-              border-radius: 25px;
-              font-size: 1.1rem;
-              font-weight: 600;
-              cursor: pointer;
-              transition: var(--transition);
-              margin-top: 20px;
-          }
-          .checkout-btn:hover {
-              transform: translateY(-2px);
-              box-shadow: 0 5px 15px rgba(45, 143, 63, 0.3);
-          }
-          .checkout-btn:disabled {
-              opacity: 0.6;
-              cursor: not-allowed;
-          }
-          .modal {
-              display: none;
-              position: fixed;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background: rgba(0, 0, 0, 0.5);
-              z-index: 1000;
-              align-items: center;
-              justify-content: center;
-          }
-          .modal-content {
-              background: white;
-              padding: 40px;
-              border-radius: var(--border-radius);
-              text-align: center;
-              max-width: 400px;
-              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-              animation: modalSlideIn 0.3s ease;
-          }
-          @keyframes modalSlideIn {
-              from {
-                  opacity: 0;
-                  transform: scale(0.9);
-              }
-              to {
-                  opacity: 1;
-                  transform: scale(1);
-              }
-          }
-          .success-icon {
-              font-size: 4rem;
-              color: var(--secondary-green);
-              margin-bottom: 20px;
-          }
-          .close-modal {
-              background: none;
-              border: none;
-              font-size: 2rem;
-              cursor: pointer;
-              position: absolute;
-              top: 10px;
-              right: 20px;
-              color: #999;
-          }
-          @media (max-width: 768px) {
-              .cart-hero h1 {
-                  font-size: 2.2rem;
-              }
-              .cart-item {
-                  flex-direction: column;
-                  text-align: center;
-              }
-              .section-header {
-                  flex-direction: column;
-                  gap: 20px;
-              }
-              .summary-section {
-                  margin-top: 20px;
-              }
-              .cart-table {
-                  font-size: 0.9rem;
-              }
-              .cart-table th,
-              .cart-table td {
-                  padding: 10px;
-              }
-          }
-          @media (max-width: 480px) {
-              .view-toggles {
-                  justify-content: center;
-              }
-              .quantity-controls {
-                  justify-content: center;
-              }
-          }
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Panier - EcoMarket</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <style>
+                :root {
+                    --primary-green: #2d8f3f;
+                    --secondary-green: #8bc34a;
+                    --light-green: #e8f5e8;
+                    --shadow: 0 4px 20px rgba(45, 143, 63, 0.1);
+                    --border-radius: 12px;
+                    --transition: all 0.3s ease;
+                }
+                .cart-hero {
+                    background: linear-gradient(
+                        135deg,
+                        var(--primary-green) 0%,
+                        var(--secondary-green) 100%
+                    );
+                    color: white;
+                    padding: 80px 0 60px;
+                    text-align: center;
+                }
+                .cart-hero h1 {
+                    font-size: 3rem;
+                    font-weight: 800;
+                    margin-bottom: 10px;
+                }
+                .cart-hero p {
+                    font-size: 1.1rem;
+                    opacity: 0.9;
+                }
+                .cart-section {
+                    padding: 60px 0;
+                    background: white;
+                }
+                .container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 20px;
+                }
+                .section-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 30px;
+                }
+                .section-header h2 {
+                    color: var(--primary-green);
+                    font-size: 2rem;
+                }
+                .view-toggles {
+                    display: flex;
+                    gap: 10px;
+                }
+                .view-btn {
+                    padding: 10px 15px;
+                    border: 2px solid #e0e0e0;
+                    background: white;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: var(--transition);
+                }
+                .view-btn.active,
+                .view-btn:hover {
+                    border-color: var(--primary-green);
+                    background: var(--primary-green);
+                    color: white;
+                }
+                .cart-items {
+                    display: grid;
+                    gap: 20px;
+                }
+                .cart-item {
+                    background: #f8f9fa;
+                    border-radius: var(--border-radius);
+                    padding: 20px;
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    animation: slideIn 0.3s ease;
+                    box-shadow: var(--shadow);
+                }
+                @keyframes slideIn {
+                    from {
+                        opacity: 0;
+                        transform: translateX(-20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+                .cart-item img {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 8px;
+                    object-fit: cover;
+                }
+                .item-details h3 {
+                    margin-bottom: 5px;
+                    color: #333;
+                }
+                .item-details p {
+                    color: #666;
+                    margin-bottom: 10px;
+                }
+                .quantity-controls {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    background: white;
+                    padding: 10px;
+                    border-radius: 25px;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                }
+                .qty-btn {
+                    width: 30px;
+                    height: 30px;
+                    border: none;
+                    background: var(--light-green);
+                    border-radius: 50%;
+                    cursor: pointer;
+                    font-size: 1.2rem;
+                    transition: var(--transition);
+                    color: var(--primary-green);
+                }
+                .qty-btn:hover {
+                    background: var(--primary-green);
+                    color: white;
+                }
+                .qty-display {
+                    min-width: 40px;
+                    text-align: center;
+                    font-weight: 600;
+                }
+                .item-price {
+                    font-weight: 700;
+                    color: var(--primary-green);
+                    font-size: 1.1rem;
+                }
+                .remove-item {
+                    background: #f44336;
+                    color: white;
+                    border: none;
+                    padding: 8px 12px;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    transition: var(--transition);
+                    margin-left: auto;
+                }
+                .remove-item:hover {
+                    background: #d32f2f;
+                }
+                .cart-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    background: white;
+                    border-radius: var(--border-radius);
+                    overflow: hidden;
+                    box-shadow: var(--shadow);
+                }
+                .cart-table th,
+                .cart-table td {
+                    padding: 15px;
+                    text-align: left;
+                    border-bottom: 1px solid #e0e0e0;
+                }
+                .cart-table th {
+                    background: var(--light-green);
+                    color: var(--primary-green);
+                    font-weight: 600;
+                }
+                .table-qty {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                .empty-cart {
+                    text-align: center;
+                    padding: 60px 20px;
+                    color: #666;
+                }
+                .empty-cart i {
+                    font-size: 4rem;
+                    color: var(--primary-green);
+                    margin-bottom: 20px;
+                }
+                .empty-cart h3 {
+                    font-size: 1.5rem;
+                    margin-bottom: 10px;
+                    color: #333;
+                }
+                .continue-shopping {
+                    background: var(--primary-green);
+                    color: white;
+                    padding: 12px 30px;
+                    border: none;
+                    border-radius: 25px;
+                    font-size: 1rem;
+                    cursor: pointer;
+                    transition: var(--transition);
+                    text-decoration: none;
+                    display: inline-block;
+                    margin-top: 20px;
+                }
+                .continue-shopping:hover {
+                    background: var(--secondary-green);
+                    transform: translateY(-2px);
+                }
+                .summary-section {
+                    background: white;
+                    border-radius: var(--border-radius);
+                    padding: 30px;
+                    box-shadow: var(--shadow);
+                    margin-top: 40px;
+                }
+                .summary-title {
+                    font-size: 1.5rem;
+                    color: var(--primary-green);
+                    margin-bottom: 20px;
+                    text-align: center;
+                }
+                .summary-row {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 0;
+                    border-bottom: 1px solid #e0e0e0;
+                }
+                .summary-row:last-child {
+                    border-bottom: none;
+                    font-weight: 700;
+                    font-size: 1.2rem;
+                    color: var(--primary-green);
+                }
+                .discount-row {
+                    color: #f44336;
+                }
+                .checkout-btn {
+                    width: 100%;
+                    background: linear-gradient(
+                        135deg,
+                        var(--primary-green),
+                        var(--secondary-green)
+                    );
+                    color: white;
+                    border: none;
+                    padding: 15px;
+                    border-radius: 25px;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: var(--transition);
+                    margin-top: 20px;
+                }
+                .checkout-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 5px 15px rgba(45, 143, 63, 0.3);
+                }
+                .checkout-btn:disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                }
+                .modal {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.5);
+                    z-index: 1000;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .modal-content {
+                    background: white;
+                    padding: 40px;
+                    border-radius: var(--border-radius);
+                    text-align: center;
+                    max-width: 400px;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                    animation: modalSlideIn 0.3s ease;
+                }
+                @keyframes modalSlideIn {
+                    from {
+                        opacity: 0;
+                        transform: scale(0.9);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+                .success-icon {
+                    font-size: 4rem;
+                    color: var(--secondary-green);
+                    margin-bottom: 20px;
+                }
+                .close-modal {
+                    background: none;
+                    border: none;
+                    font-size: 2rem;
+                    cursor: pointer;
+                    position: absolute;
+                    top: 10px;
+                    right: 20px;
+                    color: #999;
+                }
+                @media (max-width: 768px) {
+                    .cart-hero h1 {
+                        font-size: 2.2rem;
+                    }
+                    .cart-item {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+                    .section-header {
+                        flex-direction: column;
+                        gap: 20px;
+                    }
+                    .summary-section {
+                        margin-top: 20px;
+                    }
+                    .cart-table {
+                        font-size: 0.9rem;
+                    }
+                    .cart-table th,
+                    .cart-table td {
+                        padding: 10px;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .view-toggles {
+                        justify-content: center;
+                    }
+                    .quantity-controls {
+                        justify-content: center;
+                    }
+                }
 
-          .logo a {
-              text-decoration: none;
-          }
+                .logo a {
+                    text-decoration: none;
+                }
 
-          /* Footer Improvements */
-          .footer {
-              background: #2c5530;
-              color: #fff;
-              padding: 40px 0 20px;
-              margin-top: 60px;
-          }
+                /* Footer Improvements */
+                .footer {
+                    background: #2c5530;
+                    color: #fff;
+                    padding: 40px 0 20px;
+                    margin-top: 60px;
+                }
 
-          .footer-container {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-              gap: 30px;
-              max-width: 1200px;
-              margin: 0 auto;
-              padding: 0 20px;
-          }
+                .footer-container {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 30px;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 20px;
+                }
 
-          .footer-section h3, .footer-section h4, .footer-section h5 {
-              color: #4CAF50;
-              margin-bottom: 15px;
-              font-size: 1.2rem;
-          }
+                .footer-section h3, .footer-section h4, .footer-section h5 {
+                    color: #4CAF50;
+                    margin-bottom: 15px;
+                    font-size: 1.2rem;
+                }
 
-          .footer-section p, .footer-section address p {
-              margin-bottom: 10px;
-              font-size: 0.95rem;
-              line-height: 1.5;
-          }
+                .footer-section p, .footer-section address p {
+                    margin-bottom: 10px;
+                    font-size: 0.95rem;
+                    line-height: 1.5;
+                }
 
-          .footer-section ul {
-              list-style: none;
-              padding: 0;
-          }
+                .footer-section ul {
+                    list-style: none;
+                    padding: 0;
+                }
 
-          .footer-section ul li {
-              margin-bottom: 8px;
-          }
+                .footer-section ul li {
+                    margin-bottom: 8px;
+                }
 
-          .footer-section a {
-              color: #fff;
-              text-decoration: none;
-              transition: color 0.3s ease;
-          }
+                .footer-section a {
+                    color: #fff;
+                    text-decoration: none;
+                    transition: color 0.3s ease;
+                }
 
-          .footer-section a:hover {
-              color: #4CAF50;
-          }
+                .footer-section a:hover {
+                    color: #4CAF50;
+                }
 
-          .social-links {
-              display: flex;
-              gap: 15px;
-              margin-top: 15px;
-          }
+                .social-links {
+                    display: flex;
+                    gap: 15px;
+                    margin-top: 15px;
+                }
 
-          .social-links a {
-              display: inline-flex;
-              align-items: center;
-              justify-content: center;
-              width: 40px;
-              height: 40px;
-              background: rgba(255,255,255,0.1);
-              border-radius: 50%;
-              font-size: 1.1rem;
-              transition: background 0.3s ease;
-          }
+                .social-links a {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    background: rgba(255,255,255,0.1);
+                    border-radius: 50%;
+                    font-size: 1.1rem;
+                    transition: background 0.3s ease;
+                }
 
-          .social-links a:hover {
-              background: #4CAF50;
-          }
+                .social-links a:hover {
+                    background: #4CAF50;
+                }
 
-          .newsletter-form {
-              display: flex;
-              margin-top: 15px;
-          }
+                .newsletter-form {
+                    display: flex;
+                    margin-top: 15px;
+                }
 
-          .newsletter-form input {
-              flex: 1;
-              padding: 10px;
-              border: none;
-              border-radius: 4px 0 0 4px;
-              font-size: 0.9rem;
-          }
+                .newsletter-form input {
+                    flex: 1;
+                    padding: 10px;
+                    border: none;
+                    border-radius: 4px 0 0 4px;
+                    font-size: 0.9rem;
+                }
 
-          .newsletter-form button {
-              padding: 10px 15px;
-              background: #4CAF50;
-              color: #fff;
-              border: none;
-              border-radius: 0 4px 4px 0;
-              cursor: pointer;
-              transition: background 0.3s ease;
-          }
+                .newsletter-form button {
+                    padding: 10px 15px;
+                    background: #4CAF50;
+                    color: #fff;
+                    border: none;
+                    border-radius: 0 4px 4px 0;
+                    cursor: pointer;
+                    transition: background 0.3s ease;
+                }
 
-          .newsletter-form button:hover {
-              background: #45a049;
-          }
+                .newsletter-form button:hover {
+                    background: #45a049;
+                }
 
-          .footer-bottom {
-              border-top: 1px solid rgba(255,255,255,0.1);
-              padding-top: 20px;
-              text-align: center;
-              margin-top: 30px;
-          }
+                .footer-bottom {
+                    border-top: 1px solid rgba(255,255,255,0.1);
+                    padding-top: 20px;
+                    text-align: center;
+                    margin-top: 30px;
+                }
 
-          .footer-bottom p {
-              margin: 0;
-              font-size: 0.85rem;
-          }
+                .footer-bottom p {
+                    margin: 0;
+                    font-size: 0.85rem;
+                }
 
-          .footer-bottom a {
-              color: #4CAF50;
-          }
+                .footer-bottom a {
+                    color: #4CAF50;
+                }
 
-          @media (max-width: 768px) {
-              .footer-container {
-                  grid-template-columns: 1fr;
-                  gap: 20px;
-                  padding: 0 15px;
-              }
+                @media (max-width: 768px) {
+                    .footer-container {
+                        grid-template-columns: 1fr;
+                        gap: 20px;
+                        padding: 0 15px;
+                    }
 
-              .newsletter-form {
-                  flex-direction: column;
-              }
+                    .newsletter-form {
+                        flex-direction: column;
+                    }
 
-              .newsletter-form input {
-                  border-radius: 4px;
-                  margin-bottom: 10px;
-              }
+                    .newsletter-form input {
+                        border-radius: 4px;
+                        margin-bottom: 10px;
+                    }
 
-              .newsletter-form button {
-                  border-radius: 4px;
-              }
+                    .newsletter-form button {
+                        border-radius: 4px;
+                    }
 
-              .social-links {
-                  justify-content: center;
-              }
-          }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="header">
-      <nav class="navbar">
-        <div class="nav-container">
-          <div class="logo">
-            <a href="index.html"><h1>🌱 EcoMarket</h1></a>
-          </div>
-          <ul class="nav-menu">
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li>
-              <a href="marketplace.html" class="nav-link">Marketplace</a>
-            </li>
+                    .social-links {
+                        justify-content: center;
+                    }
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Header -->
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-container">
+                    <div class="logo">
+                        <a href="index.html"><h1>🌱 EcoMarket</h1></a>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li>
+                            <a href="marketplace.html" class="nav-link"
+                                >Marketplace</a
+                            >
+                        </li>
 
-            <li><a href="about.html" class="nav-link">About</a></li>
-            <li class="dropdown">
-              <a href="#" class="nav-link dropdown-btn">Dashboard ▼</a>
-              <div class="dropdown-content">
-                <a href="farmer-dashboard.html">Farmer Dashboard</a>
-                <a href="buyer-dashboard.html">Buyer Dashboard</a>
-                <a href="quality-control.html">Quality Control</a>
-                <a href="delivery.html">Delivery Tracking</a>
-              </div>
-            </li>
-          </ul>
-          <div class="cart-icon">
-            <a href="shopping-cart.html">
-              <i class="fas fa-shopping-cart"></i>
-              <span id="cartBadge">0</span>
-            </a>
-          </div>
-          <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </nav>
-    </header>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-btn"
+                                >Dashboard ▼</a
+                            >
+                            <div class="dropdown-content">
+                                <a href="farmer-dashboard.html"
+                                    >Farmer Dashboard</a
+                                >
+                                <a href="buyer-dashboard.html"
+                                    >Buyer Dashboard</a
+                                >
+                                <a href="quality-control.html"
+                                    >Quality Control</a
+                                >
+                                <a href="delivery.html">Delivery Tracking</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="cart-icon">
+                        <a href="shopping-cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="cartBadge">0</span>
+                        </a>
+                    </div>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
-    <main>
-      <!-- Hero Section -->
-      <section class="cart-hero">
-        <div class="container">
-          <h1>Your Shopping Cart</h1>
-          <p>Review your selected fresh produce and proceed to checkout</p>
-        </div>
-      </section>
+        <main>
+            <!-- Hero Section -->
+            <section class="cart-hero">
+                <div class="container">
+                    <h1>Votre Panier</h1>
+                    <p>
+                        Vérifiez vos produits frais sélectionnés et procédez au
+                        paiement
+                    </p>
+                </div>
+            </section>
 
-      <!-- Cart Section -->
-      <section class="cart-section">
-        <div class="container">
-          <div class="section-header">
-            <h2>Cart Items</h2>
-            <div class="view-toggles">
-              <button class="view-btn active" onclick="toggleCartView('cards')">
-                Cards
-              </button>
-              <button class="view-btn" onclick="toggleCartView('table')">
-                Table
-              </button>
-            </div>
-          </div>
-          <div id="cartItems" class="cart-items"></div>
-          <div id="emptyCart" class="empty-cart" style="display: none">
-            <i class="fas fa-shopping-cart"></i>
-            <h3>Your cart is empty</h3>
-            <p>Start shopping for fresh produce!</p>
-            <a href="marketplace.html" class="continue-shopping"
-              >Continue Shopping</a
+            <!-- Cart Section -->
+            <section class="cart-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Articles du Panier</h2>
+                        <div class="view-toggles">
+                            <button
+                                class="view-btn active"
+                                onclick="toggleCartView('cards')"
+                            >
+                                Cartes
+                            </button>
+                            <button
+                                class="view-btn"
+                                onclick="toggleCartView('table')"
+                            >
+                                Tableau
+                            </button>
+                        </div>
+                    </div>
+                    <div id="cartItems" class="cart-items"></div>
+                    <div
+                        id="emptyCart"
+                        class="empty-cart"
+                        style="display: none"
+                    >
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Votre panier est vide</h3>
+                        <p>Commencez à acheter des produits frais !</p>
+                        <a href="marketplace.html" class="continue-shopping"
+                            >Continuer les Achats</a
+                        >
+                        >
+                    </div>
+                </div>
+            </section>
+
+            <!-- Summary Section -->
+            <aside
+                class="summary-section"
+                id="cartSummary"
+                style="display: none"
             >
-          </div>
+                <div class="container">
+                    <h3 class="summary-title">Résumé de Commande</h3>
+                    <div class="summary-row">
+                        <span>Sous-total:</span>
+                        <span id="subtotal">0 CFA</span>
+                    </div>
+                    <div
+                        class="summary-row discount-row"
+                        id="discountRow"
+                        style="display: none"
+                    >
+                        <span>Réduction:</span>
+                        <span id="discount">-0 CFA</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Livraison (Yaoundé):</span>
+                        <span>2 000 CFA</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Taxe (19,25%):</span>
+                        <span id="tax">0 CFA</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Total Général:</span>
+                        <span id="grandTotal">0 CFA</span>
+                    </div>
+                    <button
+                        class="checkout-btn"
+                        onclick="checkout()"
+                        id="checkoutBtn"
+                        disabled
+                    >
+                        Procéder au Paiement
+                    </button>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Success Modal -->
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeSuccessModal()"
+                    >&times;</span
+                >
+                <i class="fas fa-check-circle success-icon"></i>
+                <h2>Commande Passée avec Succès !</h2>
+                <p>
+                    Votre commande a été confirmée. Vous recevrez un email de
+                    confirmation sous peu.
+                </p>
+                <p>ID de Commande: <strong id="orderId"></strong></p>
+                <button class="btn btn-primary" onclick="closeSuccessModal()">
+                    Continuer les Achats
+                </button>
+            </div>
         </div>
-      </section>
 
-      <!-- Summary Section -->
-      <aside class="summary-section" id="cartSummary" style="display: none">
-        <div class="container">
-          <h3 class="summary-title">Order Summary</h3>
-          <div class="summary-row">
-            <span>Subtotal:</span>
-            <span id="subtotal">0 CFA</span>
-          </div>
-          <div
-            class="summary-row discount-row"
-            id="discountRow"
-            style="display: none"
-          >
-            <span>Discount:</span>
-            <span id="discount">-0 CFA</span>
-          </div>
-          <div class="summary-row">
-            <span>Shipping (Yaoundé):</span>
-            <span>2,000 CFA</span>
-          </div>
-          <div class="summary-row">
-            <span>Tax (19.25%):</span>
-            <span id="tax">0 CFA</span>
-          </div>
-          <div class="summary-row">
-            <span>Grand Total:</span>
-            <span id="grandTotal">0 CFA</span>
-          </div>
-          <button
-            class="checkout-btn"
-            onclick="checkout()"
-            id="checkoutBtn"
-            disabled
-          >
-            Proceed to Checkout
-          </button>
-        </div>
-      </aside>
-    </main>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>🌱 EcoMarket</h3>
+                        <p>
+                            Relier les agriculteurs et les acheteurs pour un
+                            avenir durable.
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="marketplace.html">Marketplace</a></li>
+                            <li><a href="about.html">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 EcoMarket. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
 
-    <!-- Success Modal -->
-    <div id="successModal" class="modal">
-      <div class="modal-content">
-        <span class="close-modal" onclick="closeSuccessModal()">&times;</span>
-        <i class="fas fa-check-circle success-icon"></i>
-        <h2>Order Placed Successfully!</h2>
-        <p>
-          Your order has been confirmed. You'll receive a confirmation email
-          shortly.
-        </p>
-        <p>Order ID: <strong id="orderId"></strong></p>
-        <button class="btn btn-primary" onclick="closeSuccessModal()">
-          Continue Shopping
-        </button>
-      </div>
-    </div>
+        <script src="js/main.js"></script>
+        <script>
+            let cart = (
+                JSON.parse(localStorage.getItem("ecomarket_cart")) || []
+            ).map((item) => {
+                // Ensure compatibility: use 'id' for cart rendering, fallback to 'productId'
+                if (!("id" in item) && "productId" in item) {
+                    item.id = item.productId;
+                }
+                return item;
+            });
+            let viewMode = "cards";
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-section">
-            <h3>🌱 EcoMarket</h3>
-            <p>Connecting farmers and buyers for a sustainable future.</p>
-          </div>
-          <div class="footer-section">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="marketplace.html">Marketplace</a></li>
-              <li><a href="about.html">About</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2024 EcoMarket. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+            function renderCart() {
+                const cartItemsEl = document.getElementById("cartItems");
+                const emptyCartEl = document.getElementById("emptyCart");
+                const summaryEl = document.getElementById("cartSummary");
+                const checkoutBtn = document.getElementById("checkoutBtn");
 
-    <script src="js/main.js"></script>
-    <script>
-      let cart = (JSON.parse(localStorage.getItem("ecomarket_cart")) || []).map(
-        (item) => {
-          // Ensure compatibility: use 'id' for cart rendering, fallback to 'productId'
-          if (!("id" in item) && "productId" in item) {
-            item.id = item.productId;
-          }
-          return item;
-        }
-      );
-      let viewMode = "cards";
+                if (cart.length === 0) {
+                    cartItemsEl.style.display = "none";
+                    emptyCartEl.style.display = "block";
+                    summaryEl.style.display = "none";
+                    checkoutBtn.disabled = true;
+                    updateCartBadge();
+                    return;
+                }
 
-      function renderCart() {
-        const cartItemsEl = document.getElementById("cartItems");
-        const emptyCartEl = document.getElementById("emptyCart");
-        const summaryEl = document.getElementById("cartSummary");
-        const checkoutBtn = document.getElementById("checkoutBtn");
+                cartItemsEl.style.display = "block";
+                emptyCartEl.style.display = "none";
+                summaryEl.style.display = "block";
+                checkoutBtn.disabled = false;
 
-        if (cart.length === 0) {
-          cartItemsEl.style.display = "none";
-          emptyCartEl.style.display = "block";
-          summaryEl.style.display = "none";
-          checkoutBtn.disabled = true;
-          updateCartBadge();
-          return;
-        }
-
-        cartItemsEl.style.display = "block";
-        emptyCartEl.style.display = "none";
-        summaryEl.style.display = "block";
-        checkoutBtn.disabled = false;
-
-        if (viewMode === "cards") {
-          cartItemsEl.innerHTML = cart
-            .map(
-              (item) => `
+                if (viewMode === "cards") {
+                    cartItemsEl.innerHTML = cart
+                        .map(
+                            (item) => `
                     <div class="cart-item">
                         <img src="${
-                          item.image || "assets/placeholder.jpg"
+                            item.image || "assets/placeholder.jpg"
                         }" alt="${
-                item.name
-              }" onerror="this.src='assets/placeholder.jpg'">
+                            item.name
+                        }" onerror="this.src='assets/placeholder.jpg'">
                         <div class="item-details">
                             <h3>${item.name}</h3>
                             <p>${item.farmer || "EcoMarket"}</p>
                         </div>
                         <div class="quantity-controls">
                             <button class="qty-btn" onclick="updateQuantity(${
-                              item.id
+                                item.id
                             }, -1)">-</button>
                             <span class="qty-display">${item.quantity}</span>
                             <button class="qty-btn" onclick="updateQuantity(${
-                              item.id
+                                item.id
                             }, 1)">+</button>
                         </div>
                         <div class="item-price">${(
-                          item.price * item.quantity
+                            item.price * item.quantity
                         ).toLocaleString()} CFA</div>
                         <button class="remove-item" onclick="removeFromCart(${
-                          item.id
+                            item.id
                         })">Remove</button>
                     </div>
-                `
-            )
-            .join("");
-        } else {
-          cartItemsEl.innerHTML = `
+                `,
+                        )
+                        .join("");
+                } else {
+                    cartItemsEl.innerHTML = `
                     <table class="cart-table">
                         <thead>
                             <tr>
@@ -731,144 +764,151 @@
                         </thead>
                         <tbody>
                             ${cart
-                              .map(
-                                (item) => `
+                                .map(
+                                    (item) => `
                                 <tr>
                                     <td><img src="${
-                                      item.image || "assets/placeholder.jpg"
+                                        item.image || "assets/placeholder.jpg"
                                     }" alt="${
-                                  item.name
-                                }" onerror="this.src='assets/placeholder.jpg'" style="width:50px;height:50px;border-radius:4px;"> ${
-                                  item.name
-                                }</td>
+                                        item.name
+                                    }" onerror="this.src='assets/placeholder.jpg'" style="width:50px;height:50px;border-radius:4px;"> ${
+                                        item.name
+                                    }</td>
                                     <td><div class="table-qty"><button class="qty-btn" onclick="updateQuantity(${
-                                      item.id
+                                        item.id
                                     }, -1)">-</button><span>${
-                                  item.quantity
-                                }</span><button class="qty-btn" onclick="updateQuantity(${
-                                  item.id
-                                }, 1)">+</button></div></td>
+                                        item.quantity
+                                    }</span><button class="qty-btn" onclick="updateQuantity(${
+                                        item.id
+                                    }, 1)">+</button></div></td>
                                     <td>${item.price.toLocaleString()} CFA</td>
                                     <td>${(
-                                      item.price * item.quantity
+                                        item.price * item.quantity
                                     ).toLocaleString()} CFA</td>
                                     <td><button class="remove-item" onclick="removeFromCart(${
-                                      item.id
+                                        item.id
                                     })">Remove</button></td>
                                 </tr>
-                            `
-                              )
-                              .join("")}
+                            `,
+                                )
+                                .join("")}
                         </tbody>
                     </table>
                 `;
-        }
+                }
 
-        updateSummary();
-        updateCartBadge();
-      }
+                updateSummary();
+                updateCartBadge();
+            }
 
-      function updateQuantity(id, change) {
-        const item = cart.find((i) => i.id === id);
-        if (item) {
-          item.quantity = Math.max(1, item.quantity + change);
-          if (item.quantity === 0) removeFromCart(id);
-          else {
-            localStorage.setItem("ecomarket_cart", JSON.stringify(cart));
-            renderCart();
-          }
-        }
-      }
+            function updateQuantity(id, change) {
+                const item = cart.find((i) => i.id === id);
+                if (item) {
+                    item.quantity = Math.max(1, item.quantity + change);
+                    if (item.quantity === 0) removeFromCart(id);
+                    else {
+                        localStorage.setItem(
+                            "ecomarket_cart",
+                            JSON.stringify(cart),
+                        );
+                        renderCart();
+                    }
+                }
+            }
 
-      function removeFromCart(id) {
-        cart = cart.filter((i) => i.id !== id);
-        localStorage.setItem("ecomarket_cart", JSON.stringify(cart));
-        renderCart();
-      }
+            function removeFromCart(id) {
+                cart = cart.filter((i) => i.id !== id);
+                localStorage.setItem("ecomarket_cart", JSON.stringify(cart));
+                renderCart();
+            }
 
-      function updateSummary() {
-        const subtotal = cart.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0
-        );
-        const discount = cart.some((item) => item.isPackage)
-          ? subtotal * 0.1
-          : 0; // 10% for packages
-        const tax = subtotal * 0.1925;
-        const shipping = 2000;
-        const grandTotal = subtotal - discount + tax + shipping;
+            function updateSummary() {
+                const subtotal = cart.reduce(
+                    (sum, item) => sum + item.price * item.quantity,
+                    0,
+                );
+                const discount = cart.some((item) => item.isPackage)
+                    ? subtotal * 0.1
+                    : 0; // 10% for packages
+                const tax = subtotal * 0.1925;
+                const shipping = 2000;
+                const grandTotal = subtotal - discount + tax + shipping;
 
-        document.getElementById("subtotal").textContent =
-          subtotal.toLocaleString() + " CFA";
-        const discountEl = document.getElementById("discountRow");
-        if (discount > 0) {
-          discountEl.style.display = "flex";
-          document.getElementById("discount").textContent =
-            "-" + discount.toLocaleString() + " CFA";
-        } else {
-          discountEl.style.display = "none";
-        }
-        document.getElementById("tax").textContent =
-          tax.toLocaleString() + " CFA";
-        document.getElementById("grandTotal").textContent =
-          grandTotal.toLocaleString() + " CFA";
-      }
+                document.getElementById("subtotal").textContent =
+                    subtotal.toLocaleString() + " CFA";
+                const discountEl = document.getElementById("discountRow");
+                if (discount > 0) {
+                    discountEl.style.display = "flex";
+                    document.getElementById("discount").textContent =
+                        "-" + discount.toLocaleString() + " CFA";
+                } else {
+                    discountEl.style.display = "none";
+                }
+                document.getElementById("tax").textContent =
+                    tax.toLocaleString() + " CFA";
+                document.getElementById("grandTotal").textContent =
+                    grandTotal.toLocaleString() + " CFA";
+            }
 
-      function toggleCartView(mode) {
-        viewMode = mode;
-        document
-          .querySelectorAll(".view-btn")
-          .forEach((btn) => btn.classList.remove("active"));
-        event.target.classList.add("active");
-        renderCart();
-      }
+            function toggleCartView(mode) {
+                viewMode = mode;
+                document
+                    .querySelectorAll(".view-btn")
+                    .forEach((btn) => btn.classList.remove("active"));
+                event.target.classList.add("active");
+                renderCart();
+            }
 
-      function checkout() {
-        if (cart.length === 0) return;
-        const orderId = "ORD" + Date.now();
-        const order = {
-          id: orderId,
-          items: [...cart],
-          total: parseFloat(
-            document
-              .getElementById("grandTotal")
-              .textContent.replace(/[^\d]/g, "")
-          ),
-          date: new Date().toISOString(),
-        };
-        let orders = JSON.parse(localStorage.getItem("ecomarket_orders")) || [];
-        orders.push(order);
-        localStorage.setItem("ecomarket_orders", JSON.stringify(orders));
-        localStorage.removeItem("ecomarket_cart");
-        cart = [];
-        document.getElementById("orderId").textContent = orderId;
-        document.getElementById("successModal").style.display = "flex";
-        renderCart();
-      }
+            function checkout() {
+                if (cart.length === 0) return;
+                const orderId = "ORD" + Date.now();
+                const order = {
+                    id: orderId,
+                    items: [...cart],
+                    total: parseFloat(
+                        document
+                            .getElementById("grandTotal")
+                            .textContent.replace(/[^\d]/g, ""),
+                    ),
+                    date: new Date().toISOString(),
+                };
+                let orders =
+                    JSON.parse(localStorage.getItem("ecomarket_orders")) || [];
+                orders.push(order);
+                localStorage.setItem(
+                    "ecomarket_orders",
+                    JSON.stringify(orders),
+                );
+                localStorage.removeItem("ecomarket_cart");
+                cart = [];
+                document.getElementById("orderId").textContent = orderId;
+                document.getElementById("successModal").style.display = "flex";
+                renderCart();
+            }
 
-      function closeSuccessModal() {
-        document.getElementById("successModal").style.display = "none";
-      }
+            function closeSuccessModal() {
+                document.getElementById("successModal").style.display = "none";
+            }
 
-      function updateCartBadge() {
-        const badge = document.getElementById("cartBadge");
-        if (badge)
-          badge.textContent = cart.reduce(
-            (sum, item) => sum + item.quantity,
-            0
-          );
-      }
+            function updateCartBadge() {
+                const badge = document.getElementById("cartBadge");
+                if (badge)
+                    badge.textContent = cart.reduce(
+                        (sum, item) => sum + item.quantity,
+                        0,
+                    );
+            }
 
-      // Initialize
-      document.addEventListener("DOMContentLoaded", () => {
-        renderCart();
-        // Close modal on outside click
-        document
-          .getElementById("successModal")
-          .addEventListener("click", (e) => {
-            if (e.target === e.currentTarget) closeSuccessModal();
-          });
-      });
-    </script>
-  </body>
+            // Initialize
+            document.addEventListener("DOMContentLoaded", () => {
+                renderCart();
+                // Close modal on outside click
+                document
+                    .getElementById("successModal")
+                    .addEventListener("click", (e) => {
+                        if (e.target === e.currentTarget) closeSuccessModal();
+                    });
+            });
+        </script>
+    </body>
 </html>

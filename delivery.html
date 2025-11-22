@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Delivery Tracking - EcoMarket</title>
+        <title>Suivi Livraison - EcoMarket</title>
         <link rel="stylesheet" href="css/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,37 +28,37 @@
                     <ul class="nav-menu">
                         <li>
                             <a href="marketplace.html" class="nav-link"
-                                >Marketplace</a
+                                >Marché</a
                             >
                         </li>
 
                         <li>
-                            <a href="about.html" class="nav-link">About</a>
+                            <a href="about.html" class="nav-link">À Propos</a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="nav-link dropdown-btn active"
-                                >Dashboard ▼</a
+                                >Tableau de Bord ▼</a
                             >
                             <div class="dropdown-content">
                                 <a href="farmer-dashboard.html"
-                                    >Farmer Dashboard</a
+                                    >Tableau Producteur</a
                                 >
                                 <a href="buyer-dashboard.html"
-                                    >Buyer Dashboard</a
+                                    >Tableau Acheteur</a
                                 >
                                 <a href="quality-control.html"
-                                    >Quality Control</a
+                                    >Contrôle Qualité</a
                                 >
-                                <a href="delivery.html">Delivery Tracking</a>
+                                <a href="delivery.html">Suivi Livraison</a>
                             </div>
                         </li>
                     </ul>
                     <div class="nav-actions">
                         <button class="btn btn-outline-sm">
-                            Join as Farmer
+                            Rejoindre en tant qu'Agriculteur
                         </button>
                         <button class="btn btn-primary-sm">
-                            Shop Fresh Produce
+                            Acheter des Produits Frais
                         </button>
                     </div>
                     <div class="mobile-menu-toggle">
@@ -74,11 +74,11 @@
         <section class="delivery-hero">
             <div class="container">
                 <div class="delivery-hero-content">
-                    <span class="section-tag">🚚 Real-time Tracking</span>
-                    <h1>Track Your Fresh Produce Delivery</h1>
+                    <span class="section-tag">🚚 Suivi en Temps Réel</span>
+                    <h1>Suivez Votre Livraison de Produits Frais</h1>
                     <p>
-                        Monitor your orders from farm to your doorstep with our
-                        advanced tracking system
+                        Surveillez vos commandes de la ferme à votre porte avec
+                        notre système de suivi avancé
                     </p>
                 </div>
             </div>
@@ -88,16 +88,16 @@
         <section class="order-lookup-section">
             <div class="container">
                 <div class="lookup-container">
-                    <h2>🔍 Track Your Order</h2>
+                    <h2>🔍 Suivre Votre Commande</h2>
                     <div class="lookup-form">
                         <input
                             type="text"
                             id="orderIdInput"
-                            placeholder="Enter Order ID (e.g., ABC123)"
+                            placeholder="Entrez l'ID de Commande (ex: ABC123)"
                             maxlength="10"
                         />
                         <button class="btn btn-primary" onclick="trackOrder()">
-                            Track Order
+                            Suivre la Commande
                         </button>
                     </div>
                     <div id="trackingResult" class="tracking-result hidden">
@@ -115,28 +115,28 @@
                         <div class="stat-icon">📦</div>
                         <div class="stat-info">
                             <h3 id="activeDeliveries">24</h3>
-                            <p>Active Deliveries</p>
+                            <p>Livraisons Actives</p>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon">✅</div>
                         <div class="stat-info">
                             <h3 id="deliveredToday">156</h3>
-                            <p>Delivered Today</p>
+                            <p>Livrées Aujourd'hui</p>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon">⏰</div>
                         <div class="stat-info">
                             <h3 id="avgDeliveryTime">2.3h</h3>
-                            <p>Avg Delivery Time</p>
+                            <p>Temps de Livraison Moyen</p>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon">⭐</div>
                         <div class="stat-info">
                             <h3 id="deliveryRating">4.9</h3>
-                            <p>Customer Rating</p>
+                            <p>Note Client</p>
                         </div>
                     </div>
                 </div>
@@ -147,23 +147,21 @@
         <section class="active-deliveries-section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Active Deliveries</h2>
-                    <p>Real-time tracking of ongoing deliveries</p>
+                    <h2>Livraisons Actives</h2>
+                    <p>Suivi en temps réel des livraisons en cours</p>
                 </div>
 
                 <div class="delivery-map-container">
                     <div class="delivery-map">
                         <div class="map-placeholder">
-                            <h3>📍 Live Delivery Map</h3>
+                            <h3>📍 Carte de Livraison en Direct</h3>
                             <div class="map-locations">
                                 <div
                                     class="location warehouse"
                                     style="top: 20%; left: 30%"
                                 >
                                     <span class="location-icon">🏢</span>
-                                    <span class="location-label"
-                                        >Warehouse</span
-                                    >
+                                    <span class="location-label">Entrepôt</span>
                                 </div>
                                 <div
                                     class="location delivery active"
@@ -180,7 +178,7 @@
                                 >
                                     <span class="location-icon">🚚</span>
                                     <span class="location-label"
-                                        >Sarah D. - Delivered</span
+                                        >Sarah D. - Livrée</span
                                     >
                                 </div>
                                 <div
@@ -188,18 +186,14 @@
                                     style="top: 45%; left: 75%"
                                 >
                                     <span class="location-icon">🏠</span>
-                                    <span class="location-label"
-                                        >Customer A</span
-                                    >
+                                    <span class="location-label">Client A</span>
                                 </div>
                                 <div
                                     class="location customer"
                                     style="top: 35%; left: 60%"
                                 >
                                     <span class="location-icon">🏠</span>
-                                    <span class="location-label"
-                                        >Customer B</span
-                                    >
+                                    <span class="location-label">Client B</span>
                                 </div>
                             </div>
                             <div
@@ -228,15 +222,15 @@
                     <div class="delivery-item urgent">
                         <div class="delivery-header">
                             <div class="delivery-info">
-                                <h3>Order #ABC123</h3>
+                                <h3>Commande #ABC123</h3>
                                 <span class="customer-name">John Smith</span>
                                 <span class="delivery-address"
-                                    >📍 123 Main Street, Yaoundé</span
+                                    >📍 123 Rue Principale, Yaoundé</span
                                 >
                             </div>
                             <div class="delivery-status">
                                 <span class="status-badge out-for-delivery"
-                                    >Out for Delivery</span
+                                    >En Livraison</span
                                 >
                                 <span class="priority-badge urgent"
                                     >Urgent</span
@@ -259,7 +253,7 @@
                                     ></div>
                                 </div>
                                 <span class="progress-text"
-                                    >75% Complete - ETA 2:30 PM</span
+                                    >75% Complet - ETA 14h30</span
                                 >
                             </div>
                         </div>
@@ -272,15 +266,15 @@
                     <div class="delivery-item standard">
                         <div class="delivery-header">
                             <div class="delivery-info">
-                                <h3>Order #DEF456</h3>
+                                <h3>Commande #DEF456</h3>
                                 <span class="customer-name">Maria Garcia</span>
                                 <span class="delivery-address"
-                                    >📍 456 Oak Avenue, Douala</span
+                                    >📍 456 Avenue Chêne, Douala</span
                                 >
                             </div>
                             <div class="delivery-status">
                                 <span class="status-badge preparing"
-                                    >Preparing</span
+                                    >En Préparation</span
                                 >
                                 <span class="priority-badge standard"
                                     >Standard</span
@@ -303,12 +297,12 @@
                                     ></div>
                                 </div>
                                 <span class="progress-text"
-                                    >25% Complete - ETA 4:00 PM</span
+                                    >25% Complet - ETA 16h00</span
                                 >
                             </div>
                         </div>
                         <div class="delivery-items">
-                            <span class="item">🍓 Strawberry Package</span>
+                            <span class="item">🍓 Panier de Fraises</span>
                             <span class="item">🥬 Green Leafy Bundle</span>
                         </div>
                     </div>
@@ -320,64 +314,69 @@
         <section class="delivery-features">
             <div class="container">
                 <div class="section-header centered">
-                    <h2>Why Our Delivery Service Stands Out</h2>
+                    <h2>Pourquoi Notre Service de Livraison Se Démarque</h2>
                     <p>
-                        Ensuring fresh produce reaches you in perfect condition
+                        Garantir que les produits frais vous parviennent dans
+                        des conditions parfaites
                     </p>
                 </div>
 
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">🌡️</div>
-                        <h3>Temperature Controlled</h3>
+                        <h3>Contrôle de Température</h3>
                         <p>
-                            All vehicles equipped with temperature control to
-                            maintain optimal freshness during transport.
+                            Tous les véhicules équipés d'un contrôle de
+                            température pour maintenir la fraîcheur optimale
+                            pendant le transport.
                         </p>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">📍</div>
-                        <h3>Real-time GPS Tracking</h3>
+                        <h3>Suivi GPS en Temps Réel</h3>
                         <p>
-                            Track your order's exact location and estimated
-                            delivery time with live GPS updates.
+                            Suivez l'emplacement exact de votre commande et
+                            l'heure de livraison estimée avec des mises à jour
+                            GPS en direct.
                         </p>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">⚡</div>
-                        <h3>Same-day Delivery</h3>
+                        <h3>Livraison le Jour Même</h3>
                         <p>
-                            Orders placed before 12 PM can be delivered the same
-                            day within city limits.
+                            Les commandes passées avant 12h peuvent être livrées
+                            le même jour dans les limites de la ville.
                         </p>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">📱</div>
-                        <h3>SMS & Push Notifications</h3>
+                        <h3>SMS & Notifications Push</h3>
                         <p>
-                            Receive instant updates about your delivery status
-                            via SMS and app notifications.
+                            Recevez des mises à jour instantanées sur l'état de
+                            votre livraison via SMS et notifications
+                            d'application.
                         </p>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">🛡️</div>
-                        <h3>Delivery Guarantee</h3>
+                        <h3>Garantie de Livraison</h3>
                         <p>
-                            If we're late or your produce isn't fresh, we'll
-                            refund or replace your order.
+                            Si nous sommes en retard ou que vos produits ne sont
+                            pas frais, nous vous remboursons ou remplaçons votre
+                            commande.
                         </p>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon">♻️</div>
-                        <h3>Eco-friendly Packaging</h3>
+                        <h3>Emballage Écologique</h3>
                         <p>
-                            All packaging materials are biodegradable and
-                            environmentally sustainable.
+                            Tous les matériaux d'emballage sont biodégradables
+                            et écologiquement durables.
                         </p>
                     </div>
                 </div>
@@ -409,41 +408,45 @@
                     </div>
 
                     <div class="footer-section">
-                        <h4>Platform</h4>
+                        <h4>Plateforme</h4>
                         <ul class="footer-links">
-                            <li><a href="marketplace.html">Marketplace</a></li>
+                            <li><a href="marketplace.html">Marché</a></li>
                             <li>
-                                <a href="farmer-dashboard.html">For Farmers</a>
+                                <a href="farmer-dashboard.html"
+                                    >Pour Agriculteurs</a
+                                >
                             </li>
                             <li>
-                                <a href="buyer-dashboard.html">For Buyers</a>
+                                <a href="buyer-dashboard.html"
+                                    >Pour Acheteurs</a
+                                >
                             </li>
                             <li>
                                 <a href="quality-control.html"
-                                    >Quality Control</a
+                                    >Contrôle Qualité</a
                                 >
                             </li>
                         </ul>
                     </div>
 
                     <div class="footer-section">
-                        <h4>Company</h4>
+                        <h4>Entreprise</h4>
                         <ul class="footer-links">
-                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="about.html">À Propos</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-section">
                         <h4>Support</h4>
                         <ul class="footer-links">
-                            <li><a href="delivery.html">Delivery Info</a></li>
+                            <li><a href="delivery.html">Infos Livraison</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="footer-bottom">
                     <div class="footer-bottom-content">
-                        <p>&copy; 2024 EcoMarket. All rights reserved.</p>
+                        <p>&copy; 2024 EcoMarket. Tous droits réservés.</p>
                     </div>
                 </div>
             </div>

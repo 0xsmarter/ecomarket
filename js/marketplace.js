@@ -32,9 +32,24 @@ function initializeMarketplace() {
     "Organic Tomatoes",
     "Fresh Strawberries",
     "Green Vegetables Bundle",
+    "Baies de Goji",
+    "Quinoa Royal",
+    "Chou Kale Bio",
+    "Graines de Chia",
+    "Amarante",
+    "Thé Matcha Bio",
+    "Curcuma frais",
+    "Graines de Lin",
+    "Fenouil",
+    "Graines de Chanvre",
+    "Sarrasin",
+    "Gingembre frais",
+    "Moringa en poudre",
+    "Tamarin",
+    "Graines de Sésame Noir",
   ];
   existingProducts = existingProducts.filter(
-    (product) => !unwantedNames.includes(product.name)
+    (product) => !unwantedNames.includes(product.name),
   );
   StorageManager.save("ecomarket_products", existingProducts);
 
@@ -145,13 +160,13 @@ function createProductCard(product) {
       ${packageBadge}
       <div class="product-image">
         <img src="${product.image}" alt="${
-    product.name
-  }" onerror="this.src='assets/placeholder.jpg'">
+          product.name
+        }" onerror="this.src='assets/placeholder.jpg'">
         <div class="product-overlay">
           <button class="btn btn-quick-view" onclick="viewProductDetails(${
             product.id
           })">
-            Quick View
+            Aperçu Rapide
           </button>
         </div>
       </div>
@@ -162,7 +177,7 @@ function createProductCard(product) {
         <div class="product-meta">
           <span class="quality-badge quality-${product.quality.replace(
             "+",
-            "plus"
+            "plus",
           )}">${product.quality}</span>
           ${quantityBadge}
         </div>
@@ -253,17 +268,17 @@ function addToCart(productId, quantity = 1) {
   const product = currentProducts.find((p) => p.id == productId);
 
   if (!product) {
-    showToast("Product not found!", "error");
+    showToast("Produit non trouvé!", "error");
     return;
   }
 
   if (product.quantity < quantity) {
-    showToast("Not enough stock available!", "error");
+    showToast("Stock insuffisant!", "error");
     return;
   }
 
   CartManager.addToCart(productId, quantity);
-  showToast(`${product.name} added to cart!`, "success");
+  showToast(`${product.name} ajouté au panier!`, "success");
   updateCartDisplay();
 }
 
@@ -271,13 +286,13 @@ function addToPackage(productId) {
   const product = currentProducts.find((p) => p.id == productId);
 
   if (!product) {
-    showToast("Product not found!", "error");
+    showToast("Produit non trouvé!", "error");
     return;
   }
 
   // Check if already in package
   const existingItem = packageBuilder.items.find(
-    (item) => item.productId == productId
+    (item) => item.productId == productId,
   );
   if (existingItem) {
     existingItem.quantity += 1;
@@ -295,12 +310,12 @@ function addToPackage(productId) {
 
   updatePackageDisplay();
   calculatePackagePrice();
-  showToast(`${product.name} added to package!`, "success");
+  showToast(`${product.name} ajouté au panier!`, "success");
 }
 
 function removeFromPackage(productId) {
   packageBuilder.items = packageBuilder.items.filter(
-    (item) => item.productId != productId
+    (item) => item.productId != productId,
   );
   updatePackageDisplay();
   calculatePackagePrice();
@@ -339,12 +354,12 @@ function updatePackageDisplay() {
           <div class="item-controls">
             <div class="quantity-control">
               <button onclick="updatePackageQuantity(${item.productId}, ${
-            item.quantity - 1
-          })">-</button>
+                item.quantity - 1
+              })">-</button>
               <span>${item.quantity}</span>
               <button onclick="updatePackageQuantity(${item.productId}, ${
-            item.quantity + 1
-          })">+</button>
+                item.quantity + 1
+              })">+</button>
             </div>
             <button class="btn btn-remove" onclick="removeFromPackage(${
               item.productId
@@ -354,7 +369,7 @@ function updatePackageDisplay() {
             ${(item.price * item.quantity).toLocaleString()} CFA
           </div>
         </div>
-      `
+      `,
         )
         .join("")}
     </div>
@@ -419,10 +434,10 @@ function addPackageToCart() {
     discount: Math.round(
       (packageBuilder.discount /
         (packageBuilder.totalPrice + packageBuilder.discount)) *
-        100
+        100,
     ),
     packageItems: packageBuilder.items.map(
-      (item) => `${item.name} (${item.quantity} ${item.unit}) - ${item.farmer}`
+      (item) => `${item.name} (${item.quantity} ${item.unit}) - ${item.farmer}`,
     ),
   };
 
@@ -438,7 +453,7 @@ function addPackageToCart() {
   calculatePackagePrice();
   updateCartDisplay();
 
-  showToast("Package added to cart!", "success");
+  showToast("Panier ajouté au panier!", "success");
 }
 
 function updateCartDisplay() {
@@ -477,17 +492,17 @@ function updateCartDisplay() {
             <h4>${product.name}</h4>
             <p>by ${product.farmer}</p>
             <div class="item-price">${product.price.toLocaleString()} CFA per ${
-        product.unit
-      }</div>
+              product.unit
+            }</div>
           </div>
           <div class="quantity-controls">
             <button onclick="updateCartQuantity(${item.productId}, ${
-        item.quantity - 1
-      })">-</button>
+              item.quantity - 1
+            })">-</button>
             <span>${item.quantity}</span>
             <button onclick="updateCartQuantity(${item.productId}, ${
-        item.quantity + 1
-      })">+</button>
+              item.quantity + 1
+            })">+</button>
           </div>
           <div class="item-total">${itemTotal.toLocaleString()} CFA</div>
           <button class="remove-item" onclick="removeFromCart(${
@@ -511,7 +526,7 @@ function updateCartQuantity(productId, newQuantity) {
   const product = products.find((p) => p.id == productId);
 
   if (product && newQuantity > product.quantity) {
-    showToast("Not enough stock available!", "error");
+    showToast("Stock insuffisant!", "error");
     return;
   }
 
@@ -590,7 +605,7 @@ function viewProductDetails(productId) {
   const product = currentProducts.find((p) => p.id == productId);
 
   if (!product) {
-    showToast("Product not found!", "error");
+    showToast("Produit non trouvé!", "error");
     return;
   }
 
@@ -618,11 +633,11 @@ function viewProductDetails(productId) {
         <div class="product-meta-detailed">
           <span class="quality-badge quality-${product.quality.replace(
             "+",
-            "plus"
+            "plus",
           )}">${product.quality}</span>
           <span class="stock-info">${product.quantity} ${
-    product.unit
-  } available</span>
+            product.unit
+          } available</span>
         </div>
         <p class="product-description-full">${product.description}</p>
 
@@ -648,8 +663,8 @@ function viewProductDetails(productId) {
             : `
           <div class="pricing-info">
             <div class="price-large">${product.price.toLocaleString()} CFA per ${
-                product.unit
-              }</div>
+              product.unit
+            }</div>
           </div>
         `
         }
@@ -694,7 +709,7 @@ function changeQuantity(change) {
     const currentValue = parseInt(quantityInput.value);
     const newValue = Math.max(
       1,
-      Math.min(currentValue + change, parseInt(quantityInput.max))
+      Math.min(currentValue + change, parseInt(quantityInput.max)),
     );
     quantityInput.value = newValue;
   }

@@ -175,7 +175,7 @@ function addProduct(event) {
 
   // Validate form
   if (!validateForm(form)) {
-    showToast("Please fill in all required fields!", "error");
+    showToast("Veuillez remplir tous les champs requis!", "error");
     return;
   }
 
@@ -204,7 +204,7 @@ function addProduct(event) {
 
   // Reset form and show success message
   form.reset();
-  showToast(`Product "${newProduct.name}" added successfully!`, "success");
+  showToast(`Produit "${newProduct.name}" ajouté avec succès!`, "success");
 
   // Update dashboard stats and switch to products tab
   loadDashboardStats();
@@ -216,7 +216,7 @@ function editProduct(productId) {
   const product = products.find((p) => p.id == productId);
 
   if (!product) {
-    showToast("Product not found!", "error");
+    showToast("Produit non trouvé!", "error");
     return;
   }
 
@@ -247,7 +247,7 @@ function updateProduct(event) {
   const productIndex = products.findIndex((p) => p.id == productId);
 
   if (productIndex === -1) {
-    showToast("Product not found!", "error");
+    showToast("Produit non trouvé!", "error");
     return;
   }
 
@@ -291,7 +291,7 @@ function toggleProductStatus(productId) {
   const productIndex = products.findIndex((p) => p.id == productId);
 
   if (productIndex === -1) {
-    showToast("Product not found!", "error");
+    showToast("Produit non trouvé!", "error");
     return;
   }
 

@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!product && customProduct) {
         product = customProduct;
       } else if (!product) {
-        showToast("Product not found!", "error");
+        showToast("Produit non trouvé!", "error");
         return false;
       }
 
@@ -369,7 +369,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       StorageManager.save("ecomarket_cart", cart);
       updateCartBadge();
-      showToast(`${product.name} added to cart!`, "success");
+      showToast(`${product.name} ajouté au panier!`, "success");
       return true;
     },
 

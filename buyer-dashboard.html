@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Buyer Dashboard - EcoMarket</title>
+        <title>Tableau Acheteur - EcoMarket</title>
         <link rel="stylesheet" href="css/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -195,7 +195,7 @@
                                     >Farmer Dashboard</a
                                 >
                                 <a href="buyer-dashboard.html"
-                                    >Buyer Dashboard</a
+                                    >Tableau Acheteur</a
                                 >
                                 <a href="quality-control.html"
                                     >Quality Control</a
@@ -224,11 +224,11 @@
                 <!-- Dashboard Header -->
                 <div class="dashboard-header">
                     <div class="welcome-section">
-                        <h1>🛒 Buyer Dashboard</h1>
-                        <p class="dynamic-greeting">Welcome to</p>
+                        <h1>🛒 Tableau Acheteur</h1>
+                        <p class="dynamic-greeting">Bienvenue à</p>
                         <p>
-                            Track your orders, discover fresh produce, and
-                            support local farmers
+                            Suivez vos commandes, découvrez des produits frais et
+                            soutenez les agriculteurs locaux
                         </p>
                     </div>
                     <div class="dashboard-stats">
@@ -236,28 +236,28 @@
                             <div class="stat-icon">📦</div>
                             <div class="stat-info">
                                 <h3 id="totalOrders">0</h3>
-                                <p>Total Orders</p>
+                                <p>Commandes Totales</p>
                             </div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon">💰</div>
                             <div class="stat-info">
                                 <h3 id="totalSpent">0 CFA</h3>
-                                <p>Total Spent</p>
+                                <p>Total Dépensé</p>
                             </div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon">🚚</div>
                             <div class="stat-info">
                                 <h3 id="pendingDeliveries">0</h3>
-                                <p>Pending Deliveries</p>
+                                <p>Livraisons en Cours</p>
                             </div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon">❤️</div>
                             <div class="stat-info">
                                 <h3 id="favoriteFarmers">3</h3>
-                                <p>Favorite Farmers</p>
+                                <p>Agriculteurs Favoris</p>
                             </div>
                         </div>
                     </div>
@@ -269,46 +269,46 @@
                         class="dashboard-tab active"
                         onclick="showBuyerTab('orders')"
                     >
-                        My Orders
+                        Mes Commandes
                     </button>
                     <button
                         class="dashboard-tab"
                         onclick="showBuyerTab('wishlist')"
                     >
-                        Wishlist
+                        Liste de Souhaits
                     </button>
                     <button
                         class="dashboard-tab"
                         onclick="showBuyerTab('favorites')"
                     >
-                        Favorite Farmers
+                        Agriculteurs Favoris
                     </button>
 
                     <button
                         class="dashboard-tab"
                         onclick="showBuyerTab('profile')"
                     >
-                        Profile
+                        Profil
                     </button>
                 </div>
 
                 <!-- Orders Tab -->
                 <div id="orders-tab" class="dashboard-content">
                     <div class="content-header">
-                        <h2>My Orders</h2>
+                        <h2>Mes Commandes</h2>
                         <div class="order-filters">
                             <select
                                 id="orderStatusFilter"
                                 onchange="filterBuyerOrders()"
                             >
-                                <option value="all">All Orders</option>
-                                <option value="pending">Pending</option>
-                                <option value="confirmed">Confirmed</option>
+                                <option value="all">Toutes les Commandes</option>
+                                <option value="pending">En Attente</option>
+                                <option value="confirmed">Confirmée</option>
                                 <option value="quality-check">
-                                    Quality Check
+                                    Contrôle Qualité
                                 </option>
-                                <option value="shipped">Shipped</option>
-                                <option value="delivered">Delivered</option>
+                                <option value="shipped">Expédiée</option>
+                                <option value="delivered">Livrée</option>
                             </select>
                             <input
                                 type="date"
@@ -325,19 +325,19 @@
                 <!-- Wishlist Tab -->
                 <div id="wishlist-tab" class="dashboard-content hidden">
                     <div class="content-header">
-                        <h2>My Wishlist</h2>
+                        <h2>Mes Listes de Souhaits</h2>
                         <div class="wishlist-actions">
                             <button
                                 class="btn btn-primary"
                                 onclick="addAllToCart()"
                             >
-                                Add All to Cart
+                                Ajouter Tout au Panier
                             </button>
                             <button
                                 class="btn btn-secondary"
                                 onclick="clearWishlist()"
                             >
-                                Clear Wishlist
+                                Vider la Liste de Souhaits
                             </button>
                         </div>
                     </div>
@@ -349,37 +349,37 @@
                 <!-- Favorite Farmers Tab -->
                 <div id="favorites-tab" class="dashboard-content hidden">
                     <div class="content-header">
-                        <h2>Favorite Farmers</h2>
-                        <p>Support your trusted local farmers</p>
+                        <h2>Agriculteurs Favoris</h2>
+                        <p>Soutenez vos agriculteurs locaux de confiance</p>
                     </div>
                     <div class="favorite-farmers">
                         <div class="farmer-card">
                             <div class="farmer-avatar">👨‍🌾</div>
                             <div class="farmer-info">
-                                <h3>Green Valley Farm</h3>
+                                <h3>Ferme de la Vallée Verte</h3>
                                 <p>John Smith</p>
                                 <p class="farmer-specialty">
-                                    Organic Vegetables & Fruits
+                                    Légumes & Fruits Bio
                                 </p>
                                 <div class="farmer-rating">
                                     <span class="stars">⭐⭐⭐⭐⭐</span>
                                     <span class="rating-text"
-                                        >4.9 (127 reviews)</span
+                                        >4,9 (127 avis)</span
                                     >
                                 </div>
                             </div>
                             <div class="farmer-actions">
                                 <button
                                     class="btn btn-primary"
-                                    onclick="viewFarmerProducts('Green Valley Farm')"
+                                    onclick="viewFarmerProducts('Ferme de la Vallée Verte')"
                                 >
-                                    View Products
+                                    Voir les Produits
                                 </button>
                                 <button
                                     class="btn btn-outline"
-                                    onclick="removeFavoriteFarmer('Green Valley Farm')"
+                                    onclick="removeFavoriteFarmer('Ferme de la Vallée Verte')"
                                 >
-                                    ❤️ Remove
+                                    ❤️ Retirer
                                 </button>
                             </div>
                         </div>
@@ -387,30 +387,30 @@
                         <div class="farmer-card">
                             <div class="farmer-avatar">👩‍🌾</div>
                             <div class="farmer-info">
-                                <h3>Sunrise Organic Farm</h3>
+                                <h3>Ferme Bio Sunrise</h3>
                                 <p>Maria Garcia</p>
                                 <p class="farmer-specialty">
-                                    Premium Organic Produce
+                                    Produits Bio Premium
                                 </p>
                                 <div class="farmer-rating">
                                     <span class="stars">⭐⭐⭐⭐⭐</span>
                                     <span class="rating-text"
-                                        >4.8 (89 reviews)</span
+                                        >4,8 (89 avis)</span
                                     >
                                 </div>
                             </div>
                             <div class="farmer-actions">
                                 <button
                                     class="btn btn-primary"
-                                    onclick="viewFarmerProducts('Sunrise Organic Farm')"
+                                    onclick="viewFarmerProducts('Ferme Bio Sunrise')"
                                 >
-                                    View Products
+                                    Voir les Produits
                                 </button>
                                 <button
                                     class="btn btn-outline"
-                                    onclick="removeFavoriteFarmer('Sunrise Organic Farm')"
+                                    onclick="removeFavoriteFarmer('Ferme Bio Sunrise')"
                                 >
-                                    ❤️ Remove
+                                    ❤️ Retirer
                                 </button>
                             </div>
                         </div>
@@ -418,30 +418,30 @@
                         <div class="farmer-card">
                             <div class="farmer-avatar">👨‍🌾</div>
                             <div class="farmer-info">
-                                <h3>Mountain Fresh Farms</h3>
+                                <h3>Fermes de la Montagne Fraîche</h3>
                                 <p>Robert Johnson</p>
                                 <p class="farmer-specialty">
-                                    Seasonal Fruits & Berries
+                                    Fruits & Baies Saisonniers
                                 </p>
                                 <div class="farmer-rating">
                                     <span class="stars">⭐⭐⭐⭐⭐</span>
                                     <span class="rating-text"
-                                        >4.7 (156 reviews)</span
+                                        >4,7 (156 avis)</span
                                     >
                                 </div>
                             </div>
                             <div class="farmer-actions">
                                 <button
                                     class="btn btn-primary"
-                                    onclick="viewFarmerProducts('Mountain Fresh Farms')"
+                                    onclick="viewFarmerProducts('Fermes de la Montagne Fraîche')"
                                 >
-                                    View Products
+                                    Voir les Produits
                                 </button>
                                 <button
                                     class="btn btn-outline"
-                                    onclick="removeFavoriteFarmer('Mountain Fresh Farms')"
+                                    onclick="removeFavoriteFarmer('Fermes de la Montagne Fraîche')"
                                 >
-                                    ❤️ Remove
+                                    ❤️ Retirer
                                 </button>
                             </div>
                         </div>
@@ -451,12 +451,12 @@
                 <!-- Profile Tab -->
                 <div id="profile-tab" class="dashboard-content hidden">
                     <div class="content-header">
-                        <h2>My Profile</h2>
+                        <h2>Mon Profil</h2>
                     </div>
                     <form id="buyerProfileForm" class="profile-form">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="buyerFirstName">First Name</label>
+                                <label for="buyerFirstName">Prénom</label>
                                 <input
                                     type="text"
                                     id="buyerFirstName"
@@ -464,7 +464,7 @@
                                 />
                             </div>
                             <div class="form-group">
-                                <label for="buyerLastName">Last Name</label>
+                                <label for="buyerLastName">Nom de Famille</label>
                                 <input
                                     type="text"
                                     id="buyerLastName"
@@ -475,7 +475,7 @@
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="buyerEmail">Email Address</label>
+                                <label for="buyerEmail">Adresse Email</label>
                                 <input
                                     type="email"
                                     id="buyerEmail"
@@ -483,7 +483,7 @@
                                 />
                             </div>
                             <div class="form-group">
-                                <label for="buyerPhone">Phone Number</label>
+                                <label for="buyerPhone">Numéro de Téléphone</label>
                                 <input
                                     type="tel"
                                     id="buyerPhone"
@@ -494,7 +494,7 @@
 
                         <div class="form-group">
                             <label for="deliveryAddress"
-                                >Delivery Address</label
+                                >Adresse de Livraison</label
                             >
                             <textarea
                                 id="deliveryAddress"
@@ -505,60 +505,60 @@
                         </div>
 
                         <div class="preferences-section">
-                            <h3>Preferences</h3>
+                            <h3>Préférences</h3>
                             <div class="preference-group">
-                                <label>Dietary Preferences:</label>
+                                <label>Préférences Alimentaires:</label>
                                 <div class="checkbox-group">
                                     <label
                                         ><input type="checkbox" checked />
-                                        Organic Only</label
+                                        Bio Seulement</label
                                     >
                                     <label
                                         ><input type="checkbox" />
-                                        Vegetarian</label
+                                        Végétarien</label
                                     >
                                     <label
-                                        ><input type="checkbox" /> Vegan</label
+                                        ><input type="checkbox" /> Végan</label
                                     >
                                     <label
                                         ><input type="checkbox" />
-                                        Gluten-Free</label
+                                        Sans Gluten</label
                                     >
                                     <label
-                                        ><input type="checkbox" /> Local Only
-                                        (within 50 miles)</label
+                                        ><input type="checkbox" /> Local Seulement
+                                        (à moins de 80 km)</label
                                     >
                                 </div>
                             </div>
 
                             <div class="preference-group">
                                 <label for="deliveryTime"
-                                    >Preferred Delivery Time:</label
+                                    >Heure de Livraison Préférée:</label
                                 >
                                 <select id="deliveryTime">
                                     <option value="morning">
-                                        Morning (8AM - 12PM)
+                                        Matin (8h - 12h)
                                     </option>
                                     <option value="afternoon" selected>
-                                        Afternoon (12PM - 6PM)
+                                        Après-midi (12h - 18h)
                                     </option>
                                     <option value="evening">
-                                        Evening (6PM - 8PM)
+                                        Soir (18h - 20h)
                                     </option>
                                 </select>
                             </div>
 
                             <div class="preference-group">
                                 <label>
-                                    <input type="checkbox" checked /> Email
-                                    notifications for new products
+                                    <input type="checkbox" checked /> Notifications
+                                    par email pour les nouveaux produits
                                 </label>
                                 <label>
-                                    <input type="checkbox" checked /> SMS
-                                    updates for order status
+                                    <input type="checkbox" checked /> Mises à jour
+                                    SMS pour le statut de la commande
                                 </label>
                                 <label>
-                                    <input type="checkbox" /> Weekly deals and
+                                    <input type="checkbox" /> Offres hebdomadaires et
                                     promotions
                                 </label>
                             </div>
@@ -566,10 +566,10 @@
 
                         <div class="form-actions">
                             <button type="button" class="btn btn-secondary">
-                                Cancel
+                                Annuler
                             </button>
                             <button type="submit" class="btn btn-primary">
-                                Update Profile
+                                Mettre à Jour le Profil
                             </button>
                         </div>
                     </form>
@@ -583,36 +583,36 @@
                     <div class="footer-section">
                         <h3>🌱 EcoMarket</h3>
                         <p>
-                            Connecting farmers and buyers for a sustainable
-                            future.
+                            Relier les agriculteurs et les acheteurs pour un
+                            avenir durable.
                         </p>
                     </div>
                     <div class="footer-section">
-                        <h4>Quick Links</h4>
+                        <h4>Liens Rapides</h4>
                         <ul>
-                            <li><a href="marketplace.html">Marketplace</a></li>
-                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="marketplace.html">Marché</a></li>
+                            <li><a href="about.html">À Propos</a></li>
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p>&copy; 2024 EcoMarket. All rights reserved.</p>
+                    <p>&copy; 2024 EcoMarket. Tous droits réservés.</p>
                 </div>
             </div>
         </footer>
 
-        <!-- Shopping Cart Modal -->
+        <!-- Modal Panier -->
         <div id="cartModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title">🛒 Shopping Cart</h2>
+                    <h2 class="modal-title">🛒 Panier</h2>
                     <span class="close" onclick="closeModal('cartModal')"
                         >&times;</span
                     >
                 </div>
                 <div id="cartItems" class="cart-items">
-                    <!-- Cart items will be loaded here -->
+                    <!-- Les articles du panier seront chargés ici -->
                 </div>
                 <div class="cart-footer">
                     <div class="cart-total">
@@ -622,21 +622,21 @@
                     </div>
                     <div class="cart-actions">
                         <button class="btn btn-secondary" onclick="clearCart()">
-                            Clear Cart
+                            Vider le Panier
                         </button>
                         <button class="btn btn-primary" onclick="checkout()">
-                            Proceed to Checkout
+                            Procéder au Paiement
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Order Details Modal -->
+        <!-- Modal Détails de Commande -->
         <div id="orderDetailsModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title">Order Details</h2>
+                    <h2 class="modal-title">Détails de la Commande</h2>
                     <span
                         class="close"
                         onclick="closeModal('orderDetailsModal')"
@@ -644,7 +644,7 @@
                     >
                 </div>
                 <div id="orderDetailsContent" class="order-details-content">
-                    <!-- Order details will be loaded here -->
+                    <!-- Les détails de la commande seront chargés ici -->
                 </div>
             </div>
         </div>

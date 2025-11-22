@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Marketplace - EcoMarket</title>
+        <title>Marché - EcoMarket</title>
         <link rel="stylesheet" href="css/style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,26 +26,28 @@
                     <ul class="nav-menu">
                         <li>
                             <a href="marketplace.html" class="nav-link active"
-                                >Marketplace</a
+                                >Marché</a
                             >
                         </li>
-                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li>
+                            <a href="about.html" class="nav-link">À Propos</a>
+                        </li>
 
                         <li class="dropdown">
                             <a href="#" class="nav-link dropdown-btn"
-                                >Dashboard ▼</a
+                                >Tableau de Bord ▼</a
                             >
                             <div class="dropdown-content">
                                 <a href="farmer-dashboard.html"
-                                    >Farmer Dashboard</a
+                                    >Tableau Producteur</a
                                 >
                                 <a href="buyer-dashboard.html"
-                                    >Buyer Dashboard</a
+                                    >Tableau Acheteur</a
                                 >
                                 <a href="quality-control.html"
-                                    >Quality Control</a
+                                    >Contrôle Qualité</a
                                 >
-                                <a href="delivery.html">Delivery Tracking</a>
+                                <a href="delivery.html">Suivi Livraison</a>
                             </div>
                         </li>
                     </ul>
@@ -69,23 +71,28 @@
             <section class="marketplace-hero">
                 <div class="container">
                     <div class="hero-content">
-                        <h1>Fresh Produce Marketplace</h1>
+                        <h1>Marché de Produits Frais</h1>
                         <p>
-                            Discover the freshest fruits, vegetables, and more
-                            directly from local farmers.
+                            Découvrez les fruits, légumes et autres produits les
+                            plus frais directement auprès des agriculteurs
+                            locaux.
                         </p>
                         <div class="hero-stats">
                             <div class="stat">
                                 <div class="stat-number">500+</div>
-                                <div class="stat-label">Products Available</div>
+                                <div class="stat-label">
+                                    Produits Disponibles
+                                </div>
                             </div>
                             <div class="stat">
                                 <div class="stat-number">150+</div>
-                                <div class="stat-label">Local Farmers</div>
+                                <div class="stat-label">
+                                    Agriculteurs Locaux
+                                </div>
                             </div>
                             <div class="stat">
                                 <div class="stat-number">98%</div>
-                                <div class="stat-label">Quality Score</div>
+                                <div class="stat-label">Score Qualité</div>
                             </div>
                         </div>
                     </div>
@@ -100,7 +107,7 @@
                             <input
                                 type="text"
                                 id="productSearch"
-                                placeholder="Search for products, farmers..."
+                                placeholder="Rechercher des produits, agriculteurs..."
                                 oninput="filterProducts()"
                             />
                         </div>
@@ -109,29 +116,31 @@
                                 id="categoryFilter"
                                 onchange="filterProducts()"
                             >
-                                <option value="all">All Categories</option>
-                                <option value="vegetables">Vegetables</option>
-                                <option value="fruits">Fruits</option>
-                                <option value="grains">Grains</option>
-                                <option value="dairy">Dairy</option>
-                                <option value="herbs">Herbs</option>
+                                <option value="all">
+                                    Toutes les Catégories
+                                </option>
+                                <option value="vegetables">Légumes</option>
+                                <option value="fruits">fruits</option>
+                                <option value="grains">Céréales</option>
+                                <option value="dairy">Produits Laitiers</option>
+                                <option value="herbs">Herbes</option>
                             </select>
                             <select
                                 id="priceFilter"
                                 onchange="filterProducts()"
                             >
-                                <option value="all">All Prices</option>
-                                <option value="low">Under 1,000 CFA</option>
+                                <option value="all">Tous les Prix</option>
+                                <option value="low">Moins de 1 000 CFA</option>
                                 <option value="medium">
-                                    1,000 - 2,000 CFA
+                                    1 000 - 2 000 CFA
                                 </option>
-                                <option value="high">Over 2,000 CFA</option>
+                                <option value="high">Plus de 2 000 CFA</option>
                             </select>
                             <button
                                 class="btn btn-secondary"
                                 onclick="clearCart()"
                             >
-                                Clear Cart
+                                Vider le Panier
                             </button>
                         </div>
                     </div>
@@ -142,7 +151,7 @@
             <section class="products-section">
                 <div class="container">
                     <div class="section-header">
-                        <h2>Available Products</h2>
+                        <h2>Produits Disponibles</h2>
                     </div>
                     <div id="productsGrid" class="products-grid">
                         <!-- Products will be loaded here by JavaScript -->
@@ -155,42 +164,50 @@
                 <div class="container">
                     <div class="package-content">
                         <div class="package-info">
-                            <h2>Create Custom Packages</h2>
+                            <h2>Créer des Paniers Sur Mesure</h2>
                             <p>
-                                Save money by creating custom bundles from
-                                different farmers. Mix and match products to get
-                                the best deals.
+                                Économisez en créant des paniers personnalisés
+                                auprès de différents agriculteurs. Mélangez les
+                                produits pour obtenir les meilleurs prix.
                             </p>
                             <ul class="package-benefits">
-                                <li>✅ Save up to 25% on bulk orders</li>
                                 <li>
-                                    ✅ Combine products from multiple farmers
+                                    ✅ Économisez jusqu'à 25% sur les grosses
+                                    commandes
                                 </li>
                                 <li>
-                                    ✅ Free delivery on packages over 25000 CFA
+                                    ✅ Associez des produits de plusieurs
+                                    agriculteurs
                                 </li>
-                                <li>✅ Customizable quantities</li>
+                                <li>
+                                    ✅ Livraison gratuite pour les paniers de
+                                    plus de 25 000 CFA
+                                </li>
+                                <li>✅ Quantités personnalisables</li>
                             </ul>
                         </div>
                         <div class="package-creator">
-                            <h3>Build Your Package</h3>
+                            <h3>Construisez Votre Panier</h3>
                             <div id="packageBuilder" class="package-builder">
                                 <div class="selected-items">
-                                    <h4>Selected Items</h4>
+                                    <h4>Articles Sélectionnés</h4>
                                     <div
                                         id="selectedItems"
                                         class="selected-list"
                                     >
-                                        <p>No items selected yet</p>
+                                        <p>
+                                            Aucun article sélectionné pour
+                                            l'instant
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="package-summary">
                                     <div class="summary-row">
-                                        <span>Subtotal:</span>
+                                        <span>Sous-total:</span>
                                         <span id="packageSubtotal">0 CFA</span>
                                     </div>
                                     <div class="summary-row discount">
-                                        <span>Package Discount:</span>
+                                        <span>Réduction Panier:</span>
                                         <span id="packageDiscount">-0 CFA</span>
                                     </div>
                                     <div class="summary-row total">
@@ -201,7 +218,7 @@
                                         class="btn btn-primary"
                                         onclick="addPackageToCart()"
                                     >
-                                        Add Package to Cart
+                                        Ajouter le Panier au Panier
                                     </button>
                                 </div>
                             </div>
@@ -216,9 +233,9 @@
                 <div class="footer-section">
                     <h3>🌱 EcoMarket</h3>
                     <p>
-                        Sustainable farming, fresh produce delivered to your
-                        door. Join us in supporting local farmers and
-                        eco-friendly practices.
+                        Agriculture durable, produits frais livrés à votre
+                        porte. Rejoignez-nous pour soutenir les agriculteurs
+                        locaux et les pratiques écologiques.
                     </p>
                     <div class="social-links">
                         <a
@@ -250,10 +267,10 @@
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="marketplace.html">Marketplace</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="delivery.html">Delivery</a></li>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="marketplace.html">Marché</a></li>
+                        <li><a href="about.html">À Propos</a></li>
+                        <li><a href="delivery.html">Livraison</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -266,20 +283,20 @@
                         <p><i class="fas fa-map-marker-alt"></i> Lomé, Togo</p>
                     </address>
                     <div class="newsletter">
-                        <h5>Stay Updated</h5>
+                        <h5>Rester Informé</h5>
                         <form class="newsletter-form">
                             <input
                                 type="email"
-                                placeholder="Enter your email"
+                                placeholder="Entrez votre email"
                                 required
                             />
-                            <button type="submit">Subscribe</button>
+                            <button type="submit">S'abonner</button>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 EcoMarket. All rights reserved.</p>
+                <p>&copy; 2024 EcoMarket. Tous droits réservés.</p>
             </div>
         </footer>
 
@@ -289,7 +306,7 @@
                 <span class="close" onclick="closeModal('productModal')"
                     >&times;</span
                 >
-                <h2 id="productModalTitle">Product Details</h2>
+                <h2 id="productModalTitle">Détails du Produit</h2>
                 <div id="productModalContent" class="product-details">
                     <!-- Product details will be loaded here -->
                 </div>
